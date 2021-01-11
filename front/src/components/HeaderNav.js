@@ -29,17 +29,17 @@ class HeaderNav extends React.Component {
 render() {
 
     return(
+
         <Navbar bg="dark" expand="lg">
-            <Row className="navContainer" lg={10}>
-                <Col lg={2}>
-                    <NavLink to="/Home">
+                    <NavLink to="/Home" className="navbar-brand-link">
                         <Navbar.Brand>
                             <i className="fas fa-music"></i>
                             <h4>Symfony Concert</h4>
                         </Navbar.Brand>
                     </NavLink>
-                </Col>
-                <Col lg={1}>
+                    <div className="linksCont">
+                    <Row className="navContainer" lg={12}>
+                <Col lg={2}>
                     <NavDropdown title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
@@ -64,55 +64,68 @@ render() {
                         </LinkContainer>
                     </NavDropdown>
                 </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">RESTAURATION</NavLink>
+                <Col lg={2}>
+                    <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Présentation</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Réserver</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                 </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">PARKING</NavLink>
+                <Col lg={2}>
+                <NavDropdown title="PARKING" id="nav-dropdown" renderMenuOnMount={true}>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Présentation</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Réserver</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                 </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">PRIVATISATION</NavLink>
+                <Col lg={2}>
+                <NavDropdown title="PRIVATISATION" id="nav-dropdown" renderMenuOnMount={true}>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Présentation</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Réserver</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                 </Col>
                 <Col lg={1}>
                     <NavLink exact to="/fakePage">ACTUALITÉS</NavLink>
                 </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">INFOS PRATIQUES</NavLink>
+                <Col lg={2}>
+                <NavDropdown title="INFOS PRATIQUES" id="nav-dropdown" renderMenuOnMount={true}>
+                        <LinkContainer to="/fakePage">
+                            <NavDropdown.Item>Comment venir ?</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/FAQ">
+                            <NavDropdown.Item>FAQ</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                 </Col>
                 <Col lg={1}>
-                    <NavLink exact to="/fakePage">CONTACT</NavLink>
+                <NavLink exact to="/Contact">CONTACT</NavLink>
                 </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">MON COMPTE/CRÉER UN COMPTE</NavLink>
-                </Col>
-            
-  
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-      <NavLink exact to="/fakePage">Home</NavLink>
-      <NavLink exact to="/fakePage">Link</NavLink>
-      <NavDropdown title="Dropdown" id="nav-dropdown" renderMenuOnMount={true}>
-        <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
-      <NavDropdown title="Dropdown2" id="nav-dropdown" renderMenuOnMount={true}>
-        <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
+                </Row>
+                    
+
+    <Row lg={12} className="searchLine">
+        <Col lg={2}></Col>
+        <Col lg={8}>
     <Form inline>
-      <Form.Control type="text" placeholder="Search" className="mr-sm-2" />
+      <Form.Control type="text" placeholder="Search" className="mr-sm-2 searchBar" />
       <Button variant="outline-blue"><i className="fas fa-search"></i></Button>
-    </Form>
-  </Navbar.Collapse>
+    </Form> 
+    </Col>
+        <Col lg={2}></Col>
             </Row>
-            
-</Navbar>
+            </div>
+            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE/CRÉER UN COMPTE<i className="fas fa-shopping-basket"></i></NavLink>
+            </Navbar>
 
     )
 }

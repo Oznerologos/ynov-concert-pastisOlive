@@ -5,6 +5,7 @@
 
 nav.navbar {
     background-color: #3c3c3c !important;
+    align-items: flex-start;
 }
 
 .navContainer {
@@ -20,10 +21,15 @@ nav.navbar {
 .btn-outline-blue:hover {
     background-color: #02c6d0 !important;
     color: white !important;
+    border-color: white !important;
 }
 
 .btn-outline-blue:hover>.fas {
     color: white !important;
+}
+
+.navbar-brand h4 {
+    color: white;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -33,6 +39,18 @@ nav.navbar {
 
 .btn-outline-blue .fas {
     font-size: 0.9rem;
+}
+
+.navbar-brand {
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-brand-link:hover {
+    text-decoration: none !important;
 }
 
 .navContainer div a {
@@ -62,4 +80,46 @@ nav.navbar {
 .dropdown-menu .dropdown-item:hover {
     color: white !important;
     background-color: #02c6d0 !important;
+}
+
+.navbar-expand-lg {
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+}
+
+.navbar .col-lg-1 {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown {
+    text-align: center;
+}
+
+.accountLink {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.accountLink:hover {
+    color: #02c6d0 !important;
+    text-decoration: none !important;
+}
+
+.accountLink .fa-shopping-basket {
+    font-size: 1rem;
+    color: white !important;
+    margin-left: 1rem;
+}
+
+.accountLink:hover>.fa-shopping-basket {
+    color: #02c6d0 !important;
+}
+
+.searchLine {
+    margin: 1rem 0px;
+}
+
+.searchBar {
+    width: 80% !important;
 }
