@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$font-1:'Roboto',
+cursive;
+
+$border-radius:25px;
+$color-1: #3c3c3c;
+
+@mixin verticalCenter {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin SpaceArround {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.no-marge {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 1rem auto;
+    width: 100vw;
+}
+
+main {
+    max-width: 1200px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.alert {
+    border-radius: 0 !important;
+}

@@ -1,0 +1,65 @@
+.fas {
+    color: #02c6d0 !important;
+    font-size: 3rem;
+}
+
+nav.navbar {
+    background-color: #3c3c3c !important;
+}
+
+.navContainer {
+    width: 100%;
+    margin: auto;
+}
+
+.btn-outline-blue {
+    color: #00f3ff !important;
+    border-color: #00f3ff !important;
+}
+
+.btn-outline-blue:hover {
+    background-color: #02c6d0 !important;
+    color: white !important;
+}
+
+.btn-outline-blue:hover>.fas {
+    color: white !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+}
+
+.btn-outline-blue .fas {
+    font-size: 0.9rem;
+}
+
+.navContainer div a {
+    text-decoration: none;
+    color: white;
+}
+
+.navContainer div a:hover {
+    color: #02c6d0 !important;
+}
+
+.dropdown-menu {
+    border-radius: 0 !important;
+}
+
+.dropdown-item {
+    color: #3c3c3c !important;
+}
+
+.dropdown a:hover .dropdown-menu {
+    display: block !important;
+    margin-top: 0; // remove the gap so it doesn't close
+    color: #3c3c3c;
+    border-radius: 0 !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: white !important;
+    background-color: #02c6d0 !important;
+}
