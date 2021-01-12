@@ -30,7 +30,7 @@ render() {
 
     return(
 
-        <Navbar bg="dark" expand="lg">
+        <Navbar bg="dark" expand="lg" sticky="top">
                     <NavLink to="/Home" className="navbar-brand-link">
                         <Navbar.Brand>
                             <i className="fas fa-music"></i>
@@ -124,7 +124,7 @@ render() {
         <Col lg={2}></Col>
             </Row>
             </div>
-            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE/CRÉER UN COMPTE<i className="fas fa-shopping-basket"></i></NavLink>
+            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE<i className="fas fa-shopping-basket"></i></NavLink>
             </Navbar>
 
     )

@@ -4,7 +4,7 @@
 }
 
 nav.navbar {
-    background-color: #3c3c3c !important;
+    background-color: #202020 !important;
     align-items: flex-start;
 }
 
@@ -21,7 +21,7 @@ nav.navbar {
 .btn-outline-blue:hover {
     background-color: #02c6d0 !important;
     color: white !important;
-    border-color: white !important;
+    border-color: #02c6d0 !important;
 }
 
 .btn-outline-blue:hover>.fas {
@@ -47,6 +47,11 @@ nav.navbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.navbar-brand-link,
+.accountLink {
+    width: 205px;
 }
 
 .navbar-brand-link:hover {
