@@ -34,12 +34,14 @@ $color-1: #3c3c3c;
 }
 
 body {
-    margin: 1rem auto;
-    width: 100vw;
+    margin: 0 !important;
+    width: 100%;
+    /*padding-right: 17px !important;*/
+    box-sizing: border-box !important;
 }
 
 main {
-    width: 100vw;
+    width: 100%;
     min-height: calc(100vh - 642px);
 }
 

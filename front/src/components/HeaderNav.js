@@ -31,7 +31,7 @@ render() {
     return(
 
         <Navbar bg="dark" expand="lg" sticky="top">
-                    <NavLink to="/Home" className="navbar-brand-link">
+                    <NavLink to="/" className="navbar-brand-link">
                         <Navbar.Brand>
                             <i className="fas fa-music"></i>
                             <h4>Symfony Concert</h4>

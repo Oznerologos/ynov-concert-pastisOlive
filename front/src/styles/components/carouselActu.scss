@@ -27,10 +27,15 @@
 
 .flexCont {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5% !important;
 }
 
 .parallelogram {
@@ -42,8 +47,8 @@
     margin: auto;*/
     margin: auto;
     display: block;
-    height: 440px;
-    background-size: 590px 590px;
+    height: 760px;
+    background-size: 1180px 1180px;
     background-position: 50% 50%;
     border-left: 6px solid #3c3c3c;
     border-right: 6px solid #3c3c3c;
@@ -62,5 +67,5 @@
 }
 
 .container-fluid {
-    margin: 15px 0 !important;
+    margin: 20px 0 !important;
 }

@@ -1,5 +1,9 @@
+// Library
+@import "~bootstrap/scss/bootstrap";
 @import './settings';
 @import './components/footerNavigation';
 @import './components/headerNavigation';
 @import './components/carouselActu';
-@import "~bootstrap/scss/bootstrap";
+
+// Pages
+@import './pages/contact.scss';

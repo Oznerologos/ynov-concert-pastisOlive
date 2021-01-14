@@ -80,7 +80,7 @@ class FooterNav extends React.Component {
                       <Form.Control type="email" placeholder="E-mail" onChange={this.handleChange}/>
                       </Col>
                       <Col lg={3}>
-                  <Button variant="blue" onClick={this.handleSubmit}>VALIDER</Button>
+                  <Button className="newsletterBtn" variant="outline-blue" onClick={this.handleSubmit}>VALIDER</Button>
                   </Col>
                   </Row>
                 </Form>

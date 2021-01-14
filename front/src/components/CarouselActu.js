@@ -19,11 +19,25 @@ class CarouselActu extends React.Component {
                                 <Carousel.Caption>
                                         <h3>GROUP TITLE</h3>
                                         <p>Dates and location of the concert</p>
+                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
                                     </Carousel.Caption>
                                     <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/500/300?img=1)'}} src={mask} alt="test"/>
+                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/1000/1000?img=1)'}} src={mask} alt="test"/>
                                         </div>                                   
+                                        
+                                    </div>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <div className="flexCont">
+                               
+                                    <div className="parallelogram-container">
+                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/1000/1000?img=2)'}} src={mask} alt="test"/>
+                                        </div>                                   
+                                        <Carousel.Caption>
+                                        <h3>GROUP TITLE</h3>
+                                        <p>Dates and location of the concert</p>
                                         <Button variant="outline-blue">INFOS & BILLETS</Button>
+                                    </Carousel.Caption>
                                     </div>
                                 </Carousel.Item>
                                 <Carousel.Item>
@@ -31,37 +45,27 @@ class CarouselActu extends React.Component {
                                 <Carousel.Caption>
                                         <h3>GROUP TITLE</h3>
                                         <p>Dates and location of the concert</p>
+                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
                                     </Carousel.Caption>
                                     <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/500/300?img=1)'}} src={mask} alt="test"/>
+                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/1000/1000?img=3)'}} src={mask} alt="test"/>
                                         </div>                                   
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
-                                    </div>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <div className="flexCont">
-                                <Carousel.Caption>
-                                        <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                    </Carousel.Caption>
-                                    <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{backgroundImage:'URL(https://picsum.photos/500/300?img=1)'}} src={mask} alt="test"/>
-                                        </div>                                   
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
+                                        
                                     </div>
                                 </Carousel.Item>
 
 
                                 <Carousel.Item>
                                 <div className="flexCont">
-                                <Carousel.Caption>
-                                <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                    </Carousel.Caption>
+                           
                                     <div className="parallelogram-container">
                                         <img className="parallelogram" style={{ backgroundImage: `url(${affiche})` }} src={mask} alt="test"/>
                                         </div>                                   
-                                    <Button variant="outline-blue">INFOS & BILLETS</Button>
+                                        <Carousel.Caption>
+                                <h3>GROUP TITLE</h3>
+                                        <p>Dates and location of the concert</p>
+                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
+                                    </Carousel.Caption>
                                     </div>  
                                 </Carousel.Item>
 
