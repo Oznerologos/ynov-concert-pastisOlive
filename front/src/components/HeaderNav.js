@@ -66,7 +66,7 @@ render() {
                 </Col>
                 <Col lg={2}>
                     <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer to="/RestaurationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to="/fakePage">

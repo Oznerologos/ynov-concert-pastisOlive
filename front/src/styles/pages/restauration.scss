@@ -1,0 +1,103 @@
+main {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+section {
+    padding: 5rem 5rem 3rem 5rem;
+    border-top: 1px solid #3c3c3c;
+}
+
+.dinerRow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+section .dinerRow .col-lg-7 {
+    padding: 4rem 4rem 4rem 2rem;
+    background-color: rgb(235, 235, 235);
+    margin: 0 !important;
+}
+
+section .dinerRow .col-lg-5 {
+    padding: 4rem 2rem 4rem 4rem;
+    background-color: rgb(235, 235, 235);
+    margin: 0 !important;
+}
+
+section .firstRestaurantRow .col-lg-7 {
+    padding: 4rem 2rem 4rem 4rem;
+    background-color: rgb(235, 235, 235);
+    margin: 0 !important;
+}
+
+section .firstRestaurantRow .col-lg-5 {
+    padding: 4rem 4rem 4rem 2rem;
+    background-color: rgb(235, 235, 235);
+    margin: 0 !important;
+}
+
+.firstRestaurantRow {
+    margin-bottom: 5rem;
+}
+
+.text-justify {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+.dinerPicture {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 400px;
+    /*position: absolute;*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.relativeCont {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+
+#resto2 {
+    background-image: URL('../media/img/resto1.jpg');
+    /* left: -100vw;*/
+}
+
+#resto1 {
+    background-image: URL('../media/img/resto3.jpg');
+    /*  right: -100vw;*/
+}
+
+a.MuiButtonBase-root:hover {
+    color: white;
+}
+
+#btn2 {
+    background-color: #00cfda;
+    color: white;
+}
+
+#btn2:hover {
+    background-color: #03b0b9;
+    color: white;
+}
+
+.MuiButton-containedSizeLarge {
+    padding: 8px 22px;
+    font-size: 0.9375rem;
+    width: 200px;
+    height: 50px;
+}

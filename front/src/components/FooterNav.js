@@ -107,7 +107,7 @@ class FooterNav extends React.Component {
               <div className="column-f">
                 <h5>RESTAURATION</h5>
                 <ul>
-                  <li><NavLink exact to="/fakePage">Présentation</NavLink></li>
+                  <li><NavLink exact to="/RestaurationPresentation">Présentation</NavLink></li>
                   <li><NavLink exact to="/fakePage">Réserver</NavLink></li>
                 </ul>
                 </div>
@@ -136,7 +136,7 @@ class FooterNav extends React.Component {
                 <h5>INFOS PRATIQUES</h5>
                 <ul>
                   <li><NavLink exact to="/fakePage">Comment venir ?</NavLink></li>
-                  <li><NavLink exact to="/fakePage">FAQ</NavLink></li>
+                  <li><NavLink exact to="/FAQ">FAQ</NavLink></li>
                 </ul>
                 </div>
                 <div className="column-f">

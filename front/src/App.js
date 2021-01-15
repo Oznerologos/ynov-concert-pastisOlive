@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import NotFound from './pages/NotFound';
+import RestaurationPresentation from './pages/RestaurationPresentation';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" exact component={Home}/>
           <Route path="/Contact" component={Contact}/>
           <Route path="/FAQ" component={FAQ}/>
+          <Route path="/RestaurationPresentation" component={RestaurationPresentation}/>
           <Route component={NotFound}/>
         </Switch>
       </BrowserRouter>

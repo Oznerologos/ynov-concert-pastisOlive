@@ -31,6 +31,7 @@ $color-1: #3c3c3c;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
 }
 
 body {
@@ -42,6 +43,37 @@ body {
 
 .MuiButton-containedPrimary {
     background-color: #02c6d0 !important;
+}
+
+.titleCont {
+    color: white;
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+
+.titleCont div h1 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.bg-dark {
+    background-color: #3c3c3c !important;
+}
+
+.text-dark {
+    color: #3c3c3c !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.bg-blue {
+    background-color: #02c6d0 !important;
+}
+
+.text-blue {
+    color: #02c6d0 !important;
 }
 
 main {
