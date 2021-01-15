@@ -102,7 +102,7 @@ class ContactMain extends React.Component {
 
                 </Col>
             </Row>
-            <Button variant="contained" endIcon={<Icon>send</Icon>} onClick={this.handleSubmit}>ENVOYER</Button>
+            <Button variant="contained" endIcon={<Icon>send</Icon>} onClick={this.handleSubmit} color="primary">ENVOYER</Button>
         </form>
          
         </main>);

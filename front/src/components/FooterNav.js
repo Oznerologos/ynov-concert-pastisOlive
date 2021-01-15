@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import { Button } from '@material-ui/core';
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -20,6 +20,7 @@ class FooterNav extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+
       let lastAtPos = this.state.emailClient.lastIndexOf('@');
       let lastDotPos = this.state.emailClient.lastIndexOf('.');
 
@@ -30,7 +31,6 @@ class FooterNav extends React.Component {
           <p className="no-marge">Votre inscription à notre newsletter a bien été prise en compte. Vous recevrez nos dernières actualités à l'adresse <span className="bold">{this.state.emailClient}</span>. Merci !</p>
         </Alert>});
        }
-
       
 
     
@@ -80,7 +80,7 @@ class FooterNav extends React.Component {
                       <Form.Control type="email" placeholder="E-mail" onChange={this.handleChange}/>
                       </Col>
                       <Col lg={3}>
-                  <Button className="newsletterBtn" variant="outline-blue" onClick={this.handleSubmit}>VALIDER</Button>
+                  <Button className="newsletterBtn" variant="contained" onClick={this.handleSubmit}>VALIDER</Button>
                   </Col>
                   </Row>
                 </Form>

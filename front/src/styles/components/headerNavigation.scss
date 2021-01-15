@@ -30,8 +30,9 @@ nav.navbar {
     color: white !important;
 }
 
-.navbar-brand h4 {
-    color: white;
+.navbar-brand {
+    height: 100px;
+    overflow: hidden;
 }
 
 .dropdown:hover .dropdown-menu {

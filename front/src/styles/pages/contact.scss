@@ -69,6 +69,10 @@ form.contact-form .MuiSelect-icon {
     color: white;
 }
 
+form.contact-form .MuiInputBase-multiline {
+    height: auto;
+}
+
 main.contact {
     background-image: URL('../media/img/contact-bg-7.jpg');
     background-size: cover;

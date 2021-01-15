@@ -10,6 +10,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
 import { LinkContainer } from 'react-router-bootstrap';
+import Logo from '../media/img/logo-2.png'
 
 class HeaderNav extends React.Component {
 
@@ -33,14 +34,13 @@ render() {
         <Navbar bg="dark" expand="lg" sticky="top">
                     <NavLink to="/" className="navbar-brand-link">
                         <Navbar.Brand>
-                            <i className="fas fa-music"></i>
-                            <h4>Symfony Concert</h4>
+                            <img src={Logo} width="180px"/>
                         </Navbar.Brand>
                     </NavLink>
                     <div className="linksCont">
                     <Row className="navContainer" lg={12}>
                 <Col lg={2}>
-                    <NavDropdown title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
+                    <NavDropdown to="/fakePage" title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
                         </LinkContainer>
