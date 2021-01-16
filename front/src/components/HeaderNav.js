@@ -38,8 +38,7 @@ render() {
                         </Navbar.Brand>
                     </NavLink>
                     <div className="linksCont">
-                    <Row className="navContainer" lg={12}>
-                <Col lg={2}>
+                    <div className="navContainer">
                     <NavDropdown to="/fakePage" title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
@@ -63,18 +62,15 @@ render() {
                             <NavDropdown.Item>Comment réserver ?</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
-                </Col>
-                <Col lg={2}>
                     <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/RestaurationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer to="/RestaurationReservation">
                             <NavDropdown.Item>Réserver</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
-                </Col>
-                <Col lg={2}>
+
                 <NavDropdown title="PARKING" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
@@ -83,8 +79,7 @@ render() {
                             <NavDropdown.Item>Réserver</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
-                </Col>
-                <Col lg={2}>
+
                 <NavDropdown title="PRIVATISATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
@@ -93,11 +88,9 @@ render() {
                             <NavDropdown.Item>Réserver</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
-                </Col>
-                <Col lg={1}>
-                    <NavLink exact to="/fakePage">ACTUALITÉS</NavLink>
-                </Col>
-                <Col lg={2}>
+
+                    <NavLink exact to="/fakePage" className="majorLink">ACTUALITÉS</NavLink>
+
                 <NavDropdown title="INFOS PRATIQUES" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/fakePage">
                             <NavDropdown.Item>Comment venir ?</NavDropdown.Item>
@@ -106,23 +99,17 @@ render() {
                             <NavDropdown.Item>FAQ</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
-                </Col>
-                <Col lg={1}>
-                <NavLink exact to="/Contact">CONTACT</NavLink>
-                </Col>
-                </Row>
+
+                <NavLink exact to="/Contact" className="majorLink">CONTACT</NavLink>
+</div>
                     
 
-    <Row lg={12} className="searchLine">
-        <Col lg={2}></Col>
-        <Col lg={8}>
+    <div className="searchLine">
     <Form inline>
-      <Form.Control type="text" placeholder="Search" className="mr-sm-2 searchBar" />
+      <Form.Control type="text" placeholder="Search" className="mr-sm-2 searchBar w-100" />
       <Button variant="outline-blue"><i className="fas fa-search"></i></Button>
     </Form> 
-    </Col>
-        <Col lg={2}></Col>
-            </Row>
+            </div>
             </div>
             <NavLink exact to="/fakePage" className="accountLink">MON COMPTE<i className="fas fa-shopping-basket"></i></NavLink>
             </Navbar>

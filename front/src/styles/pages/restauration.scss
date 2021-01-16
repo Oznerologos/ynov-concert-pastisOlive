@@ -9,6 +9,16 @@ main {
 section {
     padding: 5rem 5rem 3rem 5rem;
     border-top: 1px solid #3c3c3c;
+    width: 100%;
+}
+
+.modal-carte {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: auto;
 }
 
 .dinerRow {
@@ -100,4 +110,106 @@ a.MuiButtonBase-root:hover {
     font-size: 0.9375rem;
     width: 200px;
     height: 50px;
+}
+
+/* STYLES PAGE RESERVATION - RESTAURATION */
+
+.restoReservation section {
+    padding: 5rem 10rem;
+}
+
+#restaurantPlace,
+#bookingHour {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+#restaurantPlace button {
+    max-width: 190px;
+}
+
+#restaurantPlace button:hover,
+#bookingHour button:hover {
+    color: #03b0b9 !important;
+}
+
+.restaurant-booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+
+.restaurant-booking .MuiFormControl-root {
+    width: 300px;
+}
+
+.inputsBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.inputsBottom div.MuiTextField-root {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 3rem;
+}
+
+#sectionDinerBooking {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#sectionContainer {
+    width: 100%;
+    max-width: 1000px;
+}
+
+#sectionContainer .text-dark {
+    font-size: 1.1rem;
+}
+
+.formLabel {
+    color: white;
+    background-color: #989797;
+    text-align: center;
+    width: 100%;
+}
+
+#bookingNumber {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #989797;
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+}
+
+#bookingNumber .MuiFilledInput-root {
+    background-color: white;
+}
+
+#bookingNumber .MuiFormControl-root {
+    width: 100%;
+}
+
+#bookingValidation {
+    width: 300px;
+}
+
+form.restaurant-booking .MuiFormLabel-root.Mui-focused,
+form.restaurant-booking .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02afb8 !important;
+}
+
+form.restaurant-booking .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02afb8 !important;
 }

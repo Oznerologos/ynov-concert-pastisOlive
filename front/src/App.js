@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import NotFound from './pages/NotFound';
 import RestaurationPresentation from './pages/RestaurationPresentation';
+import RestaurationReservation from './pages/RestaurationReservation';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/Contact" component={Contact}/>
           <Route path="/FAQ" component={FAQ}/>
           <Route path="/RestaurationPresentation" component={RestaurationPresentation}/>
+          <Route path="/RestaurationReservation" component={RestaurationReservation}/>
           <Route component={NotFound}/>
         </Switch>
       </BrowserRouter>
