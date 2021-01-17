@@ -127,8 +127,10 @@ a.MuiButtonBase-root:hover {
     margin-bottom: 3rem;
 }
 
-#restaurantPlace button {
+#restaurantPlace button,
+#bookingHour button {
     max-width: 190px;
+    background-color: white;
 }
 
 #restaurantPlace button:hover,
@@ -160,6 +162,7 @@ a.MuiButtonBase-root:hover {
     width: 100%;
     max-width: 320px;
     margin-bottom: 3rem;
+    background-color: rgba(255, 255, 255, 1);
 }
 
 #sectionDinerBooking {
@@ -171,7 +174,6 @@ a.MuiButtonBase-root:hover {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(255, 255, 255, 0.507);
 }
 
 #sectionContainer {
@@ -179,8 +181,9 @@ a.MuiButtonBase-root:hover {
     max-width: 1000px;
 }
 
-#sectionContainer .text-dark {
+#sectionContainer .text-black {
     font-size: 1.1rem;
+    color: black;
 }
 
 .formLabel {
@@ -225,7 +228,7 @@ form.restaurant-booking .MuiFilledInput-underline:after {
 
 #overlay {
     @include verticalCenter;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.32);
     width: 100%;
     max-width: 1100px;
     padding: 50px 0;
