@@ -39,6 +39,7 @@ class RestoReservationMain extends React.Component {
                 </Col>
             </Row>
             <section id="sectionDinerBooking">
+                <div id="overlay">
                 <div id="sectionContainer">
                 <p className="text-dark">Réservez dans l'un de nos restaurants et profitez d'un moment de détente.</p>
                 <p className="text-dark">Les réservations sont uniquement disponibles pour les personnes possédant une référence de réservation de billets de concert.</p>
@@ -49,11 +50,11 @@ class RestoReservationMain extends React.Component {
                         <TextField id="referenceReservation" label="N° référence de la réservation du billet" variant="filled"/>
                     </FormControl>
                     </div>
-                    <p className="formLabel">Lieu de votre restaurant :</p>
+                    <p className="formLabel">Lieu de votre restaurant</p>
                     <div id="restaurantPlace">                   
                     {salles}
                     </div>
-                    <p className="formLabel">Heures souhaitées :</p>
+                    <p className="formLabel">Heures souhaitées</p>
                     <div id="bookingHour">
                         <Button variant="contained" size="medium" value="18h00">18h00</Button>
                         <Button variant="contained" size="medium" value="18h30">18h30</Button>
@@ -68,6 +69,7 @@ class RestoReservationMain extends React.Component {
                         <Button variant="contained" size="medium" value="23h00">23h00</Button>
                         <Button variant="contained" size="medium" value="23h30">23h30</Button>
                     </div>
+                    <p className="formLabel">A propos de vous</p>
                     <div className="inputsBottom">
                         <FormControl>
                             <TextField id="emailClient" label="E-mail" variant="filled"/>
@@ -90,6 +92,7 @@ class RestoReservationMain extends React.Component {
                     </div>
                     <Button variant="contained" color="primary" id="bookingValidation" size="large">VALIDER ET RÉSERVER</Button>
                 </form>
+                </div>
                 </div>
             </section>
         </main>);
