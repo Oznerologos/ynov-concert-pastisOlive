@@ -41,9 +41,9 @@ class RestoReservationMain extends React.Component {
             <section id="sectionDinerBooking">
                 <div id="overlay">
                 <div id="sectionContainer">
-                <p className="text-black">Réservez dans l'un de nos restaurants et profitez d'un moment de détente.</p>
-                <p className="text-black">Les réservations sont uniquement disponibles pour les personnes possédant une référence de réservation de billets de concert.</p>
-                <p className="text-black">Remplissez le formulaire ci-dessous pour réserver dans l'un de nos restaurants.</p>
+                <p className="text-light">Réservez dans l'un de nos restaurants et profitez d'un moment de détente.</p>
+                <p className="text-light">Les réservations sont uniquement disponibles pour les personnes possédant une référence de réservation de billets de concert.</p>
+                <p className="text-light">Remplissez le formulaire ci-dessous pour réserver dans l'un de nos restaurants.</p>
                 <form className="restaurant-booking" autoComplete="off">
                     <div id="bookingNumber">
                     <FormControl>

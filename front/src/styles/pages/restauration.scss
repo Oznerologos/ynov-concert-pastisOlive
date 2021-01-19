@@ -170,10 +170,11 @@ a.MuiButtonBase-root:hover {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-image: URL('../media/img/sonnette.jpg');
+    background-image: URL('../media/img/bistrot3.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
 }
 
 #sectionContainer {
@@ -181,14 +182,14 @@ a.MuiButtonBase-root:hover {
     max-width: 1000px;
 }
 
-#sectionContainer .text-black {
+#sectionContainer .text-light {
     font-size: 1.1rem;
-    color: black;
+    color: white !important;
 }
 
 .formLabel {
     color: white;
-    background-color: #3c3c3c;
+    background-color: #717171;
     text-align: center;
     width: 100%;
 }
@@ -196,7 +197,7 @@ a.MuiButtonBase-root:hover {
 #bookingNumber {
     width: 100%;
     padding: 0.5rem;
-    background-color: #3c3c3c;
+    background-color: #717171;
     text-align: center;
     margin: 2rem 0 3rem 0;
 }
@@ -228,7 +229,7 @@ form.restaurant-booking .MuiFilledInput-underline:after {
 
 #overlay {
     @include verticalCenter;
-    background-color: rgba(255, 255, 255, 0.32);
+    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     max-width: 1100px;
     padding: 50px 0;
