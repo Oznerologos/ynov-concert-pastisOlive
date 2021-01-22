@@ -1,14 +1,9 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import Nav from 'react-bootstrap/Nav'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png'
 
@@ -34,7 +29,7 @@ render() {
         <Navbar bg="dark" expand="lg" sticky="top">
                     <NavLink to="/" className="navbar-brand-link">
                         <Navbar.Brand>
-                            <img src={Logo} width="180px"/>
+                            <img src={Logo} width="180px" alt="logo"/>
                         </Navbar.Brand>
                     </NavLink>
                     <div className="linksCont">

@@ -2,7 +2,6 @@ import React from 'react'
 import { Button } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
-import { MenuItem } from '@material-ui/core';
 import contactTitle from '../media/img/contact2.png'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -38,17 +37,12 @@ class ContactMain extends React.Component {
     handleChange = (event) => {
       const value = event.currentTarget.value;
       this.setState({ prenomClient: value});
-    }
-
-    
+    }  
     
       render(){
     
-        const title = "CONTACT";
-        const salles = this.state.salles.map((salle) => (<MenuItem value={salle.ville}>{salle.ville}</MenuItem>))
-    
         return(<main className="contact">
-                    <img src={contactTitle}/>
+                    <img src={contactTitle} alt="title-img"/>
           <form className="contact-form" autoComplete="off">
             <Row className="inputsLine" lg={12}>
                 <Col lg={4}>
@@ -71,7 +65,6 @@ class ContactMain extends React.Component {
                 <Col lg={4}>
                     <FormControl>
                         <TextField id="emailClient" label="Email" variant="filled" aria-describedby="email-helper"  value={this.state.emailClient} onChange={this.handleChange}/>
-                        {/*<FormHelperText id="email-helper">Nous ne partagerons jamais votre email avec des tiers.</FormHelperText> */}
                     </FormControl>
                 </Col>
                 <Col lg={4}>
@@ -82,15 +75,6 @@ class ContactMain extends React.Component {
                 <Col lg={4}>
                     <FormControl>
                         <CustomSelect></CustomSelect>
-                        {/*
-                        <TextField id="selectSalles" label="Salles" value="salles" variant="filled" select>
-                            {salles}
-                            <MenuItem value="Aix-en-Provence">Aix-en-Provence</MenuItem>
-                            <MenuItem value="Bourges">Bourges</MenuItem>
-                            <MenuItem value="Cannes">Cannes</MenuItem>
-                            <MenuItem value="Dunkerque">Dunkerque</MenuItem>
-                            <MenuItem value="Echirolles">Echirolles</MenuItem>
-                        </TextField>*/}
                     </FormControl>
                 </Col>
             </Row>

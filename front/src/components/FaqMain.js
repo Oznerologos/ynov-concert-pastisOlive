@@ -1,12 +1,5 @@
 import React from 'react'  
-import { Button } from '@material-ui/core';
-import { TextField } from '@material-ui/core';
-import { FormControl } from '@material-ui/core';
-import { MenuItem } from '@material-ui/core';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import CustomSelect from './citiesSelect';
-import Icon from '@material-ui/core/Icon';
+
 
 
 class FaqMain extends React.Component{

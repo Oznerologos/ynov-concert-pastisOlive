@@ -1,16 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import menu from '../media/img/menu.png';
-import { Button } from '@material-ui/core';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import affiche from '../media/img/affiche-rammstein.jpg'
 import GoogleMap from './GoogleMap';
+import PlanSalle from './PlanSalle';
   
   export default function StepReservation() {
 
   return (
+    <section id="sectionConcertBooking">
     <div className="artistHead">
       <Row lg={12}>
         <Col lg={4} className="verticalCol">
@@ -23,12 +21,18 @@ import GoogleMap from './GoogleMap';
           <p>Catégorie de musique</p>
         </Col>
         <Col lg={4} className="verticalCol mapContainer">
-        <GoogleMap lieu="Aix"/>
-        <PlanSalle/>
-        
+        <GoogleMap lieu="Aix"/>       
         </Col>
       </Row>
-
+      
     </div>
+    <div id="planSalleContainer">
+            <div id="scene">
+              <h4>scène</h4>
+            </div>
+    <PlanSalle nbplaces={132} maxprice={87}/>
+    </div>
+    </section>
+    
   );
 }

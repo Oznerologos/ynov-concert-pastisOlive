@@ -31,6 +31,8 @@
 #sectionConcertBooking {
     border: none !important;
     padding: 0 !important;
+    @include verticalCenter;
+    flex-direction: column;
 }
 
 .concertReservation {
@@ -59,4 +61,49 @@
 
 .stepBody div {
     @include verticalCenter;
+}
+
+#planSalleContainer{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+    max-width:1000px;
+}
+
+.stepBody div.ligne {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-Items: center;
+}
+
+#scene {
+    width:100%;
+    height:100px;
+    background-color: lightgrey;
+    margin: 30px 0;
+}
+
+#scene h4 {
+color:#3c3c3c;
+text-align: center;
+text-transform: uppercase;
+}
+
+.seats {
+    margin: 0 10px;
+}
+
+.seatContainer {
+    @include verticalCenter;
+    flex-direction: column;
+}
+
+.lineLetter {
+    margin-bottom:0;
+    color:#3c3c3c;
+    font-size:1.2rem;
+    font-weight: bold;
 }

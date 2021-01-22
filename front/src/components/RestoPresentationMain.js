@@ -4,8 +4,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "animate.css/animate.min.css";
 import Fade from 'react-reveal/Fade';
-import Modal from '@material-ui/core/Modal';
-import menu from '../media/img/menu.png';
 import ModalResto from './SimpleModal';
 
 class RestoPresentationMain extends React.Component {  
