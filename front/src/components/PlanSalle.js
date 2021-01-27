@@ -2,9 +2,20 @@ import React from 'react';
 import Seat from './Seat';
 import GreySeat from '../media/img/seatgrey.png';
 import RedSeat from '../media/img/seat.png';
-import Tooltip from '@material-ui/core/Tooltip';
+
 
 const PlanSalle = ({nbplaces,maxprice}) => {
+
+   {/*
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+      function returnTotalPrice({price}) {
+          console.log(price);
+        setTotalPrice(totalPrice + price);
+        console.log(totalPrice);
+        return
+      }*/}
 
     let planArray = [];
     const nbPlacePerLigne = 12;
@@ -56,15 +67,13 @@ const PlanSalle = ({nbplaces,maxprice}) => {
     return ( 
         <>
             {
-                planArray.map((ligne, index)=> {
-                    return <div className="ligne" id={`line${index}`} key={index} style={Styles[index]}>
+                planArray.map((ligne, indexLine)=> {
+                    return <div className="ligne" id={`line${indexLine}`} key={`line${indexLine}`} style={Styles[indexLine]}>
                         <p className="lineLetter">
-                            {String.fromCharCode('A'.charCodeAt() + index)}
+                            {String.fromCharCode('A'.charCodeAt() + indexLine)}
                             </p>
                         {ligne.map((element, index) => {
-                            return (<Tooltip title={element[1]} className={`seatContainer ${element[2]}`} key={index} id={`place ${element[0]}`} maxprice={element[1]} placement="top-end" arrow>
-                                <Seat src={element[3] ?? GreySeat} key={index} alt={"seat"} width={'60px'} className={'seats'}/>
-                                </Tooltip>)
+                            return <Seat src={element[3] ?? GreySeat} id={String.fromCharCode('A'.charCodeAt() + indexLine)+(index+1)} alt={"seat"} width={'60px'} className={`seats ${element[2]}`} price={element[1]} selected={false}/>
                         })}
                     </div>
                 })

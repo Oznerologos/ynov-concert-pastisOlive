@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import affiche from '../media/img/affiche-rammstein.jpg'
@@ -9,8 +9,19 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import SeatsBookingContext from './SeatsBookingContext';
   
   export default function StepReservation() {
+
+
+
+    let totalPrice = 0;
+    const contextValue = useContext(SeatsBookingContext);
+    console.log("context: ", contextValue);
+
+    totalPrice = totalPrice + contextValue.price;
+
+   
 
   return (
     <section id="sectionConcertBooking">
@@ -40,7 +51,7 @@ import FormLabel from '@material-ui/core/FormLabel';
     </div>
 
     <div id="ordersRecap">
-
+      {totalPrice}
     </div>
 
     <h2 className="stepsT">2. Choisissez le mode d'obtention des billets :</h2>
@@ -55,13 +66,13 @@ import FormLabel from '@material-ui/core/FormLabel';
         <FormControlLabel
           value="retrait"
           control={<Radio color="primary" />}
-          label="Retrait au guichet    1,80 €"
+          label="Retrait au guichet (1,80 €)"
           labelPlacement="end" className="centerBorder"
         />
         <FormControlLabel
           value="envoi"
           control={<Radio color="primary" />}
-          label="Envoi postal    8,00 €"
+          label="Envoi postal (8,00 €)"
           labelPlacement="end"
         />
       </RadioGroup>
