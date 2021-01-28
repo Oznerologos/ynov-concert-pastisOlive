@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InVoice{% endblock %}
+
+{% block body %}
+    <h1>InVoice</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ in_voice.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ in_voice.date ? in_voice.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('in_voice_index') }}">back to list</a>
+
+    <a href="{{ path('in_voice_edit', {'id': in_voice.id}) }}">edit</a>
+
+    {{ include('in_voice/_delete_form.html.twig') }}
+{% endblock %}
