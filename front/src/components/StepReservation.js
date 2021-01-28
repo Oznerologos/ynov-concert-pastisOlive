@@ -10,20 +10,20 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import SeatsBookingContext from './SeatsBookingContext';
+
   
   export default function StepReservation() {
 
+    const [seats, setSeats] = useState([]);
+    const [identifiants, setIdentifiants] = useState([]);
+    const [prices, setPrices] = useState(0);
 
+    
 
-    let totalPrice = 0;
-    const contextValue = useContext(SeatsBookingContext);
-    console.log("context: ", contextValue);
-
-    totalPrice = totalPrice + contextValue.price;
-
-   
+    const contextValue = {setSeats, setIdentifiants, prices, setPrices}
 
   return (
+    <SeatsBookingContext.Provider value={contextValue}>
     <section id="sectionConcertBooking">
     <div className="artistHead">
       <Row lg={12}>
@@ -51,7 +51,7 @@ import SeatsBookingContext from './SeatsBookingContext';
     </div>
 
     <div id="ordersRecap">
-      {totalPrice}
+    <p>X places pour {prices} €</p>
     </div>
 
     <h2 className="stepsT">2. Choisissez le mode d'obtention des billets :</h2>
@@ -60,7 +60,7 @@ import SeatsBookingContext from './SeatsBookingContext';
         <FormControlLabel
           value="e-ticket"
           control={<Radio color="primary" />}
-          label="E-Ticket    gratuit"
+          label="E-Ticket (gratuit)"
           labelPlacement="end"
         />
         <FormControlLabel
@@ -91,6 +91,6 @@ import SeatsBookingContext from './SeatsBookingContext';
     </div>
 
     </section>
-    
+    </SeatsBookingContext.Provider>
   );
 }

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BlueSeat from '../media/img/seatblue.png';
 import RedSeat from '../media/img/seat.png';
 import Tooltip from '@material-ui/core/Tooltip';
 import SeatsBookingContext from './SeatsBookingContext';
 
 class Seat extends React.Component {
+
+    static contextType = SeatsBookingContext;
 
     constructor(props) {
         super(props);
@@ -29,7 +31,18 @@ class Seat extends React.Component {
 
 
 onClick(e){
+    const prices = this.context.prices;
 
+if(this.state.selected === false) {
+    this.context.setPrices(prices + parseInt(this.props.price));
+    this.setState({selected: true});
+} else {
+    this.context.setPrices(prices - parseInt(this.props.price));
+    this.setState({selected: false});
+}
+
+    
+{/* 
     const initialValue = this.state.price;
     let newValue = null
     this.setState({id: this.props.id})
@@ -47,24 +60,22 @@ onClick(e){
     this.setState({id: this.props.id})
     this.setState({price: newValue})
 
+    
+    this.context.setSeats([{
+        id: this.state.id,
+        price:this.state.price,
+        selected:this.state.selected,
+}])
+console.log(this.context);
+*/}
 }
 
     render() {
 
-        const selected = this.props.selected;
-        const contextValue = {
-            id: this.state.id,
-            price:this.state.price,
-            selected:this.state.selected,
-        }
-        console.log(contextValue)
-
         return(
-            <SeatsBookingContext.Provider value={contextValue ?? null}>
                 <Tooltip title={this.props.price} placement="top-end" key={`tool-${this.props.seatKey}`} arrow>
-                    <img src={this.state.seat ?? this.props.src} onClick={() => this.onClick(this.props.selected)} selected={selected} onMouseEnter={() => this.onHover(this.props.src)} onMouseLeave={() => this.setState({ seat: this.props.seat})} price={this.props.price} id={this.props.id} alt={this.props.alt} width={this.props.width} className={this.props.className}/>
+                    <img src={this.state.seat ?? this.props.src} onClick={() => this.onClick(this.props.selected)} selected={this.state.selected} onMouseEnter={() => this.onHover(this.props.src)} onMouseLeave={() => this.setState({ seat: this.props.seat})} price={this.props.price} id={this.props.id} alt={this.props.alt} width={this.props.width} className={this.props.className}/>
                 </Tooltip>
-            </SeatsBookingContext.Provider>
         )
     };
 };
