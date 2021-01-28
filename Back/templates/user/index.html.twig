@@ -12,6 +12,7 @@
                 <th>Mail</th>
                 <th>Password</th>
                 <th>Gender</th>
+                <th>Roles</th>
                 <th>Street</th>
                 <th>Building</th>
                 <th>AddressComplement</th>
@@ -29,6 +30,7 @@
                 <td>{{ user.mail }}</td>
                 <td>{{ user.password }}</td>
                 <td>{{ user.gender }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.street }}</td>
                 <td>{{ user.building }}</td>
                 <td>{{ user.addressComplement }}</td>
@@ -43,7 +45,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="12">no records found</td>
+                <td colspan="13">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

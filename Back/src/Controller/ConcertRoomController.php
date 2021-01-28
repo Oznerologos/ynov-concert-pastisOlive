@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/concert/room")
+ * @Route("/concertroom")
  */
 class ConcertRoomController extends AbstractController
 {
@@ -33,6 +33,7 @@ class ConcertRoomController extends AbstractController
         $concertRoom = new ConcertRoom();
         $form = $this->createForm(ConcertRoomType::class, $concertRoom);
         $form->handleRequest($request);
+        var_dump($concertRoom);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
