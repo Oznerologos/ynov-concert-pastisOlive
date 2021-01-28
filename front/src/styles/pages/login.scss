@@ -1,0 +1,56 @@
+
+.cont_li{
+    display: flex;
+}
+.login{
+    border: solid;
+    margin: 0;
+    padding: 0;
+    height: 500px;
+    width: 500px;
+    margin-top: 16px;
+
+    border-color: #888080;
+    margin-right: 15px;
+}
+.login h4, h6,a{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.login label{
+    margin-top: 50px;
+    margin-left: 6px;
+}
+.login input{
+    width: 100%;
+}
+.login button{
+    margin-top: 20px;
+}
+
+.inscription{
+    border: solid;
+    margin: 0;
+    padding: 0;
+    height: 500px;
+    width: 500px;
+    margin-top: 16px;
+    border-color: #888080;
+    margin-left: 15px;
+}
+
+.inscription button{
+    margin-top: 20px;
+}
+.inscription h4, h6,a{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.inscription article{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    margin-top: 50px;
+}
