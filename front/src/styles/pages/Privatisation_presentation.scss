@@ -1,0 +1,35 @@
+.titre{
+    justify-content: center;
+    display: flex;
+    background: #989797;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    padding: 23px;
+}
+
+.image-gallery{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section_desc{
+	display: flex;
+	justify-content: center;
+	
+}
+section{
+	border: none;
+}
+.desca{
+	margin-left: 28px;
+}
+.btn_pre{
+	border: none;
+    padding: 20px;
+    background-color: #aaaaaa;
+    color: white;
+}
+
+
