@@ -6,6 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StepReservation from './StepReservation';
+import StepPanier from './StepPanier';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,7 @@ function getStepContent(step) {
     case 0:
       return <StepReservation/>;
     case 1:
-      return 'Panier d\'achat';
+      return <StepPanier/>;
     case 2:
       return 'Coordonnées';
     case 3:

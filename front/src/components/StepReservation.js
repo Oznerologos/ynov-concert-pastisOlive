@@ -15,12 +15,10 @@ import SeatsBookingContext from './SeatsBookingContext';
   export default function StepReservation() {
 
     const [seats, setSeats] = useState([]);
-    const [identifiants, setIdentifiants] = useState([]);
     const [prices, setPrices] = useState(0);
+    const [salle, setSalle] = useState(PlanSalle);
 
-    
-
-    const contextValue = {setSeats, setIdentifiants, prices, setPrices}
+    const contextValue = {seats, setSeats, prices, setPrices, salle, setSalle}
 
   return (
     <SeatsBookingContext.Provider value={contextValue}>
@@ -51,7 +49,17 @@ import SeatsBookingContext from './SeatsBookingContext';
     </div>
 
     <div id="ordersRecap">
-    <p>X places pour {prices} €</p>
+      <p>Nombre de places choisies:</p>
+    
+    {seats.map((key, index) => {
+        return <div className="resaLine">
+          <p>{index+1}.</p>
+          <p>Place {key.id}</p>
+          <p>{key.price}</p>
+        </div>
+    })
+  }
+  <p>Vous avez choisi <span className="bold">{seats.length}</span> places pour un montant total de <span className="bold">{prices} €</span></p>
     </div>
 
     <h2 className="stepsT">2. Choisissez le mode d'obtention des billets :</h2>
