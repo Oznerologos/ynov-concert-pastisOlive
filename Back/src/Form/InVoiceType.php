@@ -21,6 +21,7 @@ class InVoiceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => InVoice::class,
+            'csrf_protection'=>false
         ]);
     }
 }

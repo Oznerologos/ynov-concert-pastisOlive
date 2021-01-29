@@ -32,7 +32,8 @@ class NewsController extends AbstractController
     {
         $news = new News();
         $form = $this->createForm(NewsType::class, $news);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class NewsController extends AbstractController
     public function edit(Request $request, News $news): Response
     {
         $form = $this->createForm(NewsType::class, $news);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

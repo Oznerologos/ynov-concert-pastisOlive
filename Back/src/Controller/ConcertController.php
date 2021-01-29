@@ -32,7 +32,8 @@ class ConcertController extends AbstractController
     {
         $concert = new Concert();
         $form = $this->createForm(ConcertType::class, $concert);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class ConcertController extends AbstractController
     public function edit(Request $request, Concert $concert): Response
     {
         $form = $this->createForm(ConcertType::class, $concert);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

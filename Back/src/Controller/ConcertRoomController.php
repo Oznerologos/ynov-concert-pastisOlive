@@ -32,8 +32,8 @@ class ConcertRoomController extends AbstractController
     {
         $concertRoom = new ConcertRoom();
         $form = $this->createForm(ConcertRoomType::class, $concertRoom);
-        $form->handleRequest($request);
-        var_dump($concertRoom);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -65,7 +65,8 @@ class ConcertRoomController extends AbstractController
     public function edit(Request $request, ConcertRoom $concertRoom): Response
     {
         $form = $this->createForm(ConcertRoomType::class, $concertRoom);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

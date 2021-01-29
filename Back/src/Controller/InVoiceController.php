@@ -32,7 +32,8 @@ class InVoiceController extends AbstractController
     {
         $inVoice = new InVoice();
         $form = $this->createForm(InVoiceType::class, $inVoice);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class InVoiceController extends AbstractController
     public function edit(Request $request, InVoice $inVoice): Response
     {
         $form = $this->createForm(InVoiceType::class, $inVoice);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
