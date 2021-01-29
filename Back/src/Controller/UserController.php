@@ -5,9 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -38,26 +43,22 @@ class UserController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+  
+        $serializer = new Serializer($normalizers, $encoders);
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        $data=json_decode($request->getContent(),true);
-        $form->submit($data);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if($user->getPassword() != null) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-            $entityManager->persist($user);
-            $entityManager->flush();
+        $user->setRoles([]);
+        $userDeserialized = $serializer->deserialize($request->getContent(), User::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $user]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('user_index');
-            }
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('user_index');
     }
 
     /**
@@ -75,24 +76,26 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+  
+        $serializer = new Serializer($normalizers, $encoders);
+
         $form = $this->createForm(UserType::class, $user);
-        $data=json_decode($request->getContent(),true);
-        $form->submit($data);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-            
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+        $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
 
-            return $this->redirectToRoute('user_index');
+        if($user->getRoles() == ["ROLE_USER"]) {
+           $user->setRoles([]);
         }
+        
+        $userDeserialized = $serializer->deserialize($request->getContent(), User::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $user]);
 
-        return $this->render('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('user_index');
     }
 
     /**
