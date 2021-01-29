@@ -1,25 +1,79 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
+import AuthApi from '../services/authApi';
 
 
 
-class LoginInscription extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { isToggleOn: true };
-        this.handleClick = this.handleClick.bind(this);
+
+
+const LoginPage = ({ history }) => {
+
+    const { setIsAuth } = useContext(AuthContext);
+
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: ''
+    })
+
+    const [error, setError] = useState("")
+
+    const handleChange = (event) => {
+        const value = event.currentTarget.value
+        const name = event.currentTarget.name
+
+        setCredentials({ ...credentials, [name]: value })
     }
-    handleClick() {
-        console.log("test");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            await AuthApi.auth(credentials);
+            setError("");
+            setIsAuth(true);
+            history.replace('/')
+        } catch (errorRequest) {
+            setError('error de login')
+        }
 
 
+        console.log(credentials);
     }
-    render() {
-        return (
-            <div className='cont_li'>
-                <Login></Login>
+    return (
+        <>
+            <div className="cont_li">
+                <div className="login">
+                    <h4 >Vous avez déjà un compte</h4>
+                    <h6>Connectez-vous</h6>
+                    <form onSubmit={handleSubmit} >
+                        <label>Email</label>
+                        <input
+                            value={credentials.username}
+                            onChange={handleChange}
+                            type="email"
+                            placeholder="Email"
+                            name="username"
+                            id="username"
+                            className={(error && " is-invalid")}
+                        />
+                        {error && <p className="invalid-feedback">{error}</p>}
+                        <label>Mot de passe</label>
+                        <input
+                            value={credentials.password}
+                            onChange={handleChange}
+                            type="password"
+                            placeholder="mot de passe"
+                            name="password"
+                            id="password"
+                        />
+                        <div className="btn-f">
+                            <button type="submit" className="btn_pre">Connexion</button>
+                        </div>
+                    </form>
+                </div>
                 <div className="inscription">
-                    <h4>Vous avez déjà un compte</h4>
-                    <h6>Connectez-vous </h6>
+                    <h4>Vous n'avez pas de compte</h4>
+                    <h6>Créez votre compte</h6>
                     <article>
                         Créez votre compte et simplifiez vos réservations.
                         Conservez vos données en toute sécurité et évitez de
@@ -28,30 +82,16 @@ class LoginInscription extends React.Component {
                         préférées.
                         Téléchargez et imprimez vos E-Tickets et factures
                         d'achat directement depuis votre compte.
+
                     </article>
-                    <a><button className="btn_pre">CRÉER MON COMPTE</button></a>
+                   <a><button type="submit" className="btn_pre">CRÉER MON COMPTE</button></a>
                 </div>
             </div>
-        );
-    }
-}
-
-const Login = () => {
-    return(
-        <div className="login">
-        <h4>Vous avez déjà un compte</h4>
-        <h6>Connectez-vous </h6>
-        <label>Votre adresse e-mail :</label><br />
-        <input type="text" placeholder="E-mail"></input>
-        <br />
-        <label>Votre mot de passe :</label><br />
-        <input type="text" placeholder="Mot de passe"></input>
-        <br />
-        <a><button className="btn_pre">VALIDER</button></a>
-        <br />
-        <a>Mot de passe oublié</a>
-    </div>
+            <div>
+                <div className="test"></div>
+            </div>
+        </>
     );
 }
 
-export default LoginInscription;
+export default LoginPage;
