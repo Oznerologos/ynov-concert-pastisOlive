@@ -64,46 +64,46 @@
     @include verticalCenter;
 }
 
-#planSalleContainer{
-    display:flex;
+#planSalleContainer {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width:100%;
-    max-width:1000px;
-    padding:1rem;
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem;
     background-color: white;
     @include boxShadow;
-    margin-bottom:3rem;
+    margin-bottom: 3rem;
 }
 
 .stepsT {
-    width:100%;
+    width: 100%;
     max-width: 1000px;
     text-align: left;
-    color:#3c3c3c;
-    margin-top:3rem;
+    color: #3c3c3c;
+    margin-top: 3rem;
 }
 
 .stepBody div.ligne {
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-Items: center;
 }
 
 #scene {
-    width:100%;
-    height:100px;
+    width: 100%;
+    height: 100px;
     background-color: lightgrey;
     margin: 0 0 30px 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 #scene h4 {
-color:#3c3c3c;
-text-align: center;
-text-transform: uppercase;
+    color: #3c3c3c;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .seats {
@@ -116,24 +116,25 @@ text-transform: uppercase;
 }
 
 .lineLetter {
-    margin-bottom:0;
-    color:#3c3c3c;
-    font-size:1.2rem;
+    margin-bottom: 0;
+    color: #3c3c3c;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
-#ordersRecap, #obtainingMod {
-    width:100%;
+#ordersRecap,
+#obtainingMod {
+    width: 100%;
     max-width: 1000px;
-    padding:1rem;
+    padding: 1rem;
     background-color: white;
-    color:#3c3c3c;
+    color: #3c3c3c;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 #rightObtCol {
-    width:100%;
-    max-width:600px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -142,22 +143,22 @@ text-transform: uppercase;
 }
 
 #rightObtCol div {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height:50px;
-    padding-left:1rem;
+    height: 50px;
+    padding-left: 1rem;
 }
 
 #rightObtCol div p {
-    width:100%;
-    margin:0;
+    width: 100%;
+    margin: 0;
 }
 
 #obtainingMod {
-    margin-bottom:3rem;
+    margin-bottom: 3rem;
 }
 
 #obtainingMod .MuiFormGroup-root {
@@ -165,21 +166,21 @@ text-transform: uppercase;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width:100%;
-    max-width:400px;
-    padding-left:1rem;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 1rem;
 }
 
 #obtainingMod .MuiFormGroup-root label {
-    width:100%;
-    margin:0;
-    height:50px;
+    width: 100%;
+    margin: 0;
+    height: 50px;
 }
 
 .centerBorder {
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
-    height:calc(50px + 1rem)!important;
+    height: calc(50px + 1rem) !important;
 }
 
 .MuiRadio-colorPrimary.Mui-checked {
@@ -187,5 +188,17 @@ text-transform: uppercase;
 }
 
 .Reserved {
-    cursor:not-allowed;
+    cursor: not-allowed;
+}
+
+#ordersRecap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#ordersRecap .resaLine {
+    width: 50%;
+    justify-content: space-around;
 }
