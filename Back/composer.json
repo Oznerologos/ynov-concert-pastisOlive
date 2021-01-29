@@ -69,13 +69,8 @@
         }
     },
     "require-dev": {
-<<<<<<< HEAD
-        "doctrine/doctrine-fixtures-bundle": "^3.4",
-        "symfony/maker-bundle": "^1.28"
-=======
         "symfony/maker-bundle": "^1.28",
         "symfony/stopwatch": "^5.2",
         "symfony/web-profiler-bundle": "^5.2"
->>>>>>> 92c708627fa663046b7e25691e97759c3e9b1220
     }
 }

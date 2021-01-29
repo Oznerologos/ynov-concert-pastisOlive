@@ -2,16 +2,19 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Concert;
-use App\Entity\ConcertRoom;
-use App\Entity\Contact;
-use App\Entity\News;
-use App\Entity\Privatization;
-use App\Entity\User;
 use DateTime;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\News;
+use App\Entity\User;
+use App\Entity\Concert;
+use App\Entity\Contact;
+use App\Entity\ConcertRoom;
+use App\Entity\InVoice;
+use App\Entity\Privatization;
+use App\Entity\Reservation;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
@@ -25,7 +28,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
 
-        // Salle de concerts --------------------------------------------------------------
+        // Salle de concerts --------------------------------------------------------------------------------
         $aix = new ConcertRoom();
         $aix->setName('Aix');
         $aix->setPlaceNumber(150);
@@ -67,7 +70,7 @@ class AppFixtures extends Fixture
         $manager->persist($echirolles);
 
 
-        //Contact ---------------------------------------------------------------------
+        //Contact -------------------------------------------------------------------------------------------
         $contact1 = new Contact();
         $contact1->setFirstName("Test1");
         $contact1->setLastName("Test1");
@@ -89,7 +92,7 @@ class AppFixtures extends Fixture
         $manager->persist($contact2);
      
         
-        // Private --------------------------------------------------------------------
+        // Private ------------------------------------------------------------------------------------------
         $private1 = new Privatization();
         $private1->setLastName("Test1");
         $private1->setFirstName("Test1");
@@ -119,7 +122,7 @@ class AppFixtures extends Fixture
         $private2->setConcertRoom($dunkerque);
         $manager->persist($private2);
 
-        // News ---------------------------------------------------------------------------
+        // News ------------------------------------------------------------------------------------------------
         $news1 = new News();
         $news1->setCategory("concert");
         $news1->setTitle("Le grand concert de Jean-Mi");
@@ -156,7 +159,7 @@ class AppFixtures extends Fixture
         $news5->setContent("Labore sunt ea exercitation dolor labore. Duis dolor labore ullamco non sint ut fugiat et labore labore laborum. Adipisicing in tempor et non veniam esse exercitation mollit est aliqua consectetur nulla anim laborum. Fugiat eiusmod consectetur aliquip amet laboris adipisicing est dolore. Sit duis pariatur cillum esse dolor ipsum cillum dolore excepteur. Officia sunt qui et amet laboris consectetur sint consectetur nulla excepteur cillum ea irure enim.");
         $manager->persist($news5);
 
-        // Concert ---------------------------------------------------------------------
+        // Concert ----------------------------------------------------------------------------------------
 
         $concert1 = new Concert();
         $concert1->setName("Daft Punk Alive 2021 (svp j'en reve)");
@@ -174,11 +177,54 @@ class AppFixtures extends Fixture
         $concert1->setConcertRoom($aix);
         $manager->persist($concert1);
 
+
+        // User ---------------------------------------------------------------------------------------------
+
         $user = new User();
         $user->setMail("test@mail.com");
-        $user->setPassword($this->encoder->encodePassword("jesuishashé"));
+        $user->setPassword($this->encoder->encodePassword($user,"jesuishashé"));
         $user->setGender("male");
-        
+        $user->setRoles([]);
+        $user->setStreet("80 avenue des chartreux");
+        $user->setPostalCode("13004");
+        $user->setCountry("France");
+        $user->setPhone("06 51 51 51 51");
+        $user->setBirthday(new DateTime("04/26/1998"));
+        $manager->persist($user);
+
+        $admin = new User();
+        $admin->setMail("admin@mail.com");
+        $admin->setPassword($this->encoder->encodePassword($admin,"moiaussijesuishashé"));
+        $admin->setGender("male");
+        $admin->setRoles(["ROLE_ADMIN"]);
+        $admin->setStreet("9 rue des frères Vallon");
+        $admin->setPostalCode("13090");
+        $admin->setCountry("France");
+        $admin->setPhone("06 51 51 51 51");
+        $admin->setBirthday(new DateTime("04/26/1968"));
+        $manager->persist($admin);
+
+
+        // Invoice (qui est en fait un panier)----------------------------------------------------------------
+
+        $invoice = new InVoice();
+        $invoice->setDate(new DateTime());
+        $invoice->setUser($user);
+        $manager->persist($invoice);
+
+
+        // Reservation --------------------------------------------------------------------------------------
+
+        $reservation = new Reservation();
+        $reservation->setReference(150666);
+        $reservation->setTotalPrice(500);
+        $reservation->setTicketType("E-Ticket");
+        $reservation->setSeats("[2,3]"); //Ici, on stock juste les places selectionnées dans un tableau écrit en string
+        $reservation->setConcert($concert1);
+        $reservation->setInvoice($invoice);
+        $manager->persist($reservation);
+
+
 
         $manager->flush();
     }
