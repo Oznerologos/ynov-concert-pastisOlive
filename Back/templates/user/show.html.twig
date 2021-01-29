@@ -24,6 +24,10 @@
                 <td>{{ user.gender }}</td>
             </tr>
             <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
                 <th>Street</th>
                 <td>{{ user.street }}</td>
             </tr>

@@ -17,7 +17,7 @@ class ConcertRoomType extends AbstractType
             ->add('gps')
             ->add('restaurantMax')
             ->add('parkingMax')
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

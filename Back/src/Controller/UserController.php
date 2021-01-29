@@ -5,16 +5,24 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
  */
 class UserController extends AbstractController
 {
+    /** @var UserPasswordEncoderInterface */
+    private $encoder;
+    
+    public function __construct(UserPasswordEncoderInterface $encoder) {
+        $this->encoder = $encoder;
+    }
+
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
@@ -36,6 +44,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -67,6 +76,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');
