@@ -32,7 +32,8 @@ class PrivatizationController extends AbstractController
     {
         $privatization = new Privatization();
         $form = $this->createForm(PrivatizationType::class, $privatization);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class PrivatizationController extends AbstractController
     public function edit(Request $request, Privatization $privatization): Response
     {
         $form = $this->createForm(PrivatizationType::class, $privatization);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

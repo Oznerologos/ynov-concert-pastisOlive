@@ -32,6 +32,7 @@ class ConcertType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Concert::class,
+            'csrf_protection'=>false
         ]);
     }
 }

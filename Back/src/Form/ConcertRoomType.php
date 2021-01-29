@@ -24,6 +24,7 @@ class ConcertRoomType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ConcertRoom::class,
+            'csrf_protection' => false
         ]);
     }
 }

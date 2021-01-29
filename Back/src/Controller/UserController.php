@@ -40,15 +40,18 @@ class UserController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if($user->getPassword() != null) {
             $entityManager = $this->getDoctrine()->getManager();
             $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
             $entityManager->persist($user);
             $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
+            }
         }
 
         return $this->render('user/new.html.twig', [
@@ -73,11 +76,15 @@ class UserController extends AbstractController
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-            $this->getDoctrine()->getManager()->flush();
+            
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
         }

@@ -32,7 +32,8 @@ class NewsletterController extends AbstractController
     {
         $newsletter = new Newsletter();
         $form = $this->createForm(NewsletterType::class, $newsletter);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class NewsletterController extends AbstractController
     public function edit(Request $request, Newsletter $newsletter): Response
     {
         $form = $this->createForm(NewsletterType::class, $newsletter);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

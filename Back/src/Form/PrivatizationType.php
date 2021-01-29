@@ -30,6 +30,7 @@ class PrivatizationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Privatization::class,
+            'csrf_protection'=>false
         ]);
     }
 }

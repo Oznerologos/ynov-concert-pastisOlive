@@ -23,6 +23,7 @@ class NewsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => News::class,
+            'csrf_protection'=>false
         ]);
     }
 }

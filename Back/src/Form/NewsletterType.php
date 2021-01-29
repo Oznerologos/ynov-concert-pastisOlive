@@ -21,6 +21,7 @@ class NewsletterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Newsletter::class,
+            'csrf_protection'=>false
         ]);
     }
 }

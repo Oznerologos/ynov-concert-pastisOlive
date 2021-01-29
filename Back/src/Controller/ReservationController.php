@@ -32,7 +32,8 @@ class ReservationController extends AbstractController
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -64,7 +65,8 @@ class ReservationController extends AbstractController
     public function edit(Request $request, Reservation $reservation): Response
     {
         $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
+        $data=json_decode($request->getContent(),true);
+        $form->submit($data);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
