@@ -1,0 +1,548 @@
+.MuiStepIcon-root.MuiStepIcon-completed {
+    color: rgb(2, 168, 2) !important;
+}
+
+.MuiStepper-root,
+.MuiPaper-root {
+    background-color: #3c3c3c !important;
+}
+
+.MuiStepLabel-label {
+    color: white !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active {
+    color: #02c6d0 !important;
+    border-radius: 50% !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-active .MuiStepIcon-text {
+    fill: #3c3c3c;
+    font-size: 0.75rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.stepBody {
+    border-top: 1px solid #3c3c3c;
+    padding: 3rem 0;
+    background-color: #eeeded;
+}
+
+#sectionConcertBooking {
+    border: none !important;
+    padding: 0 !important;
+    @include verticalCenter;
+    flex-direction: column;
+}
+
+.concertReservation {
+    padding: 0 !important;
+}
+
+.verticalCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.artistHead {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #989797;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.64), 0 1px 2px rgba(0, 0, 0, 0.38);
+}
+
+.afficheConcert {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.stepBody div {
+    @include verticalCenter;
+}
+
+#planSalleContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    margin-bottom: 3rem;
+}
+
+.stepsT {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    color: #3c3c3c;
+    margin-top: 3rem;
+}
+
+.stepBody div.ligne {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-Items: center;
+}
+
+#scene {
+    width: 100%;
+    height: 100px;
+    background-color: lightgrey;
+    margin: 0 0 30px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+#scene h4 {
+    color: #3c3c3c;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.seats {
+    margin: 0 10px;
+}
+
+.seatContainer {
+    @include verticalCenter;
+    flex-direction: column;
+}
+
+.lineLetter {
+    margin-bottom: 0;
+    color: #3c3c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#ordersRecap,
+#obtainingMod {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem;
+    background-color: white;
+    color: #3c3c3c;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+#rightObtCol {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-left: 1px solid lightgrey;
+}
+
+#rightObtCol div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50px;
+    padding-left: 1rem;
+}
+
+#rightObtCol div p {
+    width: 100%;
+    margin: 0;
+}
+
+#obtainingMod {
+    margin-bottom: 3rem;
+}
+
+#obtainingMod .MuiFormGroup-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 1rem;
+}
+
+#obtainingMod .MuiFormGroup-root label {
+    width: 100%;
+    margin: 0;
+    height: 50px;
+}
+
+.centerBorder {
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    height: calc(50px + 1rem) !important;
+}
+
+.MuiRadio-colorPrimary.Mui-checked {
+    color: #04cfda !important;
+}
+
+.Reserved {
+    cursor: not-allowed;
+}
+
+#ordersRecap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#ordersRecap .resaLine {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 5rem;
+}
+
+.indexRecap {
+    width: 30px;
+}
+
+.recap {
+    width: 150px;
+}
+
+#ordersRecap .resaLine p {
+    margin-right: 5rem;
+    text-align: left;
+}
+
+#sectionStepPanier {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#panierTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.ligne p {
+    width: 15px;
+}
+
+#panierTop #planSalleContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    margin-bottom: 3rem;
+}
+
+#panierTop #planSalleContainer .seats {
+    margin: 0 5px;
+}
+
+#panierTop .artistHead,
+#panierTop .artistHead div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 100px 0 30px 0;
+    margin-right: 2rem;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+
+#panierTop .artistHead {
+    max-width: 320px;
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    border-radius: 0;
+    color: #3c3c3c;
+}
+
+#panierRecap {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#panierRecap h3 {
+    color: #3c3c3c;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+
+#tableContainer {
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+}
+
+#panierRecap table {
+    width: 100%;
+    color: #3c3c3c;
+}
+
+#panierRecap table th {
+    background-color: lightgrey;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#panierRecap table td {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+#panierRecap table td .btn {
+    background-color: #eeeded !important;
+    border: none !important;
+}
+
+#panierRecap table td .btn .fas {
+    text-align: center;
+    color: #3c3c3c !important;
+    font-size: 1rem;
+}
+
+#panierRecap table td .btn .fas:hover {
+    text-align: center;
+    color: red !important;
+    font-size: 1rem;
+}
+
+#panierTop #planSalleContainer .seats {
+    width: 30px !important;
+}
+
+#totalPanier {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#obtentionRecap {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3c3c3c;
+    margin-top: 3rem;
+}
+
+#obtentionRecap p {
+    margin: 0;
+}
+
+#totalWithDelivery {
+    margin-left: 3rem;
+}
+
+#sectionStepCoordonnees {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 0;
+}
+
+#login,
+#registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    @include boxShadow;
+    color: #3c3c3c;
+    padding: 2rem;
+    background-color: white;
+}
+
+#login {
+    margin-right: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+#registration {
+    width: 100%;
+    max-width: calc(600px - 2rem);
+}
+
+#registration p {
+    width: 100%;
+    text-align: left;
+    color: #3c3c3c;
+}
+
+.login-form {
+    margin: 0;
+}
+
+#registration p.subTitle,
+#login p.subTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #3c3c3c;
+    margin-bottom: 2rem;
+}
+
+.login-form .MuiFormControl-root,
+.login-form .MuiInputBase-root {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#registration button,
+#login button {
+    background-color: #3c3c3c !important;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+form.login-form .MuiFormLabel-root.Mui-focused,
+form.login-form .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02c6d0 !important;
+}
+
+form.login-form .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02c6d0 !important;
+}
+
+form.login-form .MuiFilledInput-root,
+form.login-form .MuiInputBase-root {
+    background-color: rgba(140, 140, 140, 0.14);
+    color: #3c3c3c !important;
+}
+
+#sectionVerifs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+}
+
+#sectionVerifs h3 {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+#verifs {
+    width: 100%;
+    max-width: 1000px;
+    color: #3c3c3c !important;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 2rem;
+    margin: 0;
+}
+
+#verifs fieldset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#verifs fieldset legend {
+    width: unset;
+}
+
+#verifs .radioGrp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#verifs .MuiFormLabel-root.Mui-focused,
+#verifs .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02c6d0 !important;
+}
+
+#verifs .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02c6d0 !important;
+}
+
+#verifs .MuiFilledInput-root,
+#verifs .MuiInputBase-root {
+    background-color: rgba(140, 140, 140, 0.14);
+    color: #3c3c3c !important;
+}
+
+#verifs .MuiFormControl-root,
+#verifs .MuiInputBase-root {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#verifs .MuiRadio-colorSecondary.Mui-checked {
+    color: #02c6d0 !important;
+}
+
+#verifs .MuiDialog-root .MuiStepper-root {
+    background-color: white !important;
+}
+
+.MuiPickersToolbar-toolbar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #02c6d0 !important;
+}
+
+.MuiPickersDay-daySelected {
+    color: #fff;
+    font-weight: 500;
+    background-color: #02c6d0 !important;
+}
+
+.MuiButton-textPrimary {
+    color: #3c3c3c !important;
+}

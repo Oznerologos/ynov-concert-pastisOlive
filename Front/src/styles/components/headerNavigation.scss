@@ -1,0 +1,217 @@
+.fas {
+    color: #02c6d0 !important;
+    font-size: 3rem;
+}
+
+.fa-shopping-basket {
+    color: #02c6d0 !important;
+    font-size: 2rem;
+}
+
+.purchase {
+    height: 40px;
+    @include verticalCenter;
+    position: relative;
+}
+
+.purchase p {
+    color: white;
+    position: absolute;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ff6505;
+    bottom: -10px;
+    right: -10px;
+    margin-bottom: 0;
+    @include verticalCenter;
+}
+
+nav.navbar {
+    background-color: #202020 !important;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    width: 100%;
+}
+
+.linksCont {
+    width: 100%;
+}
+
+.linksCont .row .col-lg-1 {
+    max-width: none !important;
+    flex-grow: 1 !important;
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar-expand-lg {
+    flex-wrap: nowrap !important;
+}
+
+.navContainer {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.majorLink {
+    color: white !important;
+    text-decoration: none;
+}
+
+.majorLink:hover {
+    color: #00f3ff !important;
+    text-decoration: none;
+}
+
+.btn-outline-blue {
+    color: #00f3ff !important;
+    border-color: #00f3ff !important;
+}
+
+.btn-outline-blue:hover {
+    background-color: #02c6d0 !important;
+    color: white !important;
+    border-color: #02c6d0 !important;
+}
+
+.btn-outline-blue:hover>.fas {
+    color: white !important;
+}
+
+.navbar-brand {
+    height: 100px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem !important;
+}
+
+.navbar-brand-link {
+    margin: auto;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+}
+
+.btn-outline-blue .fas {
+    font-size: 0.9rem;
+}
+
+.searchLine form {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 0;
+    flex-wrap: nowrap;
+}
+
+.form-inline {
+    justify-content: center;
+}
+
+.navbar-brand {
+    display: flex !important;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-brand-link,
+.accountLink {
+    width: 205px;
+    min-width: 205px;
+}
+
+.navbar-brand-link:hover {
+    text-decoration: none !important;
+}
+
+.navContainer div a {
+    text-decoration: none;
+    color: white;
+}
+
+.navContainer div a:hover {
+    color: #02c6d0 !important;
+}
+
+.dropdown-menu {
+    border-radius: 0 !important;
+}
+
+.dropdown-item {
+    color: #3c3c3c !important;
+}
+
+.dropdown a:hover .dropdown-menu {
+    display: block !important;
+    margin-top: 0; // remove the gap so it doesn't close
+    color: #3c3c3c;
+    border-radius: 0 !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: white !important;
+    background-color: #02c6d0 !important;
+}
+
+.navbar-expand-lg {
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+}
+
+.navbar .col-lg-1 {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown {
+    text-align: center;
+    width: 185px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #ff6505;
+}
+
+.dropdown-menu {
+    width: 100%;
+    padding: 0;
+}
+
+.accountLink {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.accountLink:hover {
+    color: #02c6d0 !important;
+    text-decoration: none !important;
+}
+
+.accountLink .fa-shopping-basket {
+    font-size: 1rem;
+    color: white !important;
+    margin-left: 1rem;
+}
+
+.accountLink:hover>.fa-shopping-basket {
+    color: #02c6d0 !important;
+}
+
+.searchLine {
+    margin: 1rem 0px;
+    @include verticalCenter;
+}
