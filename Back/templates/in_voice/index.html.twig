@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InVoice index{% endblock %}
+
+{% block body %}
+    <h1>InVoice index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for in_voice in in_voices %}
+            <tr>
+                <td>{{ in_voice.id }}</td>
+                <td>{{ in_voice.date ? in_voice.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('in_voice_show', {'id': in_voice.id}) }}">show</a>
+                    <a href="{{ path('in_voice_edit', {'id': in_voice.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('in_voice_new') }}">Create new</a>
+{% endblock %}

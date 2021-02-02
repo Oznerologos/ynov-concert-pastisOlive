@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concert{% endblock %}
+
+{% block body %}
+    <h1>Concert</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ concert.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ concert.name }}</td>
+            </tr>
+            <tr>
+                <th>Artist</th>
+                <td>{{ concert.artist }}</td>
+            </tr>
+            <tr>
+                <th>ArtistPres</th>
+                <td>{{ concert.artistPres }}</td>
+            </tr>
+            <tr>
+                <th>ArtistImg</th>
+                <td>{{ concert.artistImg }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ concert.date ? concert.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{ concert.time ? concert.time|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TimeOpen</th>
+                <td>{{ concert.timeOpen ? concert.timeOpen|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ concert.category }}</td>
+            </tr>
+            <tr>
+                <th>MaxPrice</th>
+                <td>{{ concert.maxPrice }}</td>
+            </tr>
+            <tr>
+                <th>PriceRate</th>
+                <td>{{ concert.priceRate }}</td>
+            </tr>
+            <tr>
+                <th>Parking</th>
+                <td>{{ concert.parking ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Restaurant</th>
+                <td>{{ concert.restaurant ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('concert_index') }}">back to list</a>
+
+    <a href="{{ path('concert_edit', {'id': concert.id}) }}">edit</a>
+
+    {{ include('concert/_delete_form.html.twig') }}
+{% endblock %}

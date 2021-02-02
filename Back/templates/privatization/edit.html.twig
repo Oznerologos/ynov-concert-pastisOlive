@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Privatization{% endblock %}
+
+{% block body %}
+    <h1>Edit Privatization</h1>
+
+    {{ include('privatization/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('privatization_index') }}">back to list</a>
+
+    {{ include('privatization/_delete_form.html.twig') }}
+{% endblock %}

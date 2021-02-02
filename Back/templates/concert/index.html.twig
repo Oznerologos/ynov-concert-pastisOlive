@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concert index{% endblock %}
+
+{% block body %}
+    <h1>Concert index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Artist</th>
+                <th>ArtistPres</th>
+                <th>ArtistImg</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>TimeOpen</th>
+                <th>Category</th>
+                <th>MaxPrice</th>
+                <th>PriceRate</th>
+                <th>Parking</th>
+                <th>Restaurant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concert in concerts %}
+            <tr>
+                <td>{{ concert.id }}</td>
+                <td>{{ concert.name }}</td>
+                <td>{{ concert.artist }}</td>
+                <td>{{ concert.artistPres }}</td>
+                <td>{{ concert.artistImg }}</td>
+                <td>{{ concert.date ? concert.date|date('Y-m-d') : '' }}</td>
+                <td>{{ concert.time ? concert.time|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ concert.timeOpen ? concert.timeOpen|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ concert.category }}</td>
+                <td>{{ concert.maxPrice }}</td>
+                <td>{{ concert.priceRate }}</td>
+                <td>{{ concert.parking ? 'Yes' : 'No' }}</td>
+                <td>{{ concert.restaurant ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('concert_show', {'id': concert.id}) }}">show</a>
+                    <a href="{{ path('concert_edit', {'id': concert.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('concert_new') }}">Create new</a>
+{% endblock %}
