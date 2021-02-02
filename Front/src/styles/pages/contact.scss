@@ -1,0 +1,87 @@
+form.contact-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.87);
+    color: white;
+    padding: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 0;
+}
+
+form.contact-form h1 {
+    color: #02c6d0 !important;
+}
+
+form.contact-form .MuiFormLabel-root {
+    color: white !important;
+}
+
+form.contact-form .MuiFormLabel-root.Mui-focused,
+form.contact-form .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02c6d0 !important;
+}
+
+form.contact-form .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02c6d0 !important;
+}
+
+form.contact-form .MuiFilledInput-root,
+form.contact-form .MuiInputBase-root {
+    background-color: rgba(140, 140, 140, 0.14);
+    color: white !important;
+}
+
+form.contact-form .MuiInputBase-root {
+    height: 56px;
+}
+
+form.contact-form label+.MuiInput-formControl {
+    margin-top: 0 !important;
+}
+
+form.contact-form .MuiFilledInput-root.Mui-focused {
+    background-color: rgba(0, 248, 255, 0.11);
+    color: white !important;
+}
+
+form.contact-form .MuiFormControl-root {
+    width: 100%;
+    background-color: rgba(140, 140, 140, 0.14);
+}
+
+.inputsLine {
+    margin-bottom: 20px;
+}
+
+.selectLabel {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+form.contact-form .MuiSelect-icon {
+    color: white;
+}
+
+form.contact-form .MuiInputBase-multiline {
+    height: auto;
+}
+
+main.contact {
+    background-image: URL('../media/img/contact-bg-7.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 126px);
+}
