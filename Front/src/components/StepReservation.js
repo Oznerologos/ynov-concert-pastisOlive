@@ -8,15 +8,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SeatsBookingContext from './SeatsBookingContext';
-import axios from 'axios';
 
 export default function StepReservation() {
-
-  // axios.get(`http://localhost:8000/concertroom`)
-  //   .then(res => {
-  //     const salles = res.data;
-  //     this.setState({ salles });
-  //   })
 
   const context = useContext(SeatsBookingContext);
 

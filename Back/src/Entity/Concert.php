@@ -108,6 +108,12 @@ class Concert
      */
     private $reservations;
 
+    /**
+     * @Groups("concert")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $musicType;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -300,6 +306,18 @@ class Concert
                 $reservation->setConcert(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMusicType(): ?string
+    {
+        return $this->musicType;
+    }
+
+    public function setMusicType(string $musicType): self
+    {
+        $this->musicType = $musicType;
 
         return $this;
     }
