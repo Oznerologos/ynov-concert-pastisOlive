@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ConcertRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\ConcertRoom;
+use App\Entity\Reservation;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ConcertRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ConcertRepository::class)
@@ -13,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Concert
 {
     /**
+     * @Groups("concert")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -20,72 +24,86 @@ class Concert
     private $id;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="string", length=255)
      */
     private $artist;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="text")
      */
     private $artistPres;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $artistImg;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="date")
      */
     private $date;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="datetime")
      */
     private $time;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="datetime")
      */
     private $timeOpen;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="integer")
      */
     private $category;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="integer")
      */
     private $maxPrice;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="integer")
      */
     private $priceRate;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="boolean")
      */
     private $parking;
 
     /**
+     * @Groups("concert")
      * @ORM\Column(type="boolean")
      */
     private $restaurant;
 
     /**
+     * @Groups("concert")
      * @ORM\ManyToOne(targetEntity=ConcertRoom::class, inversedBy="concerts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $concertRoom;
 
     /**
+     * @Groups("reservation_detail")
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="concert")
      */
     private $reservations;

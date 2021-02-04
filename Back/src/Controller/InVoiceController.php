@@ -50,7 +50,7 @@ class InVoiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="in_voice_show", methods={"GET"})
+     * @Route("/admin/{id}", name="in_voice_show", methods={"GET"})
      */
     public function show(InVoice $inVoice): Response
     {
@@ -81,7 +81,7 @@ class InVoiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="in_voice_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="in_voice_delete", methods={"DELETE"})
      */
     public function delete(Request $request, InVoice $inVoice): Response
     {

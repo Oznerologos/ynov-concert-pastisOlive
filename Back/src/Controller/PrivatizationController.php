@@ -50,7 +50,7 @@ class PrivatizationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="privatization_show", methods={"GET"})
+     * @Route("/admin/{id}", name="privatization_show", methods={"GET"})
      */
     public function show(Privatization $privatization): Response
     {
@@ -81,7 +81,7 @@ class PrivatizationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="privatization_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="privatization_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Privatization $privatization): Response
     {

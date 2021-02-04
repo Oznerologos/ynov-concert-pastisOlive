@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
+use App\Entity\ConcertRoom;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ContactRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
@@ -11,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Contact
 {
     /**
+     * @Groups("contact")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -18,36 +21,43 @@ class Contact
     private $id;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $company;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
 
     /**
+     * @Groups("contact")
      * @ORM\Column(type="text")
      */
     private $message;
 
     /**
+     * @Groups("contact")
      * @ORM\ManyToOne(targetEntity=ConcertRoom::class, inversedBy="contacts")
      * @ORM\JoinColumn(nullable=false)
      */

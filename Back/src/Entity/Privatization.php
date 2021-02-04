@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\PrivatizationRepository;
+use App\Entity\ConcertRoom;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PrivatizationRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PrivatizationRepository::class)
@@ -11,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Privatization
 {
     /**
+     * @Groups("privatization")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -18,56 +21,67 @@ class Privatization
     private $id;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $company;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="date")
      */
     private $date;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $time;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="integer")
      */
     private $numberPeople;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="string", length=255)
      */
     private $budget;
 
     /**
+     * @Groups("privatization")
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Groups("privatization")
      * @ORM\ManyToOne(targetEntity=ConcertRoom::class, inversedBy="privatizations")
      * @ORM\JoinColumn(nullable=false)
      */
