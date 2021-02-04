@@ -30,6 +30,7 @@
     background: white;
     border-radius: 4%;
     border-color: white;
+    margin-bottom: 20px;
 }
 .tinsc{
     display: flex;
@@ -42,10 +43,15 @@
     margin-bottom: 28px;
 }
 main{
+padding: 0;
+}
+.contenaireP{
     background: url(https://thumbs.gfycat.com/BeautifulSparseAzurewingedmagpie-size_restricted.gif)no-repeat center center background;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
