@@ -14,21 +14,6 @@ import Loader from './ProgressCircle';
 
   const context = useContext(SeatsBookingContext);
 
-  const deleteRow = (dataid, dataprice) => {
-    if((context.seats).length == 1) {
-      context.setPrices(context.prices - parseInt(dataprice));
-      context.setSeats(context.seats.filter(item=> item.id !== dataid))
-      context.setDeliveryMode('');
-      context.setDeliveryPrice(0);
-      context.setPurchases(null);
-    } else {
-      context.setPrices(context.prices - parseInt(dataprice));
-      context.setSeats(context.seats.filter(item=> item.id !== dataid))
-      context.setPurchases(context.purchases - 1);
-    }
-    
-  }
-
   const [loader, setLoader] = useState(false);
 
   const load = () => {
@@ -57,7 +42,6 @@ import Loader from './ProgressCircle';
             <th colSpan={2}>Date et heure</th>
             <th colSpan={2}>Catégorie de tarifs</th>
             <th colSpan={2}>Tarif</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -70,7 +54,6 @@ import Loader from './ProgressCircle';
             <td colSpan={2}>Date et heure</td>
             <td colSpan={2}></td>
             <td colSpan={2}>{key.price}</td>
-            <td><Button datadelete={key.id} onClick={() => deleteRow(key.id, key.price)}><i className="fas fa-trash-alt"></i></Button></td>
         </tr>
     })
   }

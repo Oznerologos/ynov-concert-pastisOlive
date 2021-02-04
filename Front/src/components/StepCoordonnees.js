@@ -70,7 +70,7 @@ import {
       } else if(hideStep === 1) {
         return (
           <section id="sectionVerifs">
-            <h3>Vérifiez vos informations personnelles</h3>
+            <h3>VÉRIFIEZ VOS INFORMATIONS PERSONNELLES</h3>
             <form id="verifs">
             <FormControl>
             <TextField id="email" label="Adresse email *" variant="filled"/>
@@ -129,7 +129,75 @@ import {
           </section>
         )
       } else {
-        return (<p>Test 2</p>)
+        return (
+          <section id="sectionVerifs">
+            <h3>CRÉATION DE VOTRE COMPTE</h3>
+            <form id="verifs">
+            <FormControl>
+            <TextField id="email" label="Adresse email *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="emailConfirmation" label="Confirmation email *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="password" label="Mot de passe *" variant="filled" helperText="Votre mot de passe doit comprendre au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre (0-9)."/>
+          </FormControl>
+          <FormControl>
+            <TextField id="passwordConfirmation" label="Confirmation mot de passe *" variant="filled"/>
+          </FormControl>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Civilité *</FormLabel>
+              <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange} className="radioGrp">
+                <FormControlLabel value="female" control={<Radio />} label="Madame" />
+                <FormControlLabel value="male" control={<Radio />} label="Monsieur" />
+                <FormControlLabel value="other" control={<Radio />} label="Autre" />
+              </RadioGroup>
+          </FormControl>
+          <FormControl>
+            <TextField id="nom" label="Nom *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="prenom" label="Prénom *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="voie" label="N° et libéllé de la voie *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="batiment" label="Immeuble, Bâtiment, Résidence *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="BP" label="Lieu-dit, Boîte-postale, etc" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="codePostal" label="Code Postal *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="ville" label="Ville *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="pays" label="Pays *" variant="filled"/>
+          </FormControl>
+          <FormControl>
+            <TextField id="telephone" label="Téléphone *" variant="filled"/>
+          </FormControl>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date de naissance"
+          locale='fr'
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        </MuiPickersUtilsProvider>
+          <p>* Champs obligatoires</p>
+          </form>
+          </section>
+        )
       }
 
     }
