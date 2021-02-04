@@ -50,7 +50,7 @@ class NewsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="news_show", methods={"GET"})
+     * @Route("/admin/{id}", name="news_show", methods={"GET"})
      */
     public function show(News $news): Response
     {
@@ -81,7 +81,7 @@ class NewsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="news_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="news_delete", methods={"DELETE"})
      */
     public function delete(Request $request, News $news): Response
     {

@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\NewsletterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NewsletterRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=NewsletterRepository::class)
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Newsletter
 {
     /**
+     * @Groups("newsletter")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -18,11 +20,13 @@ class Newsletter
     private $id;
 
     /**
+     * @Groups("newsletter")
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Groups("newsletter")
      * @ORM\Column(type="string", length=255)
      */
     private $state;

@@ -50,7 +50,7 @@ class NewsletterController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="newsletter_show", methods={"GET"})
+     * @Route("/admin/{id}", name="newsletter_show", methods={"GET"})
      */
     public function show(Newsletter $newsletter): Response
     {
@@ -81,7 +81,7 @@ class NewsletterController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="newsletter_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="newsletter_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Newsletter $newsletter): Response
     {

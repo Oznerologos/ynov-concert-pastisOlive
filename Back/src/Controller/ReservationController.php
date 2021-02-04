@@ -50,7 +50,7 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="reservation_show", methods={"GET"})
+     * @Route("/admin/{id}", name="reservation_show", methods={"GET"})
      */
     public function show(Reservation $reservation): Response
     {
@@ -81,7 +81,7 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="reservation_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="reservation_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Reservation $reservation): Response
     {

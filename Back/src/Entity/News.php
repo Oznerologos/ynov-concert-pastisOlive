@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\NewsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NewsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=NewsRepository::class)
@@ -13,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 class News
 {
     /**
+     * @Groups("news")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -20,21 +23,25 @@ class News
     private $id;
 
     /**
+     * @Groups("news")
      * @ORM\Column(type="string", length=255)
      */
     private $category;
 
     /**
+     * @Groups("news")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Groups("news")
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * @Groups("news")
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="liked")
      */
     private $users;

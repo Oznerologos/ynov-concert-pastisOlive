@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\News;
 use App\Entity\InVoice;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -18,6 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class User implements UserInterface
 {
     /**
+     * @Groups("user")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -25,72 +28,86 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $mail;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $password;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $gender;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $street;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $building;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $addressComplement;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=20)
      */
     private $postalCode;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $country;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="date", nullable=true)
      */
     private $birthday;
 
     /**
+     * @Groups("invoice_detail")
      * @ORM\OneToMany(targetEntity=InVoice::class, mappedBy="user")
      */
     private $inVoices;
 
     /**
+     * @Groups("user")
      * @ORM\ManyToMany(targetEntity=News::class, inversedBy="users")
      * @ORM\JoinTable(name="liked")
      */
     private $liked;
 
     /**
+     * @Groups("user")
      * @ORM\ManyToMany(targetEntity=News::class, inversedBy="users")
      * @ORM\JoinTable(name="shared")
      */
