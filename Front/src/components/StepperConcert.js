@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -30,18 +30,18 @@ function getSteps() {
 }
 
 function getStepContent(step) {
-  
+
   switch (step) {
     case 0:
-      return <StepReservation/>;
+      return <StepReservation />;
     case 1:
-      return <StepPanier/>;
+      return <StepPanier />;
     case 2:
-      return <StepCoordonnees/>;
+      return <StepCoordonnees />;
     case 3:
-        return <StepPaiement/>;
+      return <StepPaiement />;
     case 4:
-        return <StepConfirmation/>;
+      return <StepConfirmation />;
     default:
       return 'Unknown step';
   }
@@ -49,7 +49,7 @@ function getStepContent(step) {
 
 export default function HorizontalLinearStepper() {
   const classes = useStyles();
-  {/*const [activeStep, setActiveStep] = React.useState(0);*/}
+  {/*const [activeStep, setActiveStep] = React.useState(0);*/ }
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const context = useContext(SeatsBookingContext);
@@ -126,34 +126,34 @@ export default function HorizontalLinearStepper() {
             </Button>
           </div>
         ) : (
-          <div className="stepBody">
-            <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
-            <div>
-              <Button disabled={context.activeStep === 0} onClick={handleBack} className={classes.button}>
-                Annuler
+            <div className="stepBody">
+              <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
+              <div>
+                <Button disabled={context.activeStep === 0} onClick={handleBack} className={classes.button}>
+                  Annuler
               </Button>
-              {isStepOptional(context.activeStep) && (
+                {isStepOptional(context.activeStep) && (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleSkip}
+                    className={classes.button}
+                  >
+                    Passer
+                  </Button>
+                )}
+
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={handleSkip}
+                  onClick={handleNext}
                   className={classes.button}
                 >
-                  Passer
+                  {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
                 </Button>
-              )}
-
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
-              </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </div>
   );

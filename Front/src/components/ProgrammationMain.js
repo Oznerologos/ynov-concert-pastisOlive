@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'  
+import React, { useState, useContext } from 'react'
 import { Button } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { FormControl } from '@material-ui/core';
@@ -10,26 +10,35 @@ import Icon from '@material-ui/core/Icon';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import axios from 'axios';
 
 export default function ProgrammationMain() {
 
-        const [categories, setCategories] = useState({
-          toutes: true,
-          pop: true,
-          rock: true,
-          electro: true,
-          rapHiphop: true,
-          soulFunk: true,
-          classique: true,
-          dubReggae: true,
-          world: true,
-        });
+    const [categories, setCategories] = useState({
+        toutes: true,
+        pop: true,
+        rock: true,
+        electro: true,
+        rapHiphop: true,
+        soulFunk: true,
+        classique: true,
+        dubReggae: true,
+        world: true,
+    });
+
+    function getSalles() {
+        const salles = [];
+        axios.get(`https://localhost:8000/concertroom`)
+            .then(res => {
+                salles = res.data;
+            })
+    };
 
     const handleChange = (event) => {
         setCategories({ ...categories, [event.target.name]: event.target.checked });
-      };
+    };
 
-        return(
+    return (
         <main id="programmation">
             <h1>PROGRAMMATION</h1>
             <div id="filtresContainer">
@@ -59,4 +68,4 @@ export default function ProgrammationMain() {
                 </div>
             </div>
         </main>);
-    }
+}

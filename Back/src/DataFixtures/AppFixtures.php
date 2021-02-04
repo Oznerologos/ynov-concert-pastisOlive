@@ -174,6 +174,7 @@ class AppFixtures extends Fixture
         $concert1->setPriceRate(5);
         $concert1->setParking(false);
         $concert1->setRestaurant(false);
+        $concert1->setMusicType("Pop");
         $concert1->setConcertRoom($aix);
         $manager->persist($concert1);
 
@@ -190,6 +191,7 @@ class AppFixtures extends Fixture
         $concert2->setPriceRate(5);
         $concert2->setParking(false);
         $concert2->setRestaurant(false);
+        $concert2->setMusicType("Rock");
         $concert2->setConcertRoom($bourges);
         $manager->persist($concert2);
 
@@ -206,6 +208,7 @@ class AppFixtures extends Fixture
         $concert3->setPriceRate(5);
         $concert3->setParking(false);
         $concert3->setRestaurant(false);
+        $concert3->setMusicType("Rap / Hip-Hop");
         $concert3->setConcertRoom($cannes);
         $manager->persist($concert3);
 
@@ -222,6 +225,7 @@ class AppFixtures extends Fixture
         $concert4->setPriceRate(5);
         $concert4->setParking(false);
         $concert4->setRestaurant(false);
+        $concert4->setMusicType("Electro");
         $concert4->setConcertRoom($dunkerque);
         $manager->persist($concert4);
 
@@ -238,6 +242,7 @@ class AppFixtures extends Fixture
         $concert5->setPriceRate(5);
         $concert5->setParking(false);
         $concert5->setRestaurant(false);
+        $concert5->setMusicType("Classique");
         $concert5->setConcertRoom($echirolles);
         $manager->persist($concert5);
 
