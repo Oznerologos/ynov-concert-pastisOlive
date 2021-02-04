@@ -1,7 +1,5 @@
 import React from 'react'  
 
-
-
 class FaqMain extends React.Component{
 
     render(){

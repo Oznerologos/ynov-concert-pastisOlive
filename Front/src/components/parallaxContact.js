@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Parallax from '../index'
 
+{/* OUI MAIS NON. Il SERT PAS CELUI-LA MAIS ON SAIT JAMAIS, ON LE LAISSE LA xD */}
+
 class ParallaxContact extends React.Component {
     render() {
         const styles = {

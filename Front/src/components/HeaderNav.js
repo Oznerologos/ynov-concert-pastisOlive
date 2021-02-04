@@ -84,7 +84,7 @@ render() {
                     </NavDropdown>
 
                 <NavDropdown title="PRIVATISATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/P_presentation">
+                        <LinkContainer to="/PrivatisationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to="/fakePage">

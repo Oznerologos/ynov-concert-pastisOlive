@@ -9,6 +9,8 @@ import StepReservation from './StepReservation';
 import StepPanier from './StepPanier';
 import StepCoordonnees from './StepCoordonnees';
 import SeatsBookingContext from './SeatsBookingContext';
+import StepPaiement from './StepPaiement';
+import StepConfirmation from './StepConfirmation';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,9 +39,9 @@ function getStepContent(step) {
     case 2:
       return <StepCoordonnees/>;
     case 3:
-        return'Paiement';
+        return <StepPaiement/>;
     case 4:
-        return'Confirmation';
+        return <StepConfirmation/>;
     default:
       return 'Unknown step';
   }
@@ -128,7 +130,7 @@ export default function HorizontalLinearStepper() {
             <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
             <div>
               <Button disabled={context.activeStep === 0} onClick={handleBack} className={classes.button}>
-                Précédent
+                Annuler
               </Button>
               {isStepOptional(context.activeStep) && (
                 <Button
