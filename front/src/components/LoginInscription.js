@@ -84,11 +84,7 @@ const LoginPage = ({ history }) => {
                         d'achat directement depuis votre compte.
 
                     </article>
-<<<<<<< HEAD
                    <a href="/Inscription"><button type="submit" className="btn_pre">CRÉER MON COMPTE</button></a>
-=======
-                   <a><button type="submit" className="btn_pre">CRÉER MON COMPTE</button></a>
->>>>>>> Front
                 </div>
             </div>
             <div>
