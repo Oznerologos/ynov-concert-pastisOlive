@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\ConcertRoom;
 use App\Form\ConcertRoomType;
 use App\Repository\ConcertRoomRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/concertroom")
@@ -20,9 +24,20 @@ class ConcertRoomController extends AbstractController
      */
     public function index(ConcertRoomRepository $concertRoomRepository): Response
     {
-        return $this->render('concert_room/index.html.twig', [
-            'concert_rooms' => $concertRoomRepository->findAll(),
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($concertRoomRepository->findAll(), 'json', ['groups' => 'concertRoom']);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**
@@ -50,7 +65,7 @@ class ConcertRoomController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="concert_room_show", methods={"GET"})
+     * @Route("/admin/{id}", name="concert_room_show", methods={"GET"})
      */
     public function show(ConcertRoom $concertRoom): Response
     {
@@ -81,7 +96,7 @@ class ConcertRoomController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="concert_room_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="concert_room_delete", methods={"DELETE"})
      */
     public function delete(Request $request, ConcertRoom $concertRoom): Response
     {

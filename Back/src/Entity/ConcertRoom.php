@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ConcertRoomRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Concert;
+use App\Entity\Contact;
+use App\Entity\Privatization;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ConcertRoomRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ConcertRoomRepository::class)
@@ -14,47 +18,56 @@ class ConcertRoom
 {
     /**
      * @ORM\Id
+     * @Groups({"concertRoom", "concert"})
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
+     * @Groups("concertRoom")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups("concertRoom")
      * @ORM\Column(type="integer")
      */
     private $placeNumber;
 
     /**
+     * @Groups({"concertRoom", "concert"})
      * @ORM\Column(type="string", length=255)
      */
     private $gps;
 
     /**
+     * @Groups("concertRoom")
      * @ORM\Column(type="integer")
      */
     private $restaurantMax;
 
     /**
+     * @Groups("concertRoom")
      * @ORM\Column(type="integer")
      */
     private $parkingMax;
 
     /**
+     * @Groups("contact_detail")
      * @ORM\OneToMany(targetEntity=Contact::class, mappedBy="concertRoom")
      */
     private $contacts;
 
     /**
+     * @Groups("privatization_detail")
      * @ORM\OneToMany(targetEntity=Privatization::class, mappedBy="concertRoom")
      */
     private $privatizations;
 
     /**
+     * @Groups("concert_detail")
      * @ORM\OneToMany(targetEntity=Concert::class, mappedBy="concertRoom")
      */
     private $concerts;

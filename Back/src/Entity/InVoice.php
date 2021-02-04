@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\InVoiceRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Reservation;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\InVoiceRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=InVoiceRepository::class)
@@ -13,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class InVoice
 {
     /**
+     * @Groups("invoice")
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -20,16 +24,19 @@ class InVoice
     private $id;
 
     /**
+     * @Groups("invoice")
      * @ORM\Column(type="datetime")
      */
     private $date;
 
     /**
+     * @Groups("reservation_detail")
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="invoice")
      */
     private $reservations;
 
     /**
+     * @Groups("invoice")
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="inVoices")
      * @ORM\JoinColumn(nullable=false)
      */

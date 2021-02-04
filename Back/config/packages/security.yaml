@@ -48,29 +48,24 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/user/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/{id}, roles: ROLE_ADMIN }
+        - { path: ^/user/admin, roles: ROLE_ADMIN }
         - { path: ^/user, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/reservation/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/reservation/{id}, roles: ROLE_ADMIN }
+        - { path: ^/reservation/admin, roles: ROLE_ADMIN }
         - { path: ^/reservation, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/privatization/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/privatization/{id}, roles: ROLE_ADMIN }
+        - { path: ^/privatization/admin, roles: ROLE_ADMIN }
         - { path: ^/privatization, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/newsletter/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/newsletter/{id}, roles: ROLE_ADMIN }
-        - { path: ^/newsletter, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/news/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/news/{id}, roles: ROLE_ADMIN }
-        - { path: ^/news, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/invoice/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/invoice/{id}, roles: ROLE_ADMIN }
-        - { path: ^/invoice, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/contact/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/contact/{id}, roles: ROLE_ADMIN }
-        - { path: ^/contact, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/newsletter/admin, roles: ROLE_ADMIN }
+        - { path: ^/newsletter, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/news/admin, roles: ROLE_ADMIN }
+        - { path: ^/news, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/invoice/admin, roles: ROLE_ADMIN }
+        - { path: ^/invoice, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/contact/admin, roles: ROLE_ADMIN }
+        - { path: ^/contact, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/concertroom/new, roles: ROLE_ADMIN }
-        - { path: ^/concertroom/{id}, roles: ROLE_ADMIN }
-        - { path: ^/concertroom, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/concertroom/admin, roles: ROLE_ADMIN }
+        - { path: ^/concertroom, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/concert/new, roles: ROLE_ADMIN }
-        - { path: ^/concert/{id}, roles: ROLE_ADMIN }
-        - { path: ^/concert, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/concert/admin, roles: ROLE_ADMIN }
+        - { path: ^/concert, roles: IS_AUTHENTICATED_ANONYMOUSLY}

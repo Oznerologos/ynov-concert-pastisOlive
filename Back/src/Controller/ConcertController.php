@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Concert;
 use App\Form\ConcertType;
 use App\Repository\ConcertRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/concert")
@@ -20,9 +24,41 @@ class ConcertController extends AbstractController
      */
     public function index(ConcertRepository $concertRepository): Response
     {
-        return $this->render('concert/index.html.twig', [
-            'concerts' => $concertRepository->findAll(),
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($concertRepository->findAll(), 'json', ['groups' => ['concert', 'concertRoom']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/city", name="concert_city", methods={"GET"})
+     */
+    public function concertVille(ConcertRepository $concertRepository, $city): Response
+    {
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($concertRepository->findAll(), 'json', ['groups' => 'concert']);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**
@@ -50,7 +86,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="concert_show", methods={"GET"})
+     * @Route("/admin/{id}", name="concert_show", methods={"GET"})
      */
     public function show(Concert $concert): Response
     {
@@ -81,7 +117,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="concert_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="concert_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Concert $concert): Response
     {

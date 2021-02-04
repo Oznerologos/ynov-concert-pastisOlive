@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/contact")
@@ -20,9 +24,20 @@ class ContactController extends AbstractController
      */
     public function index(ContactRepository $contactRepository): Response
     {
-        return $this->render('contact/index.html.twig', [
-            'contacts' => $contactRepository->findAll(),
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($contactRepository->findAll(), 'json', ['groups' => 'contact']);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**
@@ -50,7 +65,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contact_show", methods={"GET"})
+     * @Route("/admin/{id}", name="contact_show", methods={"GET"})
      */
     public function show(Contact $contact): Response
     {
@@ -81,7 +96,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contact_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="contact_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Contact $contact): Response
     {
