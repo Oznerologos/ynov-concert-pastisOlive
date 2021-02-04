@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import affiche from '../media/img/affiche-rammstein.jpg'
@@ -8,24 +8,17 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SeatsBookingContext from './SeatsBookingContext';
-import axios from 'axios';
 
 export default function StepReservation() {
-
-  axios.get(`http://localhost:8000/concertroom`)
-    .then(res => {
-      const salles = res.data;
-      this.setState({ salles });
-    })
 
   const context = useContext(SeatsBookingContext);
 
   const onChange = (event) => {
 
     context.setDeliveryPrice(parseFloat(event.currentTarget.value));
-    if (parseInt(event.currentTarget.value) == 0) {
+    if (parseInt(event.currentTarget.value) === 0) {
       context.setDeliveryMode("E-Ticket");
-    } else if (parseInt(event.currentTarget.value) == 8) {
+    } else if (parseInt(event.currentTarget.value) === 8) {
       context.setDeliveryMode("Envoi postal");
     } else {
       context.setDeliveryMode("Retrait au guichet");

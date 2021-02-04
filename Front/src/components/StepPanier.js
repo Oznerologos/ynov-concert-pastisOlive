@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import PlanSalle from './PlanSalle';
 import SeatsBookingContext from './SeatsBookingContext';
 import Button from 'react-bootstrap/Button';

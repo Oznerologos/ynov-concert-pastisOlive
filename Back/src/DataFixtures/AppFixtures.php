@@ -174,9 +174,77 @@ class AppFixtures extends Fixture
         $concert1->setPriceRate(5);
         $concert1->setParking(false);
         $concert1->setRestaurant(false);
+        $concert1->setMusicType("Pop");
         $concert1->setConcertRoom($aix);
         $manager->persist($concert1);
 
+        $concert2 = new Concert();
+        $concert2->setName("Californication");
+        $concert2->setArtist("Red hot chilli peper");
+        $concert2->setArtistPres("Trop les boss");
+        $concert2->setArtistImg("redhot.png");
+        $concert2->setDate(new DateTime('04/26/2021'));
+        $concert2->setTime(new DateTime('04/26/2021 21:00:00'));
+        $concert2->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
+        $concert2->setCategory(3);
+        $concert2->setMaxPrice(250);
+        $concert2->setPriceRate(5);
+        $concert2->setParking(false);
+        $concert2->setRestaurant(false);
+        $concert2->setMusicType("Rock");
+        $concert2->setConcertRoom($bourges);
+        $manager->persist($concert2);
+
+        $concert3 = new Concert();
+        $concert3->setName("La zizi party");
+        $concert3->setArtist("Franky Vincent");
+        $concert3->setArtistPres("C'est pas la taille qui compte");
+        $concert3->setArtistImg("franky.png");
+        $concert3->setDate(new DateTime('04/26/2021'));
+        $concert3->setTime(new DateTime('04/26/2021 21:00:00'));
+        $concert3->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
+        $concert3->setCategory(3);
+        $concert3->setMaxPrice(250);
+        $concert3->setPriceRate(5);
+        $concert3->setParking(false);
+        $concert3->setRestaurant(false);
+        $concert3->setMusicType("Rap / Hip-Hop");
+        $concert3->setConcertRoom($cannes);
+        $manager->persist($concert3);
+
+        $concert4 = new Concert();
+        $concert4->setName("GreenWashing");
+        $concert4->setArtist("Tryo");
+        $concert4->setArtistPres("En fait, ils sont 4");
+        $concert4->setArtistImg("tryo.png");
+        $concert4->setDate(new DateTime('04/26/2021'));
+        $concert4->setTime(new DateTime('04/26/2021 21:00:00'));
+        $concert4->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
+        $concert4->setCategory(3);
+        $concert4->setMaxPrice(250);
+        $concert4->setPriceRate(5);
+        $concert4->setParking(false);
+        $concert4->setRestaurant(false);
+        $concert4->setMusicType("Electro");
+        $concert4->setConcertRoom($dunkerque);
+        $manager->persist($concert4);
+
+        $concert5 = new Concert();
+        $concert5->setName("AC/DC");
+        $concert5->setArtist("Daft Punk");
+        $concert5->setArtistPres("Trop les boss");
+        $concert5->setArtistImg("Daftpunk.png");
+        $concert5->setDate(new DateTime('04/26/2021'));
+        $concert5->setTime(new DateTime('04/26/2021 21:00:00'));
+        $concert5->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
+        $concert5->setCategory(3);
+        $concert5->setMaxPrice(250);
+        $concert5->setPriceRate(5);
+        $concert5->setParking(false);
+        $concert5->setRestaurant(false);
+        $concert5->setMusicType("Classique");
+        $concert5->setConcertRoom($echirolles);
+        $manager->persist($concert5);
 
         // User ---------------------------------------------------------------------------------------------
 

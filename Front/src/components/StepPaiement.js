@@ -1,5 +1,4 @@
-import React, {useState, useContext, useRef} from 'react';
-import PlanSalle from './PlanSalle';
+import React, {useState, useContext} from 'react';
 import SeatsBookingContext from './SeatsBookingContext';
 import Button from 'react-bootstrap/Button';
 import { TextField } from '@material-ui/core';
@@ -7,7 +6,6 @@ import { FormControl } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
 import Loader from './ProgressCircle';
   
   export default function StepPaiement() {

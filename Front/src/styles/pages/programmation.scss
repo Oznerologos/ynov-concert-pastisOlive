@@ -67,6 +67,14 @@
     margin-top: 2rem;
 }
 
+#categoriesContainer legend {
+    color: #3c3c3c;
+}
+
+#categoriesContainer .MuiFormLabel-root.Mui-focused {
+    color: #02a2aa;
+}
+
 #categoriesContainer p {
     margin: 0 20px 5px 0;
 }
@@ -131,6 +139,7 @@
 
 .concertCard p {
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .detailConcert {

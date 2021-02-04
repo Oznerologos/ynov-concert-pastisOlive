@@ -21,7 +21,7 @@ const Home = () => {
             <div id="programmationContainer">
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -34,7 +34,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -47,7 +47,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -60,7 +60,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -73,7 +73,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -86,7 +86,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -99,7 +99,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -112,7 +112,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardProgrammation">
                 <div className="programmationPicture">
-                    <img src={affiche} width={150}/>
+                    <img src={affiche} width={150} alt=""/>
                 </div>
                 <div className="programmationDetail">
                     <p>NOM DE L'ARTISTE</p>
@@ -131,7 +131,7 @@ const Home = () => {
 
             <NavLink exact to="/fakePage" className="cardActu">
                 <div className="actualitePicture">
-                    <img src={affiche} height={150}/>
+                    <img src={affiche} height={150} alt=""/>
                 </div>
                 <div className="actualiteDetail">
                     <p>TITRE DE L'ACTU</p>
@@ -141,7 +141,7 @@ const Home = () => {
             </NavLink>
             <NavLink exact to="/fakePage" className="cardActu">
                 <div className="actualitePicture">
-                    <img src={affiche} height={150}/>
+                    <img src={affiche} height={150} alt=""/>
                 </div>
                 <div className="actualiteDetail">
                     <p>TITRE DE L'ACTU</p>
@@ -151,7 +151,7 @@ const Home = () => {
             </NavLink>
             <NavLink exact to="/fakePage" className="cardActu">
                 <div className="actualitePicture">
-                    <img src={affiche} height={150}/>
+                    <img src={affiche} height={150} alt=""/>
                 </div>
                 <div className="actualiteDetail">
                     <p>TITRE DE L'ACTU</p>
@@ -161,7 +161,7 @@ const Home = () => {
             </NavLink>
             <NavLink exact to="/fakePage" className="cardActu">
                 <div className="actualitePicture">
-                    <img src={affiche} height={150}/>
+                    <img src={affiche} height={150} alt=""/>
                 </div>
                 <div className="actualiteDetail">
                     <p>TITRE DE L'ACTU</p>

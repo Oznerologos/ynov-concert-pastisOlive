@@ -37,7 +37,7 @@ class ConcertRoom
     private $placeNumber;
 
     /**
-     * @Groups({"concertRoom", "concert"})
+     * @Groups("concertRoom")
      * @ORM\Column(type="string", length=255)
      */
     private $gps;
