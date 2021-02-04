@@ -19,6 +19,8 @@ import AuthContext from './context/AuthContext';
 import FakePage from './pages/FakePage';
 import SeatsBookingContext from './components/SeatsBookingContext';
 
+
+
 AuthApi.init();
 
 const App = () => {
