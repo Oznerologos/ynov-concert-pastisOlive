@@ -14,11 +14,11 @@ import axios from 'axios';
 
 export default function StepReservation() {
 
-  axios.get(`http://localhost:8000/concertroom`)
-    .then(res => {
-      const salles = res.data;
-      this.setState({ salles });
-    })
+  // axios.get(`http://localhost:8000/concertroom`)
+  //   .then(res => {
+  //     const salles = res.data;
+  //     this.setState({ salles });
+  //   })
 
   const context = useContext(SeatsBookingContext);
 
