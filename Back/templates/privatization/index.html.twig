@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Privatization index{% endblock %}
+
+{% block body %}
+    <h1>Privatization index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>LastName</th>
+                <th>FirstName</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Phone</th>
+                <th>Time</th>
+                <th>NumberPeople</th>
+                <th>Budget</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for privatization in privatizations %}
+            <tr>
+                <td>{{ privatization.id }}</td>
+                <td>{{ privatization.lastName }}</td>
+                <td>{{ privatization.firstName }}</td>
+                <td>{{ privatization.company }}</td>
+                <td>{{ privatization.email }}</td>
+                <td>{{ privatization.date ? privatization.date|date('Y-m-d') : '' }}</td>
+                <td>{{ privatization.phone }}</td>
+                <td>{{ privatization.time }}</td>
+                <td>{{ privatization.numberPeople }}</td>
+                <td>{{ privatization.budget }}</td>
+                <td>{{ privatization.description }}</td>
+                <td>
+                    <a href="{{ path('privatization_show', {'id': privatization.id}) }}">show</a>
+                    <a href="{{ path('privatization_edit', {'id': privatization.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('privatization_new') }}">Create new</a>
+{% endblock %}

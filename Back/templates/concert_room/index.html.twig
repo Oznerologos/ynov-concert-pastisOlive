@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ConcertRoom index{% endblock %}
+
+{% block body %}
+    <h1>ConcertRoom index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>PlaceNumber</th>
+                <th>Gps</th>
+                <th>RestaurantMax</th>
+                <th>ParkingMax</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concert_room in concert_rooms %}
+            <tr>
+                <td>{{ concert_room.id }}</td>
+                <td>{{ concert_room.name }}</td>
+                <td>{{ concert_room.placeNumber }}</td>
+                <td>{{ concert_room.gps }}</td>
+                <td>{{ concert_room.restaurantMax }}</td>
+                <td>{{ concert_room.parkingMax }}</td>
+                <td>
+                    <a href="{{ path('concert_room_show', {'id': concert_room.id}) }}">show</a>
+                    <a href="{{ path('concert_room_edit', {'id': concert_room.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('concert_room_new') }}">Create new</a>
+{% endblock %}

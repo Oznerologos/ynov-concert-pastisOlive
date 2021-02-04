@@ -1,5 +1,5 @@
 .MuiStepIcon-root.MuiStepIcon-completed {
-    color: #02c6d0 !important;
+    color: rgb(2, 168, 2) !important;
 }
 
 .MuiStepper-root,
@@ -12,8 +12,7 @@
 }
 
 .MuiStepIcon-root.MuiStepIcon-active {
-    color: white !important;
-    border: 1px solid #02c6d0;
+    color: #02c6d0 !important;
     border-radius: 50% !important;
 }
 
@@ -104,6 +103,7 @@
     color: #3c3c3c;
     text-align: center;
     text-transform: uppercase;
+    margin: 0;
 }
 
 .seats {
@@ -199,6 +199,489 @@
 }
 
 #ordersRecap .resaLine {
-    width: 50%;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 5rem;
+}
+
+.indexRecap {
+    width: 30px;
+}
+
+.recap {
+    width: 150px;
+}
+
+#ordersRecap .resaLine p {
+    margin-right: 5rem;
+    text-align: left;
+}
+
+#sectionStepPanier {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#panierTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.ligne p {
+    width: 15px;
+}
+
+#panierTop #planSalleContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    margin-bottom: 3rem;
+}
+
+#panierTop #planSalleContainer .seats {
+    margin: 0 5px;
+}
+
+#panierTop .artistHead,
+#panierTop .artistHead div {
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 100px 0 30px 0;
+    margin-right: 2rem;
+    font-weight: bold;
+    color: #3c3c3c;
+}
+
+#panierTop .artistHead {
+    max-width: 320px;
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    border-radius: 0;
+    color: #3c3c3c;
+}
+
+#panierRecap {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#panierRecap h3,
+#paiementTitle {
+    color: #3c3c3c;
+    font-weight: bold;
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+
+#tableContainer {
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+}
+
+#panierRecap table {
+    width: 100%;
+    color: #3c3c3c;
+}
+
+#panierRecap table th {
+    background-color: lightgrey;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#panierRecap table td {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+#panierRecap table td .btn {
+    background-color: #eeeded !important;
+    border: none !important;
+}
+
+#panierRecap table td .btn .fas {
+    text-align: center;
+    color: #3c3c3c !important;
+    font-size: 1rem;
+}
+
+#panierRecap table td .btn .fas:hover {
+    text-align: center;
+    color: red !important;
+    font-size: 1rem;
+}
+
+#panierTop #planSalleContainer .seats {
+    width: 30px !important;
+}
+
+#totalPanier,
+#totalPanierPaiement {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#totalPanierPaiement .cont {
+    border: 2px solid #3c3c3c;
+    color: #3c3c3c;
+    padding: 0.5rem;
+}
+
+#totalPanierPaiement .cont h4 {
+    margin-bottom: 0;
+    color: #02c6d0 !important;
+}
+
+#totalPanierPaiement .cont h4:first-child {
+    color: #3c3c3c !important;
+}
+
+#obtentionRecap {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3c3c3c;
+    margin-top: 3rem;
+}
+
+#obtentionRecap p {
+    margin: 0;
+}
+
+#totalWithDelivery {
+    margin-left: 3rem;
+}
+
+#sectionStepCoordonnees {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 0;
+}
+
+#login,
+#registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    @include boxShadow;
+    color: #3c3c3c;
+    padding: 2rem;
+    background-color: white;
+}
+
+#login {
+    margin-right: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+#registration {
+    width: 100%;
+    max-width: calc(600px - 2rem);
+}
+
+#registration p {
+    width: 100%;
+    text-align: left;
+    color: #3c3c3c;
+}
+
+.login-form {
+    margin: 0;
+}
+
+#registration p.subTitle,
+#login p.subTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #3c3c3c;
+    margin-bottom: 2rem;
+}
+
+.login-form .MuiFormControl-root,
+.login-form .MuiInputBase-root {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#registration button,
+#login button {
+    background-color: #3c3c3c !important;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+form.login-form .MuiFormLabel-root.Mui-focused,
+form.login-form .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02c6d0 !important;
+}
+
+form.login-form .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02c6d0 !important;
+}
+
+form.login-form .MuiFilledInput-root,
+form.login-form .MuiInputBase-root {
+    background-color: rgba(140, 140, 140, 0.14);
+    color: #3c3c3c !important;
+}
+
+#sectionVerifs,
+#sectionConfirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+}
+
+#sectionVerifs h3 {
+    width: 100%;
+    max-width: 1000px;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+#verifs {
+    width: 100%;
+    max-width: 1000px;
+    color: #3c3c3c !important;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 2rem;
+    margin: 0;
+}
+
+#verifs fieldset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#verifs fieldset legend {
+    width: unset;
+}
+
+#verifs .radioGrp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#verifs .MuiFormLabel-root.Mui-focused,
+#verifs .MuiInputLabel-filled.MuiInputLabel-shrink {
+    color: #02c6d0 !important;
+}
+
+#verifs .MuiFilledInput-underline:after {
+    border-bottom: 2px solid #02c6d0 !important;
+}
+
+#verifs .MuiFilledInput-root,
+#verifs .MuiInputBase-root {
+    background-color: rgba(140, 140, 140, 0.14);
+    color: #3c3c3c !important;
+}
+
+#verifs .MuiFormControl-root,
+#verifs .MuiInputBase-root {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#verifs .MuiRadio-colorSecondary.Mui-checked {
+    color: #02c6d0 !important;
+}
+
+#verifs .MuiDialog-root .MuiStepper-root {
+    background-color: white !important;
+}
+
+.MuiPickersToolbar-toolbar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #02c6d0 !important;
+}
+
+.MuiPickersDay-daySelected {
+    color: #fff;
+    font-weight: 500;
+    background-color: #02c6d0 !important;
+}
+
+.MuiButton-textPrimary {
+    color: #3c3c3c !important;
+}
+
+.MuiInput-underline:after {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    transform: scaleX(0);
+    transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    border-bottom: 2px solid #02c6d0 !important;
+    pointer-events: none;
+}
+
+#paiementCont {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#paiement {
+    width: 50%;
+    padding: 1rem;
+    background-color: white;
+    @include boxShadow;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #3c3c3c;
+}
+
+#creditCardsContainer {
+    @include verticalCenter;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#creditCardsContainer .MuiFormGroup-root,
+#creditCardsContainer fieldset {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#creditCardsContainer .fab {
+    font-size: 2rem;
+}
+
+#billing .MuiFormControl-root {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#billing .MuiFormControl-root .MuiInputBase-root,
+#billing .MuiFormControl-root .MuiTextField-root {
+    width: 100%;
+}
+
+#billing {
+    margin: 0;
+    @include verticalCenter;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#expiration {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#expiration .MuiFormControl-root {
+    margin-bottom: 0;
+}
+
+#expiration p {
+    margin-bottom: 0;
+}
+
+#expiration .MuiFormControl-root {
+    width: 150px;
+}
+
+.MuiRadio-colorSecondary.Mui-checked {
+    color: #02c6d0 !important;
+}
+
+#btnContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.MuiCircularProgress-svg {
+    height: 100px;
+    color: #02c6d0 !important;
+}
+
+#progressOverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(82, 82, 82, 0.6);
+    z-index: 200;
+    @include verticalCenter;
+}
+
+#sectionConfirmation #btnContainer {
+    margin-top: 2rem;
 }

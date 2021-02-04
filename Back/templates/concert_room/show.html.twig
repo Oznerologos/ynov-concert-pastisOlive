@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ConcertRoom{% endblock %}
+
+{% block body %}
+    <h1>ConcertRoom</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ concert_room.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ concert_room.name }}</td>
+            </tr>
+            <tr>
+                <th>PlaceNumber</th>
+                <td>{{ concert_room.placeNumber }}</td>
+            </tr>
+            <tr>
+                <th>Gps</th>
+                <td>{{ concert_room.gps }}</td>
+            </tr>
+            <tr>
+                <th>RestaurantMax</th>
+                <td>{{ concert_room.restaurantMax }}</td>
+            </tr>
+            <tr>
+                <th>ParkingMax</th>
+                <td>{{ concert_room.parkingMax }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('concert_room_index') }}">back to list</a>
+
+    <a href="{{ path('concert_room_edit', {'id': concert_room.id}) }}">edit</a>
+
+    {{ include('concert_room/_delete_form.html.twig') }}
+{% endblock %}

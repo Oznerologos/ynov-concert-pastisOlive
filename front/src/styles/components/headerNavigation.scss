@@ -3,6 +3,30 @@
     font-size: 3rem;
 }
 
+.fa-shopping-basket {
+    color: #02c6d0 !important;
+    font-size: 2rem;
+}
+
+.purchase {
+    height: 40px;
+    @include verticalCenter;
+    position: relative;
+}
+
+.purchase p {
+    color: white;
+    position: absolute;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ff6505;
+    bottom: -10px;
+    right: -10px;
+    margin-bottom: 0;
+    @include verticalCenter;
+}
+
 nav.navbar {
     background-color: #202020 !important;
     align-items: flex-start;

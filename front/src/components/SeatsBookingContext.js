@@ -1,11 +1,17 @@
 import React from 'react';
-import PlanSalle from './PlanSalle';
 
 export default React.createContext({
     seats: [],
-    setSeats: () =>{},
+    setSeats: () => {},
     prices: '',
-    setPrices: () =>{},
-    salle:'',
-    setSalle: () => {},
+    setPrices: () => {},
+    deliveryPrice:'',
+    setDeliveryPrice: () => {},
+    deliveryMode:'',
+    setDeliveryMode: () => {},
+    purchases: '',
+    setPurchases: () => {},
+    activeStep:'',
+    setActiveStep: () => {},
+
 });

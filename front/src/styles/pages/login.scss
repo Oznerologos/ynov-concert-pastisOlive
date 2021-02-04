@@ -1,40 +1,47 @@
-
-.cont_li{
+.cont_li {
     display: flex;
-    margin-bottom: 50px;
 }
-.login{
+
+.login {
     border: solid;
     margin: 0;
     padding: 0;
     height: 500px;
     width: 500px;
-    margin-top: 90px;;
+    margin-top: 90px;
+    ;
     border-color: #888080;
     margin-right: 15px;
 }
-.login h4,h6,a{
+
+.login h4,
+.login h6,
+.login a {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.login label{
+
+.login label {
     margin-top: 15px;
     margin-left: 6px;
 }
-.login input{
+
+.login input {
     width: 100%;
 }
-.login button{
+
+.login button {
     margin-top: 20px;
 
 }
-.btn-f{
+
+.btn-f {
     display: flex;
     justify-content: center;
 }
 
-.inscription{
+.inscription {
     border: solid;
     margin: 0;
     padding: 0;
@@ -46,15 +53,19 @@
 
 }
 
-.inscription button{
+.inscription button {
     margin-top: 20px;
 }
-.inscription h4, h6,a{
+
+.inscription h4,
+.inscription h6,
+.inscription a {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.inscription article{
+
+.inscription article {
     margin-left: auto;
     margin-right: auto;
     width: 70%;
@@ -74,42 +85,55 @@ $main-color: #69ca62;
 $logo-path: url('https://png.pngtree.com/png-vector/20191014/ourlarge/pngtree-continuous-line-drawing-headphones-music-theme-vector-illustration-minimalist-design-png-image_1770620.jpg');
 
 %full-fill {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .test {
-  @extend %full-fill;
-  width: $box-size;
-  height: $box-size;
-  margin: auto;
-  background: $logo-path no-repeat 50% / 70% rgba(#000, .1);
-  color: $main-color;
-  box-shadow: inset 0 0 0 1px rgba($main-color, .5);
-
-  &::before,
-  &::after {
     @extend %full-fill;
-    content: '';
-    z-index: -1;
-    margin: -1 * $clip-distance * 100%;
-    box-shadow: inset 0 0 0 $path-width; 
-    animation: clipMe $anime-time linear infinite;
-  }
+    width: $box-size;
+    height: $box-size;
+    margin: auto;
+    background: $logo-path no-repeat 50% / 70% rgba(#000, .1);
+    color: $main-color;
+    box-shadow: inset 0 0 0 1px rgba($main-color, .5);
 
-  &::before {
-    animation-delay: $anime-time * -.5;
-  }
+    &::before,
+    &::after {
+        @extend %full-fill;
+        content: '';
+        z-index: -1;
+        margin: -1 * $clip-distance * 100%;
+        box-shadow: inset 0 0 0 $path-width;
+        animation: clipMe $anime-time linear infinite;
+    }
+
+    &::before {
+        animation-delay: $anime-time * -.5;
+    }
 
 
 }
 
 @keyframes clipMe {
-  0%, 100% {clip: rect(0px, $clip-size, $path-width, 0px); }
-  25% {clip: rect(0px, $path-width, $clip-size, 0px); }
-  50% {clip: rect($clip-size - $path-width, $clip-size, $clip-size, 0px); }
-  75% {clip: rect(0px, $clip-size, $clip-size, $clip-size - $path-width); }
+
+    0%,
+    100% {
+        clip: rect(0px, $clip-size, $path-width, 0px);
+    }
+
+    25% {
+        clip: rect(0px, $path-width, $clip-size, 0px);
+    }
+
+    50% {
+        clip: rect($clip-size - $path-width, $clip-size, $clip-size, 0px);
+    }
+
+    75% {
+        clip: rect(0px, $clip-size, $clip-size, $clip-size - $path-width);
+    }
 }

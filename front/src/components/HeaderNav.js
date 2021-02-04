@@ -5,7 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
-import Logo from '../media/img/logo-2.png'
+import Logo from '../media/img/logo-2.png';
+import SeatsBookingContext from './SeatsBookingContext';
 
 class HeaderNav extends React.Component {
 
@@ -13,6 +14,8 @@ class HeaderNav extends React.Component {
         super(props)
         this.state = { isOpen: false }
       }
+
+      static contextType = SeatsBookingContext;
     
       handleOpen = () => {
         this.setState({ isOpen: true })
@@ -23,6 +26,11 @@ class HeaderNav extends React.Component {
       }
 
 render() {
+
+    let cart;
+        if(this.context.purchases !== null){
+            cart = <p>{this.context.purchases}</p>;
+        }
 
     return(
 
@@ -76,7 +84,7 @@ render() {
                     </NavDropdown>
 
                 <NavDropdown title="PRIVATISATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/P_presentation">
+                        <LinkContainer to="/PrivatisationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to="/fakePage">
@@ -106,7 +114,8 @@ render() {
     </Form> 
             </div>
             </div>
-            <NavLink exact to="/Login" className="accountLink">MON COMPTE<i className="fas fa-shopping-basket"></i></NavLink>
+            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE</NavLink>
+            <NavLink exact to="/fakePage" className="purchase"><i className="fas fa-shopping-basket"></i>{cart}</NavLink>
             </Navbar>
 
     )

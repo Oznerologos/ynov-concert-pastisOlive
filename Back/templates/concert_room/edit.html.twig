@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ConcertRoom{% endblock %}
+
+{% block body %}
+    <h1>Edit ConcertRoom</h1>
+
+    {{ include('concert_room/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('concert_room_index') }}">back to list</a>
+
+    {{ include('concert_room/_delete_form.html.twig') }}
+{% endblock %}

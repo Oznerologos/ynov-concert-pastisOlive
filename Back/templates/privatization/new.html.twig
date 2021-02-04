@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Privatization{% endblock %}
+
+{% block body %}
+    <h1>Create new Privatization</h1>
+
+    {{ include('privatization/_form.html.twig') }}
+
+    <a href="{{ path('privatization_index') }}">back to list</a>
+{% endblock %}
