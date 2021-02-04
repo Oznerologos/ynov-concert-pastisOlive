@@ -13,7 +13,6 @@ class InscriptionMain extends React.Component {
     render() {
         loc = (window.location.pathname);
         if (loc == "/Inscription/achat") {
-            console.log("nn");
             return (
                 <div className="contenaireP">
                     <form id="myForm">
