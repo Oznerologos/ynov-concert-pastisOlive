@@ -147,8 +147,8 @@ class FooterNav extends React.Component {
               <div className="column-f">
                 <h5>POLITIQUES</h5>
                 <ul>
-                  <li><NavLink exact to="/fakePage">CGU</NavLink></li>
-                  <li><NavLink exact to="/fakePage">Mentions légales</NavLink></li>
+                  <li><NavLink exact to="/CGU">CGU</NavLink></li>
+                  <li><NavLink exact to="/MentionsLegales">Mentions légales</NavLink></li>
                 </ul>
                 </div>
               </Col>

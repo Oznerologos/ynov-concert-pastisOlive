@@ -45,6 +45,25 @@ const CarouselConcert = () => {
         }
         }
 
+        function dateConvert(date) {
+            date = date.toString();
+            date = date.split('T');
+            date = date[0].split('-');
+            for (let i = 0; i < date.length; i++) {
+                date[i] = parseInt(date[i]);
+            }
+            return date;
+        }
+
+        function convertDate(d) {
+            let dateTest = dateConvert(d/*data[i]["date"]*/);
+            let sub = d/*data[i]["date"]*/.substring(11, 16);
+                    sub = sub.split(':');
+                    d/*data[i]["date"]*/ = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+
+                    return d;
+        }
+
         const findMinPrice = (maxPrice, nbPlaces) => {
             const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
             const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
@@ -72,7 +91,7 @@ const CarouselConcert = () => {
                         <div className="detailsConcert">
                             <p className="bold">{element.artist}</p>
                             <p>Tournée {element.name}</p>
-                            <p>{element.date}</p>
+                            <p>{convertDate(element.date)}</p>
                             <p>à {element.concertRoom["name"]}</p>
                             <p>Catégorie: {element.musicType}</p>
                             <p>Tarifs: de {findMinPrice(element.maxPrice, element.concertRoom["placeNumber"])}€ à {element.maxPrice}€</p>

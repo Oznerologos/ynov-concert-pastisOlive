@@ -43,7 +43,7 @@ render() {
                     <div className="linksCont">
                     <div className="navContainer">
                     <NavDropdown to="/fakePage" title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer to="/Programmation">
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to="/fakePage">
