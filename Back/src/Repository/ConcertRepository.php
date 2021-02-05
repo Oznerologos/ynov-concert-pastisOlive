@@ -22,19 +22,16 @@ class ConcertRepository extends ServiceEntityRepository
     // /**
     //  * @return Concert[] Returns an array of Concert objects
     //  */
-    /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->join('c.concertRoom', 'cr')
+            ->andWhere('cr.name = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Concert

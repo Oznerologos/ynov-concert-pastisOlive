@@ -27,12 +27,17 @@ export default function ProgrammationMain() {
     });
 
     function getSalles() {
-        const salles = [];
+        let salles = [];
         axios.get(`https://localhost:8000/concertroom`)
             .then(res => {
                 salles = res.data;
-            })
+            });
+        return salles;
     };
+
+    const tab = getSalles();
+
+    console.log(tab);
 
     const handleChange = (event) => {
         setCategories({ ...categories, [event.target.name]: event.target.checked });
