@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DateFnsUtils from '@date-io/date-fns';
@@ -12,7 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export default function ProgrammationMain() {
 
-    const [cities, setCities] = useState('Tous')
+    const [cities, setCities] = useState('tous');
     const [refreshKey, setRefreshKey] = useState(0);
 
     const getSalles = async () => {
@@ -32,8 +32,6 @@ export default function ProgrammationMain() {
     })
     },[refreshKey]);
 
-
-
       //console.log(JSON.stringify(data, null, 2));
     //console.log(data[0]);
 /*
@@ -42,9 +40,10 @@ export default function ProgrammationMain() {
     };*/
 
     const today = new Date;
-    const inTenDays = new Date(today.getTime() + 86400000*150);
+    const inTenDays = new Date(today.getTime() + 86400000*10);
     const [selectedFirstDate, setSelectedFirstDate] = React.useState(today);
     const [selectedLastDate, setSelectedLastDate] = React.useState(inTenDays);
+    const [feedBack, setFeedBack] = useState(null);
 
     const handleFirstDateChange = (date) => {
         setSelectedFirstDate(date);
@@ -63,20 +62,24 @@ export default function ProgrammationMain() {
     const resetDates = () => {
         setSelectedFirstDate(today);
         setSelectedLastDate(inTenDays);
+        setRefreshKey(oldKey => oldKey +1)
+        createCards();
     }
 
     // MAJ FILTRE CATEGORIES
     const [categorie, setCategorie] = useState('Toutes');
 
     const handleChange = (event) => {
-      setCategorie(event.target.value);   
-      setRefreshKey(oldKey => oldKey +1);
-      createCards();
+        setCategorie(event.target.value);   
+        setRefreshKey(oldKey => oldKey +1);
+        createCards();
     };
 
     const activeBtn = (event) => {
-        setCities(event.target.name);
-        event.target.className = "cityFilter actif";
+        setCities(event.currentTarget.name);
+        console.log(cities);
+        setRefreshKey(oldKey => oldKey +1)
+        createCards();
     }
 
     function dateConvert(date) {
@@ -114,12 +117,11 @@ export default function ProgrammationMain() {
     }
 
     const createCards = () => {
-
         
-        console.log("selectedFirstDate: ", selectedFirstDate);
-        console.log("selectedLastDate: ",selectedLastDate);
-        console.log("categorie: ",categorie);
-        console.log("_______________________");
+        //console.log("selectedFirstDate: ", selectedFirstDate);
+        //console.log("selectedLastDate: ",selectedLastDate);
+        //console.log("categorie: ",categorie);
+        //console.log("_______________________");
 
         let firstD = formatDate(selectedFirstDate);
         let lastD = formatDate(selectedLastDate);
@@ -127,21 +129,34 @@ export default function ProgrammationMain() {
         var a = new Date(firstD[0], firstD[1]-1,firstD[2]);
         var b = new Date(lastD[0], lastD[1]-1,lastD[2]);
 
-        let resultCards = [];
+        let resultCards = [];      
 
         for(let i = 0; i < data.length; i++) {
 
             let dateTest = dateConvert(data[i]["date"]);
             const dateCheck = new Date(dateTest[0], dateTest[1]-1,dateTest[2]);
             let inRange = dateCheck >= a && dateCheck <= b;
-            if(categorie != "Toutes") {
+            if((categorie != "Toutes") && (cities != "tous")) {
+                if((inRange === true) && (categorie == data[i]["musicType"]) && (cities == data[i]["concertRoom"]["name"])){
+                    let sub = data[i]["date"].substring(11,16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le "+dateTest[2]+"/"+dateTest[1]+"/"+dateTest[0]+" à "+ sub[0]+"H"+sub[1];
+                    resultCards.push(data[i]);
+                }
+            } else if ((categorie != "Toutes") && (cities == "tous")){
                 if((inRange === true) && (categorie == data[i]["musicType"])){
                     let sub = data[i]["date"].substring(11,16);
                     sub = sub.split(':');
                     data[i]["date"] = "Le "+dateTest[2]+"/"+dateTest[1]+"/"+dateTest[0]+" à "+ sub[0]+"H"+sub[1];
                     resultCards.push(data[i]);
-                } else {
-                    console.log("Aucun concert");
+                }
+
+            } else if ((categorie == "Toutes") && (cities != "tous")){
+                if((inRange === true) && (cities == data[i]["concertRoom"]["name"])){
+                    let sub = data[i]["date"].substring(11,16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le "+dateTest[2]+"/"+dateTest[1]+"/"+dateTest[0]+" à "+ sub[0]+"H"+sub[1];
+                    resultCards.push(data[i]);
                 }
             } else {
                 if(inRange === true){
@@ -157,7 +172,6 @@ export default function ProgrammationMain() {
     }
 
 const init = createCards();
-console.log("résultats filtrés:", init);
 
     return (
         <main id="programmation">
@@ -168,12 +182,12 @@ console.log("résultats filtrés:", init);
             </div>
             <div id="filtresContainer">
                 <div id="cityContainer">
-                    <div className="cityFilter" name="all" onClick={activeBtn}>TOUS</div>
-                    <div className="cityFilter" name="aix" onClick={activeBtn}>AIX-EN-PROVENCE</div>
-                    <div className="cityFilter" name="bourges" onClick={activeBtn}>BOURGES</div>
-                    <div className="cityFilter" name="cannes" onClick={activeBtn}>CANNES</div>
-                    <div className="cityFilter" name="dunkerque" onClick={activeBtn}>DUNKERQUE</div>
-                    <div className="cityFilter" name="echirolles" onClick={activeBtn}>ECHIROLLES</div>
+                    <Button className="cityFilter" name="tous" onClick={activeBtn} autoFocus>TOUS</Button>
+                    <Button className="cityFilter" name="Aix" onClick={activeBtn}>AIX-EN-PROVENCE</Button>
+                    <Button className="cityFilter" name="Bourges" onClick={activeBtn}>BOURGES</Button>
+                    <Button className="cityFilter" name="Cannes" onClick={activeBtn}>CANNES</Button>
+                    <Button className="cityFilter" name="Dunkerque" onClick={activeBtn}>DUNKERQUE</Button>
+                    <Button className="cityFilter" name="Echirolles" onClick={activeBtn}>ECHIROLLES</Button>
                 </div>
                 <div id="categoriesContainer">
                     <FormControl component="fieldset">
@@ -225,7 +239,7 @@ console.log("résultats filtrés:", init);
             </div>
 
             <div id="concertsContainer">
-            {init.map((element, index) => {
+            {feedBack?<h3>Désolé, aucun concert trouvé avec ces critères</h3>:init.map((element, index) => {
                             return <div className="concertCard" key={index}>
                             <div className="programmationPicture">
                                 <img src={`./media/img/${element.artistImg}`} alt={`Affiche ${element.artist}`} height={150}/>

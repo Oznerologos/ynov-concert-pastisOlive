@@ -109,10 +109,18 @@ button {
     cursor: pointer;
 }
 
+button:focus {
+    outline: none !important;
+}
+
 .bold {
     font-weight: bold;
 }
 
 .alert {
     border-radius: 0 !important;
+}
+
+.MuiPickersBasePicker-pickerView {
+    background-color: white !important;
 }
