@@ -33,7 +33,8 @@ const LoginPage = ({ history }) => {
             setIsAuth(true);
             history.replace('/')
         } catch (errorRequest) {
-            setError('error de login')
+            setError('error de login');
+            console.log(errorRequest);
         }
 
 

@@ -89,23 +89,20 @@ class ConcertController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+  
+        $serializer = new Serializer($normalizers, $encoders);
+
         $concert = new Concert();
         $form = $this->createForm(ConcertType::class, $concert);
-        $data=json_decode($request->getContent(),true);
-        $form->submit($data);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($concert);
-            $entityManager->flush();
+        $concertDeserialized = $serializer->deserialize($request->getContent(), Concert::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $concert]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($concert);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('concert_index');
-        }
-
-        return $this->render('concert/new.html.twig', [
-            'concert' => $concert,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('concert_index');
     }
 
     /**
