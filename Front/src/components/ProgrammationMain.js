@@ -1,76 +1,261 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@material-ui/core';
-import { TextField } from '@material-ui/core';
-import { FormControl } from '@material-ui/core';
-import contactTitle from '../media/img/contact2.png'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import CustomSelect from './citiesSelect'
-import Icon from '@material-ui/core/Icon';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 export default function ProgrammationMain() {
 
-    const [categories, setCategories] = useState({
-        toutes: true,
-        pop: true,
-        rock: true,
-        electro: true,
-        rapHiphop: true,
-        soulFunk: true,
-        classique: true,
-        dubReggae: true,
-        world: true,
-    });
+    const [cities, setCities] = useState('tous');
+    const [refreshKey, setRefreshKey] = useState(0);
 
-    function getSalles() {
-        let salles = [];
-        axios.get(`https://localhost:8000/concertroom`)
-            .then(res => {
-                salles = res.data;
-            });
-        return salles;
+    const getSalles = async () => {
+        let result = await axios(
+            'https://localhost:8000/concert',
+        );
+        // return the result
+        return result;
     };
 
-    const tab = getSalles();
+    const [data, setData] = React.useState([])
 
-    console.log(tab);
+    React.useEffect(() => {
+
+        getSalles().then(res => {
+            setData(res.data)
+        })
+    }, [refreshKey]);
+
+    //console.log(JSON.stringify(data, null, 2));
+    //console.log(data[0]);
+    /*
+        const handleChange = (event) => {
+            setCategories({ ...categories, [event.target.name]: event.target.checked });
+        };*/
+
+    const today = new Date;
+    const inTenDays = new Date(today.getTime() + 86400000 * 10);
+    const [selectedFirstDate, setSelectedFirstDate] = React.useState(today);
+    const [selectedLastDate, setSelectedLastDate] = React.useState(inTenDays);
+    const [feedBack, setFeedBack] = useState(null);
+
+    const handleFirstDateChange = (date) => {
+        setSelectedFirstDate(date);
+        setRefreshKey(oldKey => oldKey + 1)
+        createCards();
+
+    };
+
+    const handleLastDateChange = (date) => {
+        setSelectedLastDate(date);
+        setRefreshKey(oldKey => oldKey + 1)
+        createCards();
+
+    };
+
+    const resetDates = () => {
+        setSelectedFirstDate(today);
+        setSelectedLastDate(inTenDays);
+        setRefreshKey(oldKey => oldKey + 1)
+        createCards();
+    }
+
+    // MAJ FILTRE CATEGORIES
+    const [categorie, setCategorie] = useState('Toutes');
 
     const handleChange = (event) => {
-        setCategories({ ...categories, [event.target.name]: event.target.checked });
+        setCategorie(event.target.value);
+        setRefreshKey(oldKey => oldKey + 1);
+        createCards();
     };
+
+    const activeBtn = (event) => {
+        setCities(event.currentTarget.name);
+        console.log(cities);
+        setRefreshKey(oldKey => oldKey + 1)
+        createCards();
+    }
+
+    function dateConvert(date) {
+        date = date.toString();
+        date = date.split('T');
+        date = date[0].split('-');
+        for (let i = 0; i < date.length; i++) {
+            date[i] = parseInt(date[i]);
+        }
+        return date;
+    }
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = '' + d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        let result = [];
+        result.push(parseInt(year));
+        result.push(parseInt(month));
+        result.push(parseInt(day));
+        return result;
+    }
+
+    const findMinPrice = (maxPrice, nbPlaces) => {
+        const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
+        const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
+        return minPrice;
+    }
+
+    const createCards = () => {
+
+        //console.log("selectedFirstDate: ", selectedFirstDate);
+        //console.log("selectedLastDate: ",selectedLastDate);
+        //console.log("categorie: ",categorie);
+        //console.log("_______________________");
+
+        let firstD = formatDate(selectedFirstDate);
+        let lastD = formatDate(selectedLastDate);
+
+        var a = new Date(firstD[0], firstD[1] - 1, firstD[2]);
+        var b = new Date(lastD[0], lastD[1] - 1, lastD[2]);
+
+        let resultCards = [];
+
+        for (let i = 0; i < data.length; i++) {
+
+            let dateTest = dateConvert(data[i]["date"]);
+            const dateCheck = new Date(dateTest[0], dateTest[1] - 1, dateTest[2]);
+            let inRange = dateCheck >= a && dateCheck <= b;
+            if ((categorie != "Toutes") && (cities != "tous")) {
+                if ((inRange === true) && (categorie == data[i]["musicType"]) && (cities == data[i]["concertRoom"]["name"])) {
+                    let sub = data[i]["date"].substring(11, 16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    resultCards.push(data[i]);
+                }
+            } else if ((categorie != "Toutes") && (cities == "tous")) {
+                if ((inRange === true) && (categorie == data[i]["musicType"])) {
+                    let sub = data[i]["date"].substring(11, 16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    resultCards.push(data[i]);
+                }
+
+            } else if ((categorie == "Toutes") && (cities != "tous")) {
+                if ((inRange === true) && (cities == data[i]["concertRoom"]["name"])) {
+                    let sub = data[i]["date"].substring(11, 16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    resultCards.push(data[i]);
+                }
+            } else {
+                if (inRange === true) {
+                    let sub = data[i]["date"].substring(11, 16);
+                    sub = sub.split(':');
+                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    resultCards.push(data[i]);
+                }
+            }
+        }
+
+        return resultCards;
+    }
+
+    const init = createCards();
 
     return (
         <main id="programmation">
-            <h1>PROGRAMMATION</h1>
-            <div id="filtresContainer">
-                <div id="cityContainer">
-                    <p>Lieu:</p>
-                    <Button>TOUS</Button>
-                    <Button>AIX-EN-PROVENCE</Button>
-                    <Button>BOURGES</Button>
-                    <Button>CANNES</Button>
-                    <Button>DUNKERQUE</Button>
-                    <Button>ECHIROLLES</Button>
-                </div>
-                <div id="categoriesContainer">
-                    <p>Catégorie de musique:</p>
-                    <FormGroup row>
-                        {/*
-                    <FormControlLabel control={<Checkbox defaultChecked checked={categories.toutes} onChange={handleChange} name="toutes" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.checkedB} onChange={handleChange} name="checkedB" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.checkedC} onChange={handleChange} name="checkedC" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.checkedD} onChange={handleChange} name="checkedD" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.checkedE} onChange={handleChange} name="checkedE" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.soulFunk} onChange={handleChange} name="soulFunk" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.classique} onChange={handleChange} name="classique" color="primary"/>} label="Primary"/>
-                    <FormControlLabel control={<Checkbox checked={categories.dubReggae} onChange={handleChange} name="dubReggae" color="primary"/>} label="Primary"/>
-                        <FormControlLabel control={<Checkbox checked={categories.world} onChange={handleChange} name="world" color="primary"/>} label="Primary"/>*/}
-                    </FormGroup>
+            <div id="topCont">
+                <div className="titleCont">
+                    <h1>PROGRAMMATION</h1>
                 </div>
             </div>
+            <div id="filtresContainer">
+                <div id="cityContainer">
+                    <Button className="cityFilter" name="tous" onClick={activeBtn} autoFocus>TOUS</Button>
+                    <Button className="cityFilter" name="Aix" onClick={activeBtn}>AIX-EN-PROVENCE</Button>
+                    <Button className="cityFilter" name="Bourges" onClick={activeBtn}>BOURGES</Button>
+                    <Button className="cityFilter" name="Cannes" onClick={activeBtn}>CANNES</Button>
+                    <Button className="cityFilter" name="Dunkerque" onClick={activeBtn}>DUNKERQUE</Button>
+                    <Button className="cityFilter" name="Echirolles" onClick={activeBtn}>ECHIROLLES</Button>
+                </div>
+                <div id="categoriesContainer">
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Catégorie de musique:</FormLabel>
+                        <RadioGroup aria-label="cat" name="category" value={categorie} onChange={handleChange} row>
+                            <FormControlLabel value="Toutes" control={<Radio />} label="Toutes" />
+                            <FormControlLabel value="Pop" control={<Radio />} label="Pop" />
+                            <FormControlLabel value="Rock" control={<Radio />} label="Rock" />
+                            <FormControlLabel value="Electro" control={<Radio />} label="Electro" />
+                            <FormControlLabel value="Rap / Hip-Hop" control={<Radio />} label="Rap / Hip-Hop" />
+                            <FormControlLabel value="Soul / Funk" control={<Radio />} label="Soul / Funk" />
+                            <FormControlLabel value="Classique" control={<Radio />} label="Classique" />
+                            <FormControlLabel value="Dub / Reggae" control={<Radio />} label="Dub / Reggae" />
+                            <FormControlLabel value="World" control={<Radio />} label="World" />
+                        </RadioGroup>
+                    </FormControl>
+                </div>
+                <div id="datesContainer">
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="dd/MM/yyyy"
+                            margin="normal"
+                            id="date-picker-first-date"
+                            label="Du"
+                            value={selectedFirstDate}
+                            onChange={handleFirstDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                        <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="dd/MM/yyyy"
+                            margin="normal"
+                            id="date-picker-last-date"
+                            label="Au"
+                            value={selectedLastDate}
+                            onChange={handleLastDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </MuiPickersUtilsProvider>
+                    <Button onClick={() => resetDates()} id="resetDates">Réinitialiser les dates</Button>
+                </div>
+            </div>
+
+            <div id="concertsContainer">
+                {feedBack ? <h3>Désolé, aucun concert trouvé avec ces critères</h3> : init.map((element, index) => {
+                    return <div className="concertCard" key={index}>
+                        <div className="programmationPicture">
+                            <img src={`./media/img/${element.artistImg}`} alt={`Affiche ${element.artist}`} height={150} />
+                        </div>
+                        <div className="detailConcert">
+                            <p className="bold">{element.artist}</p>
+                            <p>Tournée {element.name}</p>
+                            <p>{element.date}</p>
+                            <p>à {element.concertRoom["name"]}</p>
+                            <p>Catégorie: {element.musicType}</p>
+                            <p>Tarifs: de {findMinPrice(element.maxPrice, element.concertRoom["placeNumber"])}€ à {element.maxPrice}€</p>
+                            <NavLink exact to="/fakePage" className="cardBtn">Réserver</NavLink>
+                        </div>
+                    </div>
+                })}
+            </div>
+
         </main>);
 }
