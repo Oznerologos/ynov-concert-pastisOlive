@@ -187,7 +187,7 @@ class AppFixtures extends Fixture
         $concert2->setTime(new DateTime('04/26/2021 21:00:00'));
         $concert2->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
         $concert2->setCategory(3);
-        $concert2->setMaxPrice(250);
+        $concert2->setMaxPrice(147);
         $concert2->setPriceRate(5);
         $concert2->setParking(false);
         $concert2->setRestaurant(false);
@@ -204,7 +204,7 @@ class AppFixtures extends Fixture
         $concert3->setTime(new DateTime('04/26/2021 21:00:00'));
         $concert3->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
         $concert3->setCategory(3);
-        $concert3->setMaxPrice(250);
+        $concert3->setMaxPrice(156);
         $concert3->setPriceRate(5);
         $concert3->setParking(false);
         $concert3->setRestaurant(false);
@@ -221,7 +221,7 @@ class AppFixtures extends Fixture
         $concert4->setTime(new DateTime('04/26/2021 21:00:00'));
         $concert4->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
         $concert4->setCategory(3);
-        $concert4->setMaxPrice(250);
+        $concert4->setMaxPrice(845);
         $concert4->setPriceRate(5);
         $concert4->setParking(false);
         $concert4->setRestaurant(false);
@@ -238,7 +238,7 @@ class AppFixtures extends Fixture
         $concert5->setTime(new DateTime('04/26/2021 21:00:00'));
         $concert5->setTimeOpen(new DateTime('04/26/2021 19:00:00'));
         $concert5->setCategory(3);
-        $concert5->setMaxPrice(250);
+        $concert5->setMaxPrice(35);
         $concert5->setPriceRate(5);
         $concert5->setParking(false);
         $concert5->setRestaurant(false);
@@ -255,7 +255,7 @@ class AppFixtures extends Fixture
         $concert6->setTime(new DateTime('02/04/2021 21:00:00'));
         $concert6->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
         $concert6->setCategory(3);
-        $concert6->setMaxPrice(250);
+        $concert6->setMaxPrice(265);
         $concert6->setPriceRate(5);
         $concert6->setParking(false);
         $concert6->setRestaurant(false);
@@ -272,7 +272,7 @@ class AppFixtures extends Fixture
         $concert7->setTime(new DateTime('02/04/2021 21:00:00'));
         $concert7->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
         $concert7->setCategory(3);
-        $concert7->setMaxPrice(250);
+        $concert7->setMaxPrice(112);
         $concert7->setPriceRate(5);
         $concert7->setParking(false);
         $concert7->setRestaurant(false);
@@ -289,7 +289,7 @@ class AppFixtures extends Fixture
         $concert8->setTime(new DateTime('02/04/2021 21:00:00'));
         $concert8->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
         $concert8->setCategory(3);
-        $concert8->setMaxPrice(250);
+        $concert8->setMaxPrice(65);
         $concert8->setPriceRate(5);
         $concert8->setParking(false);
         $concert8->setRestaurant(false);
@@ -323,7 +323,7 @@ class AppFixtures extends Fixture
         $concert10->setTime(new DateTime('02/04/2021 21:00:00'));
         $concert10->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
         $concert10->setCategory(3);
-        $concert10->setMaxPrice(250);
+        $concert10->setMaxPrice(74);
         $concert10->setPriceRate(5);
         $concert10->setParking(false);
         $concert10->setRestaurant(false);
@@ -340,7 +340,7 @@ class AppFixtures extends Fixture
         $concert11->setTime(new DateTime('02/12/2021 21:00:00'));
         $concert11->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
         $concert11->setCategory(3);
-        $concert11->setMaxPrice(250);
+        $concert11->setMaxPrice(59);
         $concert11->setPriceRate(5);
         $concert11->setParking(false);
         $concert11->setRestaurant(false);
@@ -357,7 +357,7 @@ class AppFixtures extends Fixture
         $concert12->setTime(new DateTime('02/12/2021 21:00:00'));
         $concert12->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
         $concert12->setCategory(3);
-        $concert12->setMaxPrice(250);
+        $concert12->setMaxPrice(46);
         $concert12->setPriceRate(5);
         $concert12->setParking(false);
         $concert12->setRestaurant(false);
@@ -374,7 +374,7 @@ class AppFixtures extends Fixture
         $concert13->setTime(new DateTime('02/12/2021 21:00:00'));
         $concert13->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
         $concert13->setCategory(3);
-        $concert13->setMaxPrice(250);
+        $concert13->setMaxPrice(92);
         $concert13->setPriceRate(5);
         $concert13->setParking(false);
         $concert13->setRestaurant(false);
@@ -391,7 +391,7 @@ class AppFixtures extends Fixture
         $concert14->setTime(new DateTime('02/12/2021 21:00:00'));
         $concert14->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
         $concert14->setCategory(3);
-        $concert14->setMaxPrice(250);
+        $concert14->setMaxPrice(120);
         $concert14->setPriceRate(5);
         $concert14->setParking(false);
         $concert14->setRestaurant(false);
@@ -408,7 +408,7 @@ class AppFixtures extends Fixture
         $concert15->setTime(new DateTime('02/12/2021 21:00:00'));
         $concert15->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
         $concert15->setCategory(3);
-        $concert15->setMaxPrice(250);
+        $concert15->setMaxPrice(92);
         $concert15->setPriceRate(5);
         $concert15->setParking(false);
         $concert15->setRestaurant(false);
