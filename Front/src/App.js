@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import AuthApi from './services/authApi';
 import AuthContext from './context/AuthContext';
 import FakePage from './pages/FakePage';
+import AjoutConcerts from './pages/AjoutConcerts';
 import SeatsBookingContext from './components/SeatsBookingContext';
 
 
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/Login" component={Login}/>
           <Route path="/FakePage" component={FakePage}/>
           <Route path="/Inscription" component={Inscription}/>
+          <Route path="/AjoutConcerts" component={AjoutConcerts}/>
           <Route component={NotFound}/>
         </Switch>
       </BrowserRouter>

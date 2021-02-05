@@ -3,13 +3,13 @@ import FooterNav from '../components/FooterNav';
 import HeaderNav from '../components/HeaderNav';
 import Inscription from '../components/InscriptionMain';
 
-const Home = () => {
+const Home = ( ) => {
 
     return (
         <div>
             <HeaderNav/>
             <main>
-                <Inscription/>
+                <Inscription props/>
             </main>
             <FooterNav/>
         </div>
