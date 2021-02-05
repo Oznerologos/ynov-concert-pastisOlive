@@ -22,7 +22,7 @@ class ConcertRepository extends ServiceEntityRepository
     // /**
     //  * @return Concert[] Returns an array of Concert objects
     //  */
-    public function findByExampleField($value)
+    public function findByCity($value)
     {
         return $this->createQueryBuilder('c')
             ->join('c.concertRoom', 'cr')

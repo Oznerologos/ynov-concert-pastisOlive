@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import CarouselConcert from './CarouselConcert';
 import affiche from '../media/img/affiche-rammstein.jpg';
@@ -42,17 +42,92 @@ const findMinPrice = (maxPrice, nbPlaces) => {
 const init = generateCards();
 console.log(init);*/
 
+    const [refreshKey] = useState(0);
+
+    function useQuery() {
+        return new URLSearchParams(useLocation().search);
+    }
+
+    let query = useQuery();
+    let paramArtist = "";
+    paramArtist = query.get("artist");
+
+    const getConcerts = async () => {
+        let result = await axios(
+            'https://localhost:8000/concert/artist?artist=' + paramArtist,
+        );
+        // return the result
+        return result;
+    };
+
+    const [data, setData] = React.useState([]);
+
+    React.useEffect(() => {
+        if (paramArtist != "") {
+            getConcerts().then(res => {
+                setData(res.data)
+            })
+        }
+    }, [refreshKey]);
+
+    function dateConvert(date) {
+        date = date.toString();
+        date = date.split('T');
+        date = date[0].split('-');
+        for (let i = 0; i < date.length; i++) {
+            date[i] = parseInt(date[i]);
+        }
+        return date;
+    }
+
+    const findMinPrice = (maxPrice, nbPlaces) => {
+        const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
+        const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
+        return minPrice;
+    }
+
+    const concerts = () => {
+        let resultConcerts = [];
+
+        if (data[0] != undefined) {
+            for (let i = 0; i < data.length; i++) {
+                let date = dateConvert(data[i]["date"]);
+
+                let subDate = data[i]["date"].substring(11, 16);
+                subDate = subDate.split(':');
+                data[i]["date"] = date[2] + "/" + date[1] + "/" + date[0];
+
+                let subTime = data[i]["time"].substring(11, 16);
+                subTime = subTime.split(':');
+                data[i]["time"] = subTime[0] + "H" + subTime[1];
+
+                let subOpen = data[i]["timeOpen"].substring(11, 16);
+                subOpen = subOpen.split(':');
+                data[i]["timeOpen"] = subOpen[0] + "H" + subOpen[1];
+                resultConcerts.push(data[i]);
+
+                let minPrice = findMinPrice(data[i].maxPrice, data[i].concertRoom.placeNumber)
+
+                data[i]["maxPrice"] = "De " + minPrice + "€ à " + data[i].maxPrice + "€";
+                resultConcerts.push(data[i]);
+            }
+            return resultConcerts;
+        }
+    }
+
+    concerts();
+
     return (
         //<SliderConcertContext.Provider value={contextConcert}>
         <main id="concert">
             <div id="topArtist">
-                <img src={affiche} alt="affiche-concert" height={300}/>
+                <img src={affiche} alt="affiche-concert" height={300} />
                 <ul>
-                    <li className="bold">Nom de l'artiste</li>
-                    <li>Nom de la tournée</li>
-                    <li>Date et heure</li>
-                    <li>Lieu</li>
-                    <li>Catégorie de musique</li>
+                    <li className="bold">{data[0] ? data[0].artist : ""}</li>
+                    <li>{data[0] ? data[0].name : ""}</li>
+                    <li>{data[0] ? data[0].date : ""}</li>
+                    <li>{data[0] ? data[0].concertRoom.name : ""}</li>
+                    <li>{data[0] ? data[0].musicType : ""}</li>
                 </ul>
             </div>
             <section>
@@ -69,28 +144,33 @@ console.log(init);*/
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td colSpan={2}>Ven. 05 Février 2021</td>
-                                <td colSpan={2}>Aix-en-Provence</td>
-                                <td colSpan={2}>20:30</td>
-                                <td colSpan={2}>18:30</td>
-                                <td colSpan={2}>CAT 1, CAT 2, CAT 3</td>
-                                <td colSpan={2}>De ..€ à .. €</td>
-                                <td><NavLink exact to="/FakePage" className="bookingLink">Réserver</NavLink></td>
-                            </tr>
-                        </tbody>
+                        {
+                            data ?
+                                (data.map((element, index) => {
+                                    return <tbody key={index}>
+                                        <tr>
+                                            <td colSpan={2}>{element.date}</td>
+                                            <td colSpan={2}>{element.concertRoom.name}</td>
+                                            <td colSpan={2}>{element.time}</td>
+                                            <td colSpan={2}>{element.timeOpen}</td>
+                                            <td colSpan={2}>{element.category}</td>
+                                            <td colSpan={2}>{element.maxPrice}</td>
+                                            <td><NavLink exact to="/FakePage" className="bookingLink">Réserver</NavLink></td>
+                                        </tr>
+                                    </tbody>
+                                })
+                                ) : (<tbody><tr><td>Chargement</td></tr></tbody>)
+                        }
                     </table>
                 </div>
 
                 <div id="artistPresentation">
                     <div id="leftPrez">
                         <h3>Présentation de l'artiste / groupe</h3>
-                        <p>Lorem ipsum dolor sit, amet consonsectetur adipisicing elit. Temporibus ullam illo consectetur cumque sequi nihil autem nisi laudantium sunt libero quo eum architecto dolores, reiciendis id a voluptatum harum porro. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus ullam illo consectetur cumque sequi nihil autem nisi laudantium sunt libero quo eum architecto dolores, reiciendis id a voluptatum harum porro.</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus ullam illo consectetur cumque sequi nihil autem nisi laudantium sunt libero quo eum architecto dolores, reiciendis id a voluptatum harum porro.</p>
+                        <p>{data[0] ? data[0].artistPres : ""}</p>
                     </div>
                     <div id="rightPrez">
-                        <ReactPlayer url='https://www.youtube.com/watch?v=vjTQqTGa3dQ' height={200}/>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=vjTQqTGa3dQ' height={200} />
                     </div>
                 </div>
 
@@ -111,7 +191,7 @@ console.log(init);*/
 
             <div id="sliderContainer">
                     <h3>A NE PAS MANQUER</h3>
-                    <CarouselConcert/>
+                    <CarouselConcert />
                 </div>
                 
         </main>)

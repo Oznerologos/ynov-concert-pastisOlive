@@ -251,7 +251,7 @@ export default function ProgrammationMain() {
                             <p>à {element.concertRoom["name"]}</p>
                             <p>Catégorie: {element.musicType}</p>
                             <p>Tarifs: de {findMinPrice(element.maxPrice, element.concertRoom["placeNumber"])}€ à {element.maxPrice}€</p>
-                            <NavLink exact to="/fakePage" className="cardBtn">Réserver</NavLink>
+                            <NavLink exact to={"/Concert?artist=" + element.artist} className="cardBtn">Réserver</NavLink>
                         </div>
                     </div>
                 })}

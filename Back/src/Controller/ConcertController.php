@@ -51,8 +51,30 @@ class ConcertController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $serializer = $this->container->get('serializer');
-        $name = json_decode($request->getContent());
-        $json = $serializer->serialize($concertRepository->findByExampleField($name->name), 'json', ['groups' => ['concert', 'concertRoom']]);
+        $city = json_decode($request->getContent());
+        $json = $serializer->serialize($concertRepository->findByCity($city->name), 'json', ['groups' => ['concert', 'concertRoom']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/artist", name="concert_artist", methods={"GET"})
+     */
+    public function concertArtist(ConcertRepository $concertRepository, Request $request): Response
+    {
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $artist = $request->query->get('artist');
+        $json = $serializer->serialize($concertRepository->findBy(["artist" => $artist]), 'json', ['groups' => ['concert', 'concertRoom']]);
     
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
