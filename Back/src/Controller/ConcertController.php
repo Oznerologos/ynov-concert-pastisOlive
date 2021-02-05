@@ -41,9 +41,9 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/city", name="concert_city", methods={"GET"})
+     * @Route("/city", name="concert_city", methods={"POST"})
      */
-    public function concertVille(ConcertRepository $concertRepository): Response
+    public function concertVille(ConcertRepository $concertRepository, Request $request): Response
     {
         $response = new Response();
 
@@ -51,7 +51,8 @@ class ConcertController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $serializer = $this->container->get('serializer');
-        $json = $serializer->serialize($concertRepository->findBy(['concertRoom' => '16']), 'json', ['groups' => ['concert', 'concertRoom']]);
+        $name = json_decode($request->getContent());
+        $json = $serializer->serialize($concertRepository->findByExampleField($name->name), 'json', ['groups' => ['concert', 'concertRoom']]);
     
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
