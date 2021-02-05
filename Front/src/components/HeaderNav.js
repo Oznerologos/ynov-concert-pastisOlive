@@ -42,29 +42,8 @@ render() {
                     </NavLink>
                     <div className="linksCont">
                     <div className="navContainer">
-                    <NavDropdown to="/fakePage" title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/Programmation">
-                            <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Aix-en-Provence</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Bourges</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Cannes</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Dunkerque</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Echirolles</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/fakePage">
-                            <NavDropdown.Item>Comment réserver ?</NavDropdown.Item>
-                        </LinkContainer>
-                    </NavDropdown>
+                    <NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>
+
                     <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/RestaurationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
