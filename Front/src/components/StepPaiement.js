@@ -7,6 +7,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Loader from './ProgressCircle';
+import { NavLink } from 'react-router-dom';
   
   export default function StepPaiement() {
 
@@ -119,8 +120,9 @@ import Loader from './ProgressCircle';
 
       </div>
       <div id="btnContainer">
-      <Button>ANNULER</Button>
-      <Button onClick={() => load()}>VALIDER ET PAYER</Button>
+
+      <Button className="cancelStep">ANNULER</Button>
+      <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
       </div>
       </div>
       {
