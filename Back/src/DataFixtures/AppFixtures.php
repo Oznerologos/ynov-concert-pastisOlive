@@ -246,6 +246,181 @@ class AppFixtures extends Fixture
         $concert5->setConcertRoom($echirolles);
         $manager->persist($concert5);
 
+        $concert6 = new Concert();
+        $concert6->setName("U2 en live");
+        $concert6->setArtist("U2");
+        $concert6->setArtistPres("Toi aussi");
+        $concert6->setArtistImg("U2.png");
+        $concert6->setDate(new DateTime('02/04/2021'));
+        $concert6->setTime(new DateTime('02/04/2021 21:00:00'));
+        $concert6->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
+        $concert6->setCategory(3);
+        $concert6->setMaxPrice(250);
+        $concert6->setPriceRate(5);
+        $concert6->setParking(false);
+        $concert6->setRestaurant(false);
+        $concert6->setMusicType("Rock");
+        $concert6->setConcertRoom($aix);
+        $manager->persist($concert6);
+
+        $concert7 = new Concert();
+        $concert7->setName("Greenday en Live");
+        $concert7->setArtist("Greenday");
+        $concert7->setArtistPres("Vertjour");
+        $concert7->setArtistImg("greenday.png");
+        $concert7->setDate(new DateTime('02/04/2021'));
+        $concert7->setTime(new DateTime('02/04/2021 21:00:00'));
+        $concert7->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
+        $concert7->setCategory(3);
+        $concert7->setMaxPrice(250);
+        $concert7->setPriceRate(5);
+        $concert7->setParking(false);
+        $concert7->setRestaurant(false);
+        $concert7->setMusicType("Rock");
+        $concert7->setConcertRoom($cannes);
+        $manager->persist($concert7);
+
+        $concert8 = new Concert();
+        $concert8->setName("Narcotic en Live");
+        $concert8->setArtist("Narcotic");
+        $concert8->setArtistPres("Fumer tue");
+        $concert8->setArtistImg("narcotic.png");
+        $concert8->setDate(new DateTime('02/04/2021'));
+        $concert8->setTime(new DateTime('02/04/2021 21:00:00'));
+        $concert8->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
+        $concert8->setCategory(3);
+        $concert8->setMaxPrice(250);
+        $concert8->setPriceRate(5);
+        $concert8->setParking(false);
+        $concert8->setRestaurant(false);
+        $concert8->setMusicType("Pop");
+        $concert8->setConcertRoom($dunkerque);
+        $manager->persist($concert8);
+
+        $concert9 = new Concert();
+        $concert9->setName("MJ en hologramme");
+        $concert9->setArtist("Mickael Jackson");
+        $concert9->setArtistPres("Meilleur performeur du siècle en noir et blanc");
+        $concert9->setArtistImg("mj.png");
+        $concert9->setDate(new DateTime('02/04/2021'));
+        $concert9->setTime(new DateTime('02/04/2021 21:00:00'));
+        $concert9->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
+        $concert9->setCategory(3);
+        $concert9->setMaxPrice(250);
+        $concert9->setPriceRate(5);
+        $concert9->setParking(false);
+        $concert9->setRestaurant(false);
+        $concert9->setMusicType("Pop");
+        $concert9->setConcertRoom($bourges);
+        $manager->persist($concert9);
+
+        $concert10 = new Concert();
+        $concert10->setName("Earth Wind and Fire en live");
+        $concert10->setArtist("Earth Wind and Fire");
+        $concert10->setArtistPres("Le monde vivait en harmonie mais un jour, la nation du feu décida de passer a l'attaque");
+        $concert10->setArtistImg("earth.png");
+        $concert10->setDate(new DateTime('02/04/2021'));
+        $concert10->setTime(new DateTime('02/04/2021 21:00:00'));
+        $concert10->setTimeOpen(new DateTime('02/04/2021 19:00:00'));
+        $concert10->setCategory(3);
+        $concert10->setMaxPrice(250);
+        $concert10->setPriceRate(5);
+        $concert10->setParking(false);
+        $concert10->setRestaurant(false);
+        $concert10->setMusicType("Soul / Funk");
+        $concert10->setConcertRoom($echirolles);
+        $manager->persist($concert10);
+
+        $concert11 = new Concert();
+        $concert11->setName("Eminem en live");
+        $concert11->setArtist("Eminem");
+        $concert11->setArtistPres("Je préfère les smarties");
+        $concert11->setArtistImg("eminem.png");
+        $concert11->setDate(new DateTime('02/12/2021'));
+        $concert11->setTime(new DateTime('02/12/2021 21:00:00'));
+        $concert11->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
+        $concert11->setCategory(3);
+        $concert11->setMaxPrice(250);
+        $concert11->setPriceRate(5);
+        $concert11->setParking(false);
+        $concert11->setRestaurant(false);
+        $concert11->setMusicType("Rap / Hip-Hop");
+        $concert11->setConcertRoom($aix);
+        $manager->persist($concert11);
+
+        $concert12 = new Concert();
+        $concert12->setName("Danakil en live");
+        $concert12->setArtist("Danakil");
+        $concert12->setArtistPres("Je pensais que c'etait le nom du chanteur");
+        $concert12->setArtistImg("danakil.png");
+        $concert12->setDate(new DateTime('02/12/2021'));
+        $concert12->setTime(new DateTime('02/12/2021 21:00:00'));
+        $concert12->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
+        $concert12->setCategory(3);
+        $concert12->setMaxPrice(250);
+        $concert12->setPriceRate(5);
+        $concert12->setParking(false);
+        $concert12->setRestaurant(false);
+        $concert12->setMusicType("Dub / Reggae");
+        $concert12->setConcertRoom($bourges);
+        $manager->persist($concert12);
+
+        $concert13 = new Concert();
+        $concert13->setName("Lady Baby on live");
+        $concert13->setArtist("Lady Baby");
+        $concert13->setArtistPres("Quand un suédois metalleux fait de la J-Pop avec deux idoles japonaises");
+        $concert13->setArtistImg("ladybaby.png");
+        $concert13->setDate(new DateTime('02/12/2021'));
+        $concert13->setTime(new DateTime('02/12/2021 21:00:00'));
+        $concert13->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
+        $concert13->setCategory(3);
+        $concert13->setMaxPrice(250);
+        $concert13->setPriceRate(5);
+        $concert13->setParking(false);
+        $concert13->setRestaurant(false);
+        $concert13->setMusicType("World");
+        $concert13->setConcertRoom($cannes);
+        $manager->persist($concert13);
+
+        $concert14 = new Concert();
+        $concert14->setName("Xavier 'MV' Dang on live");
+        $concert14->setArtist("Xavier 'MV' Dang");
+        $concert14->setArtistPres("Un vieux monsieur qui fait de la musique de jeux vidéo");
+        $concert14->setArtistImg("mv.png");
+        $concert14->setDate(new DateTime('02/12/2021'));
+        $concert14->setTime(new DateTime('02/12/2021 21:00:00'));
+        $concert14->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
+        $concert14->setCategory(3);
+        $concert14->setMaxPrice(250);
+        $concert14->setPriceRate(5);
+        $concert14->setParking(false);
+        $concert14->setRestaurant(false);
+        $concert14->setMusicType("Electro");
+        $concert14->setConcertRoom($echirolles);
+        $manager->persist($concert14);
+        
+        $concert15 = new Concert();
+        $concert15->setName("Kool And The Gang on live");
+        $concert15->setArtist("Kool And The Gang");
+        $concert15->setArtistPres("Un peu comme earth wind and fire mais en différent");
+        $concert15->setArtistImg("kool.png");
+        $concert15->setDate(new DateTime('02/12/2021'));
+        $concert15->setTime(new DateTime('02/12/2021 21:00:00'));
+        $concert15->setTimeOpen(new DateTime('02/12/2021 19:00:00'));
+        $concert15->setCategory(3);
+        $concert15->setMaxPrice(250);
+        $concert15->setPriceRate(5);
+        $concert15->setParking(false);
+        $concert15->setRestaurant(false);
+        $concert15->setMusicType("Electro");
+        $concert15->setConcertRoom($dunkerque);
+        $manager->persist($concert15);
+
+
+
+
+
+
         // User ---------------------------------------------------------------------------------------------
 
         $user = new User();
