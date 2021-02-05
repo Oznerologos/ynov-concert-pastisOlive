@@ -41,9 +41,9 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/city", name="concert_city", methods={"GET"})
+     * @Route("/city", name="concert_city", methods={"POST"})
      */
-    public function concertVille(ConcertRepository $concertRepository): Response
+    public function concertVille(ConcertRepository $concertRepository, Request $request): Response
     {
         $response = new Response();
 
@@ -51,7 +51,30 @@ class ConcertController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $serializer = $this->container->get('serializer');
-        $json = $serializer->serialize($concertRepository->findBy(['concertRoom' => '16']), 'json', ['groups' => ['concert', 'concertRoom']]);
+        $city = json_decode($request->getContent());
+        $json = $serializer->serialize($concertRepository->findByCity($city->name), 'json', ['groups' => ['concert', 'concertRoom']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/artist", name="concert_artist", methods={"GET"})
+     */
+    public function concertArtist(ConcertRepository $concertRepository, Request $request): Response
+    {
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $artist = $request->query->get('artist');
+        $json = $serializer->serialize($concertRepository->findBy(["artist" => $artist]), 'json', ['groups' => ['concert', 'concertRoom']]);
     
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
@@ -66,23 +89,20 @@ class ConcertController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+  
+        $serializer = new Serializer($normalizers, $encoders);
+
         $concert = new Concert();
         $form = $this->createForm(ConcertType::class, $concert);
-        $data=json_decode($request->getContent(),true);
-        $form->submit($data);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($concert);
-            $entityManager->flush();
+        $concertDeserialized = $serializer->deserialize($request->getContent(), Concert::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $concert]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($concert);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('concert_index');
-        }
-
-        return $this->render('concert/new.html.twig', [
-            'concert' => $concert,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('concert_index');
     }
 
     /**

@@ -1,0 +1,218 @@
+#concert {
+    background-color: #eeeded;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#concert #topArtist {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: lightgrey;
+    color: #3c3c3c;
+    height: 300px;
+    margin: 2rem 0;
+}
+
+#topArtist ul {
+    padding-inline-start: none;
+    margin-left: 4rem;
+}
+
+#topArtist ul li {
+    list-style-type: none;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+#topArtist ul li:first {
+    margin-top: 0;
+}
+
+#concert section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #3c3c3c;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0;
+}
+
+#concertsTab {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#concertsTab table {
+    width: 100%;
+}
+
+#concertsTab table thead tr th {
+    background-color: lightgrey;
+    padding: 10px 0;
+    text-align: center;
+}
+
+#concertsTab table tbody tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+#concertsTab table tbody tr td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+#artistPresentation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#artistPresentation #leftPrez {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 65%;
+    margin-right: 2rem;
+}
+
+#artistPresentation #rightPrez {
+    display: flex;
+    width: 30%;
+    padding-top: 40px;
+}
+
+#bookingCards {
+    @include verticalCenter;
+    margin-bottom: 2rem;
+}
+
+.bookingCard {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 400px;
+}
+
+.bookingCard h4,
+.bookingCard p {
+    text-align: center;
+}
+
+.bookingCard p {
+    max-width: 320px;
+}
+
+.bookingLink {
+    background-color: #3c3c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.bookingLink:hover {
+    background-color: #02a2aa;
+    color: white;
+    text-decoration: none;
+}
+
+#sliderContainer {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #eeeded;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#sliderContainer h3 {
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+.afficheContainer {
+    width: 100%;
+    height: 150px;
+    background-color: grey;
+    margin-bottom: 0.5rem;
+}
+
+#sliderContainer .carousel {
+    width: 100%;
+    padding-bottom: 4rem;
+}
+
+.carouselItemCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    background-color: #eeeded;
+    padding: 0.5rem;
+}
+
+.ConcertSliderCont {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    width: 24%;
+    min-height: 100%;
+}
+
+.ConcertSliderCont p {
+    color: #3c3c3c;
+    width: 100%;
+    text-align: center;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.ConcertSliderCont .cardBtn {
+    background-color: #3c3c3c;
+    width: 90%;
+    text-align: center;
+    margin: 0.5rem auto;
+    color: white
+}
+
+.detailsConcert {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+}
+
+#sliderContainer .carousel-control-prev {
+    left: -5%;
+    background-color: grey;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-top: calc(0.5rem + 207px);
+}
+
+#sliderContainer .carousel-control-next {
+    right: -5%;
+    background-color: grey;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-top: calc(0.5rem + 207px);
+}
+
+#sliderContainer .carousel-indicators li {
+    background-color: grey;
+}

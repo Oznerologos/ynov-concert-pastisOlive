@@ -1,7 +1,4 @@
-import React from 'react'  
-import affiche from '../media/img/affiche-rammstein.jpg'
-import affiche1 from '../media/img/bistrot.jpg'
-import ReactDOM from 'react-dom'
+import React from 'react';
 import ImageGallery from 'react-image-gallery';
  
 const images = [

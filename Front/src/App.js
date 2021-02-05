@@ -17,10 +17,14 @@ import Login from './pages/Login';
 import AuthApi from './services/authApi';
 import AuthContext from './context/AuthContext';
 import FakePage from './pages/FakePage';
+<<<<<<< HEAD
 import AjoutConcerts from './pages/AjoutConcerts';
+=======
+import Concert from './pages/Concert';
+import CGU from './pages/CGU';
+>>>>>>> master
 import SeatsBookingContext from './components/SeatsBookingContext';
-
-
+import MentionsLegales from './pages/MentionsLegales';
 
 AuthApi.init();
 
@@ -49,12 +53,15 @@ const App = () => {
           <Route path="/" exact component={Home}/>
           <Route path="/Contact" component={Contact}/>
           <Route path="/FAQ" component={FAQ}/>
+          <Route path="/MentionsLegales" component={MentionsLegales}/>
           <Route path="/RestaurationPresentation" component={RestaurationPresentation}/>
           <Route path="/RestaurationReservation" component={RestaurationReservation}/>
           <Route path="/ConcertReservation" component={ConcertReservation}/>
           <Route path="/Programmation" component={Programmation}/>
           <Route path="/PrivatisationPresentation" component={P_presentation}/>
           <Route path="/From_re" component={From_re}/>
+          <Route path="/Concert" component={Concert}/>
+          <Route path="/CGU" component={CGU}/>
           <Route path="/Login" component={Login}/>
           <Route path="/FakePage" component={FakePage}/>
           <Route path="/Inscription" component={Inscription}/>
