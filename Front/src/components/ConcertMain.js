@@ -4,8 +4,43 @@ import axios from 'axios';
 import CarouselConcert from './CarouselConcert';
 import affiche from '../media/img/affiche-rammstein.jpg';
 import ReactPlayer from 'react-player';
+import SliderConcertContext from './SliderConcertContext';
+import Carousel from 'react-bootstrap/Carousel'
 
 export default function ConcertMain() {
+/*
+const [concertData, setConcertData] = useState();
+const [concertDataReworked, setConcertDataReworked] = useState();
+
+const contextConcert = {concertData, setConcertData, concertDataReworked, setConcertDataReworked};
+
+const getConcerts = async () => {
+    let result = await axios(
+        'https://localhost:8000/concert',
+    );
+    // return the result
+    return result;
+};
+
+const [data, setData] = React.useState([])
+//const [subData, setSubData] = React.useState([])
+
+React.useEffect(() => {
+
+    getConcerts().then(res => {
+        setData(res.data);
+    });
+}, []);
+
+const findMinPrice = (maxPrice, nbPlaces) => {
+    const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
+    const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
+    return minPrice;
+}*/
+
+/*
+const init = generateCards();
+console.log(init);*/
 
     const [refreshKey] = useState(0);
 
@@ -83,6 +118,7 @@ export default function ConcertMain() {
     concerts();
 
     return (
+        //<SliderConcertContext.Provider value={contextConcert}>
         <main id="concert">
             <div id="topArtist">
                 <img src={affiche} alt="affiche-concert" height={300} />
@@ -151,11 +187,13 @@ export default function ConcertMain() {
                     </div>
                 </div>
 
-                <div id="sliderContainer">
+            </section>
+
+            <div id="sliderContainer">
                     <h3>A NE PAS MANQUER</h3>
                     <CarouselConcert />
                 </div>
-
-            </section>
-        </main>);
+                
+        </main>)
+        //</SliderConcertContext.Provider>;
 }

@@ -11,6 +11,7 @@ import StepCoordonnees from './StepCoordonnees';
 import SeatsBookingContext from './SeatsBookingContext';
 import StepPaiement from './StepPaiement';
 import StepConfirmation from './StepConfirmation';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -129,9 +130,9 @@ export default function HorizontalLinearStepper() {
             <div className="stepBody">
               <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
               <div>
-                <Button disabled={context.activeStep === 0} onClick={handleBack} className={classes.button}>
-                  Annuler
-              </Button>
+                <NavLink exact to="/Concert" onClick={handleBack} className="cancelStep">
+                  ANNULER
+              </NavLink>
                 {isStepOptional(context.activeStep) && (
                   <Button
                     variant="contained"
