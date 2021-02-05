@@ -164,7 +164,7 @@ class AppFixtures extends Fixture
         $concert1 = new Concert();
         $concert1->setName("Daft Punk Alive 2021 (svp j'en reve)");
         $concert1->setArtist("Daft Punk");
-        $concert1->setArtistPres("Trop les boss");
+        $concert1->setArtistPres("Trop les boss  - Sunt voluptate duis aute elit quis reprehenderit anim est aliquip incididunt dolore deserunt in ut. Dolor cupidatat esse proident cupidatat duis aliquip aliquip. Non incididunt laboris culpa reprehenderit.  ");
         $concert1->setArtistImg("Daftpunk.png");
         $concert1->setDate(new DateTime('04/26/2021'));
         $concert1->setTime(new DateTime('04/26/2021 21:00:00'));
@@ -181,7 +181,7 @@ class AppFixtures extends Fixture
         $concert2 = new Concert();
         $concert2->setName("Californication");
         $concert2->setArtist("Red hot chilli peper");
-        $concert2->setArtistPres("Trop les boss");
+        $concert2->setArtistPres("Trop les boss  - Eu nulla enim cupidatat nisi sint laboris irure sit laboris veniam do. Do dolore consequat enim aute labore. Id ea labore mollit amet anim irure amet laboris ea duis cillum aliquip.  ");
         $concert2->setArtistImg("redhot.png");
         $concert2->setDate(new DateTime('04/26/2021'));
         $concert2->setTime(new DateTime('04/26/2021 21:00:00'));
@@ -198,7 +198,7 @@ class AppFixtures extends Fixture
         $concert3 = new Concert();
         $concert3->setName("La zizi party");
         $concert3->setArtist("Franky Vincent");
-        $concert3->setArtistPres("C'est pas la taille qui compte");
+        $concert3->setArtistPres("C'est pas la taille qui compte  - Dolor ullamco tempor est cupidatat amet. Sunt minim sit qui nostrud sunt. Ipsum excepteur sit quis Lorem irure dolor enim aliquip. Proident est laboris proident sunt ullamco duis consequat in qui non magna culpa ullamco nulla. Esse aliqua enim nulla amet cillum sunt magna. Id cillum dolor aute dolor deserunt culpa. Cillum reprehenderit est sint veniam aliqua id tempor cillum ad aute proident culpa incididunt.  ");
         $concert3->setArtistImg("franky.png");
         $concert3->setDate(new DateTime('04/26/2021'));
         $concert3->setTime(new DateTime('04/26/2021 21:00:00'));
@@ -215,7 +215,7 @@ class AppFixtures extends Fixture
         $concert4 = new Concert();
         $concert4->setName("GreenWashing");
         $concert4->setArtist("Tryo");
-        $concert4->setArtistPres("En fait, ils sont 4");
+        $concert4->setArtistPres("En fait, ils sont 4  - Consequat ut reprehenderit nisi nostrud laboris voluptate proident sit incididunt consequat laboris. Mollit ullamco sunt magna labore ad labore labore consequat. Consequat mollit nisi nulla commodo labore culpa cillum fugiat. Aute aliquip elit occaecat ad anim nisi sint consectetur aute fugiat nostrud.  ");
         $concert4->setArtistImg("tryo.png");
         $concert4->setDate(new DateTime('04/26/2021'));
         $concert4->setTime(new DateTime('04/26/2021 21:00:00'));
@@ -232,7 +232,7 @@ class AppFixtures extends Fixture
         $concert5 = new Concert();
         $concert5->setName("AC/DC");
         $concert5->setArtist("Daft Punk");
-        $concert5->setArtistPres("Trop les boss");
+        $concert5->setArtistPres("Trop les boss  - Laboris est pariatur nulla dolor sunt. Dolor sint cillum officia reprehenderit deserunt aute Lorem et magna. Anim dolore est pariatur eu incididunt nisi ullamco culpa enim mollit consequat veniam voluptate.  ");
         $concert5->setArtistImg("Daftpunk.png");
         $concert5->setDate(new DateTime('04/26/2021'));
         $concert5->setTime(new DateTime('04/26/2021 21:00:00'));
@@ -249,7 +249,7 @@ class AppFixtures extends Fixture
         $concert6 = new Concert();
         $concert6->setName("U2 en live");
         $concert6->setArtist("U2");
-        $concert6->setArtistPres("Toi aussi");
+        $concert6->setArtistPres("Toi aussi  - Incididunt fugiat quis enim mollit consequat aliquip. Dolore Lorem ea velit duis laborum magna sint. In culpa laborum tempor laboris esse officia laboris esse eiusmod laborum id duis.  ");
         $concert6->setArtistImg("U2.png");
         $concert6->setDate(new DateTime('02/04/2021'));
         $concert6->setTime(new DateTime('02/04/2021 21:00:00'));
@@ -266,7 +266,7 @@ class AppFixtures extends Fixture
         $concert7 = new Concert();
         $concert7->setName("Greenday en Live");
         $concert7->setArtist("Greenday");
-        $concert7->setArtistPres("Vertjour");
+        $concert7->setArtistPres("Vertjour  - Reprehenderit ut aute labore sit dolor amet deserunt do officia voluptate amet ea. In mollit occaecat cupidatat exercitation ut qui. Velit pariatur velit duis esse velit duis ex deserunt reprehenderit adipisicing ea duis exercitation enim. Ullamco dolor commodo Lorem duis cillum irure culpa.  ");
         $concert7->setArtistImg("greenday.png");
         $concert7->setDate(new DateTime('02/04/2021'));
         $concert7->setTime(new DateTime('02/04/2021 21:00:00'));
@@ -283,7 +283,7 @@ class AppFixtures extends Fixture
         $concert8 = new Concert();
         $concert8->setName("Narcotic en Live");
         $concert8->setArtist("Narcotic");
-        $concert8->setArtistPres("Fumer tue");
+        $concert8->setArtistPres("Fumer tue  - Amet ipsum laboris sit exercitation commodo ad commodo culpa magna et. Sint in pariatur sint ea et laborum reprehenderit. Ad pariatur nostrud velit do aliquip enim. Dolore duis ad aliquip aute. Quis Lorem minim aute cupidatat adipisicing pariatur irure. Minim duis nulla commodo ex exercitation duis voluptate qui incididunt culpa. Quis labore consequat veniam quis dolor in culpa enim.  ");
         $concert8->setArtistImg("narcotic.png");
         $concert8->setDate(new DateTime('02/04/2021'));
         $concert8->setTime(new DateTime('02/04/2021 21:00:00'));
@@ -300,7 +300,7 @@ class AppFixtures extends Fixture
         $concert9 = new Concert();
         $concert9->setName("MJ en hologramme");
         $concert9->setArtist("Mickael Jackson");
-        $concert9->setArtistPres("Meilleur performeur du siècle en noir et blanc");
+        $concert9->setArtistPres("Meilleur performeur du siècle en noir et blanc  - Voluptate elit nostrud labore reprehenderit ex qui id ex labore reprehenderit. Veniam sit veniam qui anim fugiat nisi ipsum laborum cillum. Magna proident amet ea cupidatat ullamco amet non pariatur. Sunt dolor est ex amet. Adipisicing ut aliqua anim enim ipsum cupidatat voluptate veniam magna culpa.  ");
         $concert9->setArtistImg("mj.png");
         $concert9->setDate(new DateTime('02/04/2021'));
         $concert9->setTime(new DateTime('02/04/2021 21:00:00'));
@@ -317,7 +317,7 @@ class AppFixtures extends Fixture
         $concert10 = new Concert();
         $concert10->setName("Earth Wind and Fire en live");
         $concert10->setArtist("Earth Wind and Fire");
-        $concert10->setArtistPres("Le monde vivait en harmonie mais un jour, la nation du feu décida de passer a l'attaque");
+        $concert10->setArtistPres("Le monde vivait en harmonie mais un jour, la nation du feu décida de passer a l'attaque  - Adipisicing commodo labore pariatur aliqua eu deserunt sint in dolore incididunt adipisicing aliquip nisi laboris. Id magna nostrud deserunt excepteur enim. Cupidatat amet velit do cupidatat esse laboris labore ut fugiat sunt nostrud ut. Ut consequat ex nisi dolor qui irure officia voluptate voluptate voluptate sint aliqua. Exercitation sint fugiat tempor pariatur. Aute laborum sint eu eiusmod sint elit duis est ut culpa dolore excepteur excepteur excepteur.  ");
         $concert10->setArtistImg("earth.png");
         $concert10->setDate(new DateTime('02/04/2021'));
         $concert10->setTime(new DateTime('02/04/2021 21:00:00'));
@@ -334,7 +334,7 @@ class AppFixtures extends Fixture
         $concert11 = new Concert();
         $concert11->setName("Eminem en live");
         $concert11->setArtist("Eminem");
-        $concert11->setArtistPres("Je préfère les smarties");
+        $concert11->setArtistPres("Je préfère les smarties  - Ea labore sit non consectetur reprehenderit culpa ea ipsum aliquip consectetur. Sint ullamco proident voluptate fugiat labore ullamco labore reprehenderit aliquip consequat et. Enim enim reprehenderit incididunt commodo nostrud tempor eu cupidatat eiusmod elit eu. Sit ipsum ut ea qui. Labore labore incididunt exercitation ex adipisicing aliqua enim in quis ut.  ");
         $concert11->setArtistImg("eminem.png");
         $concert11->setDate(new DateTime('02/12/2021'));
         $concert11->setTime(new DateTime('02/12/2021 21:00:00'));
@@ -351,7 +351,7 @@ class AppFixtures extends Fixture
         $concert12 = new Concert();
         $concert12->setName("Danakil en live");
         $concert12->setArtist("Danakil");
-        $concert12->setArtistPres("Je pensais que c'etait le nom du chanteur");
+        $concert12->setArtistPres("Je pensais que c'etait le nom du chanteur  - Incididunt voluptate irure eiusmod veniam laboris ea. Eu exercitation nulla ipsum occaecat. Irure pariatur dolor exercitation non ex. Ut elit nostrud veniam minim fugiat Lorem fugiat exercitation ipsum. Ad non elit ea voluptate laboris laborum laboris laboris velit sint id enim in. Occaecat aliqua ut cillum ex adipisicing ullamco est qui.  ");
         $concert12->setArtistImg("danakil.png");
         $concert12->setDate(new DateTime('02/12/2021'));
         $concert12->setTime(new DateTime('02/12/2021 21:00:00'));
@@ -368,7 +368,7 @@ class AppFixtures extends Fixture
         $concert13 = new Concert();
         $concert13->setName("Lady Baby on live");
         $concert13->setArtist("Lady Baby");
-        $concert13->setArtistPres("Quand un suédois metalleux fait de la J-Pop avec deux idoles japonaises");
+        $concert13->setArtistPres("Quand un suédois metalleux fait de la J-Pop avec deux idoles japonaises  - In culpa culpa proident esse consectetur et. Elit proident in mollit voluptate laborum incididunt est minim eu irure occaecat. Duis velit est nulla ut qui adipisicing deserunt. Est dolore consequat sunt fugiat ullamco elit quis. Reprehenderit fugiat culpa minim cupidatat nostrud duis sint exercitation reprehenderit nulla nulla dolor.  ");
         $concert13->setArtistImg("ladybaby.png");
         $concert13->setDate(new DateTime('02/12/2021'));
         $concert13->setTime(new DateTime('02/12/2021 21:00:00'));
@@ -385,7 +385,7 @@ class AppFixtures extends Fixture
         $concert14 = new Concert();
         $concert14->setName("Xavier 'MV' Dang on live");
         $concert14->setArtist("Xavier 'MV' Dang");
-        $concert14->setArtistPres("Un vieux monsieur qui fait de la musique de jeux vidéo");
+        $concert14->setArtistPres("Un vieux monsieur qui fait de la musique de jeux vidéo  - Tempor nostrud dolore ipsum consequat quis duis elit est. Ad aute veniam ad quis cillum laborum officia laborum quis labore ea amet. Sint ullamco cillum non laboris enim voluptate.  ");
         $concert14->setArtistImg("mv.png");
         $concert14->setDate(new DateTime('02/12/2021'));
         $concert14->setTime(new DateTime('02/12/2021 21:00:00'));
@@ -402,7 +402,7 @@ class AppFixtures extends Fixture
         $concert15 = new Concert();
         $concert15->setName("Kool And The Gang on live");
         $concert15->setArtist("Kool And The Gang");
-        $concert15->setArtistPres("Un peu comme earth wind and fire mais en différent");
+        $concert15->setArtistPres("Un peu comme earth wind and fire mais en différent  - Deserunt proident irure magna qui aute. Aute mollit minim nostrud sit laborum quis dolore Lorem culpa. Eiusmod aliquip cillum consequat sit excepteur esse occaecat consectetur enim occaecat esse sint officia culpa. Commodo labore magna commodo reprehenderit ut ipsum nulla irure.  ");
         $concert15->setArtistImg("kool.png");
         $concert15->setDate(new DateTime('02/12/2021'));
         $concert15->setTime(new DateTime('02/12/2021 21:00:00'));
