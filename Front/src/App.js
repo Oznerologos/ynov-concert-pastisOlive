@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import AuthApi from './services/authApi';
 import AuthContext from './context/AuthContext';
 import FakePage from './pages/FakePage';
+import Concert from './pages/Concert';
 import SeatsBookingContext from './components/SeatsBookingContext';
 
 
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/Programmation" component={Programmation}/>
           <Route path="/PrivatisationPresentation" component={P_presentation}/>
           <Route path="/From_re" component={From_re}/>
+          <Route path="/Concert" component={Concert}/>
           <Route path="/Login" component={Login}/>
           <Route path="/FakePage" component={FakePage}/>
           <Route path="/Inscription" component={Inscription}/>
