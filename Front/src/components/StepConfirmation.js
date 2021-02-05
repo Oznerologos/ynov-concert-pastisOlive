@@ -66,9 +66,8 @@ import { NavLink } from 'react-router-dom';
       </div>
 
       <div id="btnContainer">
-      <Button>FAIRE UNE AUTRE COMMANDE</Button>
-      <Button>RETOUR A LA PAGE D'ACCUEIL</Button>
-      <NavLink exact to="/Home">RETOUR A LA PAGE D'ACCUEIL</NavLink>
+      <NavLink exact to="/Programmation" className="cancelStep">FAIRE UNE AUTRE COMMANDE</NavLink>
+      <NavLink exact to="/Home" className="nextStep">RETOUR A LA PAGE D'ACCUEIL</NavLink>
       </div>
     
     </section>

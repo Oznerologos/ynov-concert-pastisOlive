@@ -660,7 +660,7 @@ form.login-form .MuiInputBase-root {
 }
 
 #btnContainer {
-    width: 30%;
+    width: 350px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -684,4 +684,45 @@ form.login-form .MuiInputBase-root {
 
 #sectionConfirmation #btnContainer {
     margin-top: 2rem;
+}
+
+.cancelStep {
+    padding: 0.5rem 1rem;
+    background-color: #02c6d0;
+    color: white;
+    @include boxShadow;
+    margin-right: 2rem;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+
+.cancelStep:hover {
+    background-color: #00939b;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+
+.nextStep {
+    padding: 0.5rem 1rem;
+    background-color: #3c3c3c;
+    color: white;
+    @include boxShadow;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+
+.nextStep:hover {
+    background-color: #242424;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    outline: none;
+    border: none;
 }
