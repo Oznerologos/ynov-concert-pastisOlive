@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import PlanSalle from './PlanSalle';
 import SeatsBookingContext from './SeatsBookingContext';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
   
   export default function StepReservation() {
 
@@ -22,6 +23,13 @@ import Button from 'react-bootstrap/Button';
     
   }
 
+  const stepButton = () => {
+    context.setActiveStep(2);
+  }
+
+  const persistantContext = JSON.parse(localStorage.getItem("reactContext"));
+
+
   return (
 
     <section id="sectionStepPanier">
@@ -35,7 +43,7 @@ import Button from 'react-bootstrap/Button';
             <div id="scene">
               <h4>scène</h4>
             </div>
-      <PlanSalle nbplaces={132} maxprice={87} selectedPlaces={context.seats} viewonly={"true"}/>
+      <PlanSalle nbplaces={132} maxprice={87} selectedPlaces={persistantContext} viewonly={"true"}/>
       </div>
       <div className="artistHead">
         <div>
@@ -44,7 +52,7 @@ import Button from 'react-bootstrap/Button';
           <p>Lieu</p>
         </div>
         <div>
-        {context.seats.map((key, index) => {
+        {persistantContext.map((key, index) => {
         return <div className="resaLine">
           <p>Place {key.id.slice(1)}, Rang {key.id.slice(0,1)}</p>
         </div>
@@ -71,7 +79,7 @@ import Button from 'react-bootstrap/Button';
           </tr>
         </thead>
         <tbody>
-        {context.seats.map((key, index) => {
+        {persistantContext.map((key, index) => {
         return <tr>
             <td colSpan={2}>{index+1}</td>
             <td colSpan={2}>1 place</td>
@@ -97,6 +105,12 @@ import Button from 'react-bootstrap/Button';
       <div id="totalPanier">
       <h4>MONTANT TOTAL DU PANIER</h4>
       <h4 id="totalWithDelivery">{(parseInt(context.prices) + parseFloat(context.deliveryPrice)).toFixed(2)} €</h4>
+      </div>
+
+      <div id="stepperButtonsCont">
+        <NavLink exact to="/Concert" className="cancelStep">ANNULER</NavLink>
+        <NavLink exact to="/Programmation" className="otherCommand">AUTRE COMMANDE</NavLink>
+        <Button onClick={stepButton} className="nextStep">VALIDER</Button>
       </div>
     
     </section>

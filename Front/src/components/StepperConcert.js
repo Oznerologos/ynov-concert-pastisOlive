@@ -116,7 +116,8 @@ export default function HorizontalLinearStepper() {
           );
         })}
       </Stepper>
-      <div>
+     {/*  <div>
+        
         {context.activeStep === steps.length ? (
           <div className="stepBody">
             <Typography className={classes.instructions}>
@@ -126,10 +127,12 @@ export default function HorizontalLinearStepper() {
               Reset
             </Button>
           </div>
-        ) : (
+        ) : (*/}
             <div className="stepBody">
               <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
-              <div>
+             
+              </div>
+                 {/* 
                 <NavLink exact to="/Concert" onClick={handleBack} className="cancelStep">
                   ANNULER
               </NavLink>
@@ -155,7 +158,7 @@ export default function HorizontalLinearStepper() {
               </div>
             </div>
           )}
-      </div>
+      </div>*/}
     </div>
   );
 }

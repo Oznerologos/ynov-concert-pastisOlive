@@ -15,8 +15,8 @@ import { NavLink } from 'react-router-dom';
       <h2>MERCI JEAN-BRYAN POUR VOTRE ACHAT !</h2>
       <p>La référence de cette réservation est le 3008241.</p>
       <p>Vous allez recevoir un e-mail de confirmation.</p>
-      <p>Si vous avez choisi pour l'obtention des billets le mode "E-Ticket" vous pouvez le télécharger et
-        l'imprimer depuis votre compte (ou sur cette page en cliquant sur VOIR).</p>
+      {/*<p>Si vous avez choisi pour l'obtention des billets le mode "E-Ticket" vous pouvez le télécharger et
+        l'imprimer depuis votre compte (ou sur cette page en cliquant sur VOIR).</p>*/}
       <p>Si vous avez réservé une place de parking et/ou une place au restaurant, vous pouvez saisir la
         référence de la réservation ou présenter le billet pour y accéder.</p>
 
@@ -67,7 +67,7 @@ import { NavLink } from 'react-router-dom';
 
       <div id="btnContainer">
       <NavLink exact to="/Programmation" className="cancelStep">FAIRE UNE AUTRE COMMANDE</NavLink>
-      <NavLink exact to="/Home" className="nextStep">RETOUR A LA PAGE D'ACCUEIL</NavLink>
+      <NavLink exact to="/" className="nextStep">RETOUR A LA PAGE D'ACCUEIL</NavLink>
       </div>
     
     </section>

@@ -162,7 +162,7 @@ class AppFixtures extends Fixture
         // Concert ----------------------------------------------------------------------------------------
 
         $concert1 = new Concert();
-        $concert1->setName("Daft Punk Alive 2021 (svp j'en reve)");
+        $concert1->setName("Daft Punk Alive 2021");
         $concert1->setArtist("Daft Punk");
         $concert1->setArtistPres("Trop les boss  - Sunt voluptate duis aute elit quis reprehenderit anim est aliquip incididunt dolore deserunt in ut. Dolor cupidatat esse proident cupidatat duis aliquip aliquip. Non incididunt laboris culpa reprehenderit.  ");
         $concert1->setArtistImg("Daftpunk.png");

@@ -17,12 +17,9 @@ import Login from './pages/Login';
 import AuthApi from './services/authApi';
 import AuthContext from './context/AuthContext';
 import FakePage from './pages/FakePage';
-<<<<<<< HEAD
 import AjoutConcerts from './pages/AjoutConcerts';
-=======
 import Concert from './pages/Concert';
 import CGU from './pages/CGU';
->>>>>>> master
 import SeatsBookingContext from './components/SeatsBookingContext';
 import MentionsLegales from './pages/MentionsLegales';
 
@@ -35,10 +32,13 @@ const App = () => {
   const [prices, setPrices] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [deliveryMode, setDeliveryMode] = useState('');
-  const [purchases, setPurchases] = useState(null);
+  const [purchases, setPurchases] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
+  const [bookingDetails, setBookingDetails] = useState({
+    bookings:[]
+  })
 
-  const contextVal = {seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep}
+  const contextVal = {seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep, bookingDetails, setBookingDetails}
 
   const contextValue = {
       isAuth,

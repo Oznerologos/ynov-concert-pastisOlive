@@ -21,6 +21,11 @@ import { NavLink } from 'react-router-dom';
       setLoader(false);
       context.setActiveStep(4);
     }, 2000);
+    // Réinitialisation panier d'achat
+    context.setSeats([]);
+    context.setPurchases(0);
+    localStorage.removeItem("itemsPanier");
+    localStorage.removeItem("reactContext");
 };
 
   return (
@@ -119,7 +124,7 @@ import { NavLink } from 'react-router-dom';
         </form>
 
       </div>
-      <div id="btnContainer">
+      <div id="stepperButtonsCont">
 
       <Button className="cancelStep">ANNULER</Button>
       <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>

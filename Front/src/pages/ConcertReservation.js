@@ -7,7 +7,7 @@ const ConcertReservation = () => {
     return (
         <div>
              <HeaderNav/>              
-                <ConcertReservationMain/>
+                <ConcertReservationMain />
             <FooterNav/>
         </div>
     );

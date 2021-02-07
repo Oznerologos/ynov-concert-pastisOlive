@@ -8,6 +8,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SeatsBookingContext from './SeatsBookingContext';
+import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 export default function StepReservation() {
 
@@ -24,6 +26,11 @@ export default function StepReservation() {
       context.setDeliveryMode("Retrait au guichet");
     }
 
+  }
+
+  const stepButton = () => {
+    localStorage.setItem("reactContext", JSON.stringify(context.seats)); // Persistance sur panier d'achat
+    context.setActiveStep(1);
   }
 
   return (
@@ -102,6 +109,11 @@ export default function StepReservation() {
             <p>Envoi suivi avec remise contre signature. Livraison sous 24 à 48h.</p>
           </div>
         </div>
+      </div>
+
+      <div id="stepperButtonsCont">
+        <NavLink exact to="/Concert" className="cancelStep">ANNULER</NavLink>
+        <Button onClick={stepButton} className="nextStep">VALIDER</Button>
       </div>
 
     </section>

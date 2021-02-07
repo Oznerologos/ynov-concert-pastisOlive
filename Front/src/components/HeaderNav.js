@@ -28,9 +28,15 @@ class HeaderNav extends React.Component {
 render() {
 
     let cart;
-        if(this.context.purchases !== null){
-            cart = <p>{this.context.purchases}</p>;
-        }
+    let linkCart;
+
+    const persistantIconeContext = JSON.parse(localStorage.getItem("itemsPanier"));
+    if(persistantIconeContext !== null){
+        cart = <p>{persistantIconeContext}</p>;
+        linkCart =  <NavLink exact to="/ConcertReservation" onClick={() => this.context.setActiveStep(1)} className="purchase"><i className="fas fa-shopping-basket"></i>{cart}</NavLink>
+    } else {
+        linkCart = <NavLink exact to="/Programmation" className="purchase"><i className="fas fa-shopping-basket"></i></NavLink>
+    }
 
     return(
 
@@ -94,7 +100,7 @@ render() {
             </div>
             </div>
             <NavLink exact to="/fakePage" className="accountLink">MON COMPTE</NavLink>
-            <NavLink exact to="/fakePage" className="purchase"><i className="fas fa-shopping-basket"></i>{cart}</NavLink>
+           {linkCart}
             </Navbar>
 
     )

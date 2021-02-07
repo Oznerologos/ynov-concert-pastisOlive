@@ -51,20 +51,24 @@ onClick(){
     if((this.props.className !== "seats Reserved") &&(this.props.viewonly !== "true")){
    
     const prices = this.context.prices;
+    const purch = this.context.purchases;
     this.state.seat = GreenSeat;
 
     if(this.state.selected === "false") {
         this.context.setSeats([...this.context.seats, {id:this.props.id, price: this.props.price}]);
         this.context.setPrices(prices + parseInt(this.props.price));
-        this.context.setPurchases(this.context.purchases + 1);
-        this.setState({selected: "true"});
+        localStorage.setItem("itemsPanier", JSON.stringify(this.context.purchases +1)); // Persistance icone panier d'achat
+        this.context.setPurchases(purch + 1); 
+        this.setState({selected: "true"});       
     } else {
 
     this.context.setSeats(this.context.seats.filter(item=> item.id !== this.props.id))
     if(this.context.purchases == 1) {
-        this.context.setPurchases(null);
+        this.context.setPurchases(0);
+        localStorage.removeItem("itemsPanier");
     } else {
-        this.context.setPurchases(this.context.purchases - 1);
+        localStorage.setItem("itemsPanier", JSON.stringify(this.context.purchases -1));
+        this.context.setPurchases(this.context.purchases - 1);   
     }   
 
     this.context.setPrices(prices - parseInt(this.props.price));

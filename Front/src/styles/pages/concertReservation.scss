@@ -453,11 +453,8 @@
     margin-bottom: 1rem;
 }
 
-#registration button,
 #login button {
-    background-color: #3c3c3c !important;
-    color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    margin-bottom: 1rem;
 }
 
 form.login-form .MuiFormLabel-root.Mui-focused,
@@ -686,9 +683,16 @@ form.login-form .MuiInputBase-root {
     margin-top: 2rem;
 }
 
+#stepperButtonsCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+}
+
 .cancelStep {
     padding: 0.5rem 1rem;
-    background-color: #02c6d0;
+    background-color: #3c3c3c;
     color: white;
     @include boxShadow;
     margin-right: 2rem;
@@ -696,10 +700,11 @@ form.login-form .MuiInputBase-root {
     text-align: center;
     outline: none;
     border: none;
+    margin-right: 1rem;
 }
 
 .cancelStep:hover {
-    background-color: #00939b;
+    background-color: #242424;
     text-decoration: none;
     color: white;
     text-align: center;
@@ -707,9 +712,32 @@ form.login-form .MuiInputBase-root {
     border: none;
 }
 
+.otherCommand {
+    padding: 0.5rem 1rem;
+    border: 1px solid #3c3c3c;
+    background-color: transparent;
+    color: #3c3c3c;
+    @include boxShadow;
+    margin-right: 2rem;
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    margin-right: 1rem;
+}
+
+.otherCommand:hover,
+.otherCommand:focus {
+    border: 1px solid#02c6d0;
+    color: #02c6d0;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+}
+
 .nextStep {
     padding: 0.5rem 1rem;
-    background-color: #3c3c3c;
+    background-color: #02c6d0;
     color: white;
     @include boxShadow;
     border-radius: 5px;
@@ -719,7 +747,7 @@ form.login-form .MuiInputBase-root {
 }
 
 .nextStep:hover {
-    background-color: #242424;
+    background-color: #00939b;
     text-decoration: none;
     color: white;
     text-align: center;
