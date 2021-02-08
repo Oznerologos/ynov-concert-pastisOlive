@@ -13,6 +13,7 @@ import SeatsBookingContext from './SeatsBookingContext';
 import StepPaiement from './StepPaiement';
 import StepConfirmation from './StepConfirmation';
 import { NavLink, useLocation } from 'react-router-dom';
+import ConcertContext from './ConcertContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -125,6 +126,10 @@ export default function HorizontalLinearStepper() {
     })
   }, [refreshKey]);
 
+  const contextConcert = useContext(ConcertContext);
+
+  contextConcert.setConcert(data);
+
   return (
     <div className={classes.root}>
       <Stepper activeStep={context.activeStep} className="titleCont">
@@ -158,10 +163,10 @@ export default function HorizontalLinearStepper() {
         ) : (*/}
       <div className="stepBody">
         <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
-        <div>
+        {/* <div>
           <NavLink exact to={"/Concert?artist=" + data.artist} onClick={handleBack} className="cancelStep">
             ANNULER
-              </NavLink>
+          </NavLink>
           {isStepOptional(context.activeStep) && (
             <Button
               variant="contained"
@@ -181,7 +186,7 @@ export default function HorizontalLinearStepper() {
           >
             {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
           </Button>
-        </div>
+        </div> */}
       </div>
           )
     </div>

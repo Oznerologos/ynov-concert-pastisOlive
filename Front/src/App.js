@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -22,11 +22,12 @@ import Concert from './pages/Concert';
 import CGU from './pages/CGU';
 import SeatsBookingContext from './components/SeatsBookingContext';
 import MentionsLegales from './pages/MentionsLegales';
+import ConcertContext from './components/ConcertContext';
 
 AuthApi.init();
 
 const App = () => {
-  const[isAuth, setIsAuth] = useState(AuthApi.isAuth());
+  const [isAuth, setIsAuth] = useState(AuthApi.isAuth());
 
   const [seats, setSeats] = useState([]);
   const [prices, setPrices] = useState(0);
@@ -35,45 +36,51 @@ const App = () => {
   const [purchases, setPurchases] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [bookingDetails, setBookingDetails] = useState({
-    bookings:[]
+    bookings: []
   })
   const [cityFilter, setCityFilter] = useState(0);
   const [styleFilter, setStyleFilter] = useState(0);
   const [dateDebutFilter, setDateDebutFilter] = useState('');
   const [dateFinFilter, setDateFinFilter] = useState('');
 
-  const contextVal = {seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep, bookingDetails, setBookingDetails,cityFilter, setCityFilter,styleFilter, setStyleFilter,dateDebutFilter, setDateDebutFilter,dateFinFilter, setDateFinFilter}
+  const contextVal = { seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep, bookingDetails, setBookingDetails, cityFilter, setCityFilter, styleFilter, setStyleFilter, dateDebutFilter, setDateDebutFilter, dateFinFilter, setDateFinFilter }
 
   const contextValue = {
-      isAuth,
-      setIsAuth
+    isAuth,
+    setIsAuth
   }
+
+  const [concert, setConcert] = useState([]);
+
+  const contextConcert = { concert, setConcert };
 
   return (
     <AuthContext.Provider value={contextValue}>
-      <SeatsBookingContext.Provider value={contextVal}>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/Contact" component={Contact}/>
-          <Route path="/FAQ" component={FAQ}/>
-          <Route path="/MentionsLegales" component={MentionsLegales}/>
-          <Route path="/RestaurationPresentation" component={RestaurationPresentation}/>
-          <Route path="/RestaurationReservation" component={RestaurationReservation}/>
-          <Route path="/ConcertReservation" component={ConcertReservation}/>
-          <Route path="/Programmation" component={Programmation}/>
-          <Route path="/PrivatisationPresentation" component={P_presentation}/>
-          <Route path="/From_re" component={From_re}/>
-          <Route path="/Concert" component={Concert}/>
-          <Route path="/CGU" component={CGU}/>
-          <Route path="/Login" component={Login}/>
-          <Route path="/FakePage" component={FakePage}/>
-          <Route path="/Inscription" component={Inscription}/>
-          <Route path="/AjoutConcerts" component={AjoutConcerts}/>
-          <Route component={NotFound}/>
-        </Switch>
-      </BrowserRouter>
-      </SeatsBookingContext.Provider>
+      <ConcertContext.Provider value={contextConcert}>
+        <SeatsBookingContext.Provider value={contextVal}>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/Contact" component={Contact} />
+              <Route path="/FAQ" component={FAQ} />
+              <Route path="/MentionsLegales" component={MentionsLegales} />
+              <Route path="/RestaurationPresentation" component={RestaurationPresentation} />
+              <Route path="/RestaurationReservation" component={RestaurationReservation} />
+              <Route path="/ConcertReservation" component={ConcertReservation} />
+              <Route path="/Programmation" component={Programmation} />
+              <Route path="/PrivatisationPresentation" component={P_presentation} />
+              <Route path="/From_re" component={From_re} />
+              <Route path="/Concert" component={Concert} />
+              <Route path="/CGU" component={CGU} />
+              <Route path="/Login" component={Login} />
+              <Route path="/FakePage" component={FakePage} />
+              <Route path="/Inscription" component={Inscription} />
+              <Route path="/AjoutConcerts" component={AjoutConcerts} />
+              <Route component={NotFound} />
+            </Switch>
+          </BrowserRouter>
+        </SeatsBookingContext.Provider>
+      </ConcertContext.Provider>
     </AuthContext.Provider>
   );
 };
