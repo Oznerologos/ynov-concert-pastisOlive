@@ -106,13 +106,24 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="concert_show", methods={"GET"})
+     * @Route("/{id}", name="concert_show", methods={"GET"})
      */
-    public function show(Concert $concert): Response
+    public function show(ConcertRepository $concertRepository, $id): Response
     {
-        return $this->render('concert/show.html.twig', [
-            'concert' => $concert,
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($concertRepository->find($id), 'json', ['groups' => ['concert', 'concertRoom']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**
