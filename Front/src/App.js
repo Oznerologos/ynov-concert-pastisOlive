@@ -37,8 +37,12 @@ const App = () => {
   const [bookingDetails, setBookingDetails] = useState({
     bookings:[]
   })
+  const [cityFilter, setCityFilter] = useState(0);
+  const [styleFilter, setStyleFilter] = useState(0);
+  const [dateDebutFilter, setDateDebutFilter] = useState('');
+  const [dateFinFilter, setDateFinFilter] = useState('');
 
-  const contextVal = {seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep, bookingDetails, setBookingDetails}
+  const contextVal = {seats, setSeats, prices, setPrices, deliveryPrice, setDeliveryPrice, deliveryMode, setDeliveryMode, purchases, setPurchases, activeStep, setActiveStep, bookingDetails, setBookingDetails,cityFilter, setCityFilter,styleFilter, setStyleFilter,dateDebutFilter, setDateDebutFilter,dateFinFilter, setDateFinFilter}
 
   const contextValue = {
       isAuth,

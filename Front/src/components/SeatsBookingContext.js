@@ -13,5 +13,6 @@ export default React.createContext({
     setPurchases: () => {},
     activeStep:'',
     setActiveStep: () => {},
-
+    cityFilter:'',
+    setCityFilter: () => {},
 });

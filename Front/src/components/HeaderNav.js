@@ -25,6 +25,10 @@ class HeaderNav extends React.Component {
          this.setState({ isOpen: false })
       }
 
+      setCityFilter(){
+        this.context.setCityFilter(this.props.id); // Persistance filtre ville        
+      }
+
 render() {
 
     let cart;
@@ -49,6 +53,29 @@ render() {
                     <div className="linksCont">
                     <div className="navContainer">
                     <NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>
+                    <NavDropdown title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
+                        <LinkContainer to="/Programmation" id={1} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/Programmation" id={2} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Aix-en-Provence</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/Programmation" id={3} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Bourges</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/Programmation" id={4} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Cannes</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/Programmation" id={5} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Dunkerque</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/Programmation" id={6} onClick={() => this.setCityFilter()}>
+                            <NavDropdown.Item>Echirolles</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to="/FakePage">
+                            <NavDropdown.Item id="">Comment réserver?</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
 
                     <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
                         <LinkContainer to="/RestaurationPresentation">

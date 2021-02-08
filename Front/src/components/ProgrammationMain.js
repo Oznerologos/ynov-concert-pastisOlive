@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DateFnsUtils from '@date-io/date-fns';
@@ -9,11 +9,13 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import SeatsBookingContext from '../components/SeatsBookingContext';
 
-export default function ProgrammationMain() {
+const ProgrammationMain = ({city, style, datedebut, datefin}) => {
 
     const [cities, setCities] = useState('tous');
     const [refreshKey, setRefreshKey] = useState(0);
+    const context = useContext(SeatsBookingContext);
 
     const getSalles = async () => {
         let result = await axios(
@@ -38,6 +40,47 @@ export default function ProgrammationMain() {
         const handleChange = (event) => {
             setCategories({ ...categories, [event.target.name]: event.target.checked });
         };*/
+
+        const [cityButton, setCityButton] = useState([
+            {
+                id: 1,
+                name: "tous",
+                label: "TOUS",
+            },
+            {
+              id: 2,
+              name: "Aix",
+              label: "AIX-EN-PROVENCE",
+            },
+            {
+                id: 3,
+                name: "Bourges",
+                label: "BOURGES",
+            },
+            {
+                id: 4,
+                name: "Cannes",
+                label: "CANNES",
+            },
+            {
+                id: 5,
+                name: "Dunkerque",
+                label: "DUNKERQUE",
+            },
+            {
+                id: 6,
+                name: "Echirolles",
+                label: "ECHIROLLES",
+            }
+        ]);
+    
+    //const cityPersistance = JSON.parse(localStorage.getItem("cityFilter"));
+    //console.log(cityPersistance);
+    const stylePersistance = JSON.parse(localStorage.getItem("styleFilter"));
+    const [activeButton, setActiveButton] = useState(city);//cityPersistance));
+    console.log(activeButton);
+    console.log(context.cityFilter);
+    const [activeRadio, setActiveRadio] = useState(parseInt(stylePersistance));
 
     const today = new Date;
     const inTenDays = new Date(today.getTime() + 86400000 * 10);
@@ -78,8 +121,11 @@ export default function ProgrammationMain() {
     const activeBtn = (event) => {
         setCities(event.currentTarget.name);
         console.log(cities);
+        setActiveButton(event.currentTarget.id.substring(6));
+        localStorage.setItem("cityFilter", JSON.stringify(event.currentTarget.id.substring(6))); // Persistance filtre ville
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
+
     }
 
     function dateConvert(date) {
@@ -182,12 +228,18 @@ export default function ProgrammationMain() {
             </div>
             <div id="filtresContainer">
                 <div id="cityContainer">
+                    {cityButton.map((element, index) => {
+                        return (
+                            <Button key={index} id={`button${element.id}`} className={activeButton == element.id ? "cityFilter actif" : "cityFilter"} name={element.name} onClick={activeBtn}>{element.label}</Button>
+                        )
+                    })}
+                    {/*
                     <Button className="cityFilter" name="tous" onClick={activeBtn} autoFocus>TOUS</Button>
                     <Button className="cityFilter" name="Aix" onClick={activeBtn}>AIX-EN-PROVENCE</Button>
                     <Button className="cityFilter" name="Bourges" onClick={activeBtn}>BOURGES</Button>
                     <Button className="cityFilter" name="Cannes" onClick={activeBtn}>CANNES</Button>
                     <Button className="cityFilter" name="Dunkerque" onClick={activeBtn}>DUNKERQUE</Button>
-                    <Button className="cityFilter" name="Echirolles" onClick={activeBtn}>ECHIROLLES</Button>
+                    <Button className="cityFilter" name="Echirolles" onClick={activeBtn}>ECHIROLLES</Button>*/}
                 </div>
                 <div id="categoriesContainer">
                     <FormControl component="fieldset">
@@ -259,3 +311,5 @@ export default function ProgrammationMain() {
 
         </main>);
 }
+
+export default ProgrammationMain;
