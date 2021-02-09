@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import affiche from '../media/img/affiche-rammstein.jpg'
 import GoogleMap from './GoogleMap';
 import PlanSalle from './PlanSalle';
 import Radio from '@material-ui/core/Radio';
@@ -12,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ConcertContext from './ConcertContext';
 
-export default function StepReservation() {
+const StepReservation = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -34,7 +33,7 @@ export default function StepReservation() {
     localStorage.setItem("reactContext", JSON.stringify(context.seats)); // Persistance sur panier d'achat
     context.setActiveStep(1);
   }
-
+/*
   function dateConvert(date) {
     date = date.toString();
     date = date.split('T');
@@ -43,8 +42,8 @@ export default function StepReservation() {
       date[i] = parseInt(date[i]);
     }
     return date;
-  }
-
+  }*/
+/*
   const concert = () => {
     if (contextConcert.concert != [] && contextConcert.concert != "" && contextConcert.concert != null && contextConcert.concert != undefined) {
       let dateTest = dateConvert(contextConcert.concert["time"]);
@@ -57,7 +56,7 @@ export default function StepReservation() {
     }
   }
 
-  concert();
+  concert();*/
 
   return (
 
@@ -66,10 +65,11 @@ export default function StepReservation() {
         <Row lg={12}>
           <Col lg={4} className="verticalCol">
             <h3>{contextConcert.concert ? contextConcert.concert.artist : ""}</h3>
-            <img src={affiche} alt="affiche-artiste" width="300px" className="afficheConcert" />
+            
+            <img src={`affiches/${contextConcert.concert.artistImg}`} alt="affiche-artiste" width="300px" className="afficheConcert" />
           </Col>
           <Col lg={4} className="verticalCol">
-            <p>{contextConcert.concert ? contextConcert.concert.time : ""}</p>
+            <p>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</p>
             <p>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</p>
             <p>{contextConcert.concert ? contextConcert.concert.musicType : ""}</p>
           </Col>
@@ -146,3 +146,5 @@ export default function StepReservation() {
 
   );
 }
+
+export default StepReservation

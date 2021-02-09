@@ -12,7 +12,7 @@ import UserContext from './UserContext';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-export default function StepPaiement() {
+const StepPaiement = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -42,6 +42,8 @@ export default function StepPaiement() {
         axios.post("https://localhost:8000/reservation/new").then(response => console.log(response))
       );
   }
+
+  const alert = useAlert();
 
   const [loader, setLoader] = useState(false);
 
@@ -85,7 +87,7 @@ export default function StepPaiement() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                 </tr>
@@ -156,7 +158,18 @@ export default function StepPaiement() {
         </div>
         <div id="stepperButtonsCont">
 
-          <Button className="cancelStep">ANNULER</Button>
+          <Button onClick={() => {
+          alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
+            title: "ATTENTION",
+            closeCopy: "NON",
+            actions: [
+              {
+                copy: "OUI",
+                onClick: () => {context.setActiveStep(1)}
+              },
+            ]
+          });
+        }} className="cancelStep">ANNULER</Button>
           <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
         </div>
       </div>
@@ -174,3 +187,5 @@ export default function StepPaiement() {
 
   );
 }
+
+export default StepPaiement

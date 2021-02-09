@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import CarouselConcert from './CarouselConcert';
-import affiche from '../media/img/affiche-rammstein.jpg';
 import ReactPlayer from 'react-player';
 
 export default function ConcertMain() {

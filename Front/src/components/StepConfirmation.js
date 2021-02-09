@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
 import UserContext from './UserContext';
 
-export default function StepConfirmation() {
+const StepConfirmation = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -52,7 +52,7 @@ export default function StepConfirmation() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                 </tr>
@@ -84,3 +84,5 @@ export default function StepConfirmation() {
 
   );
 }
+
+export default StepConfirmation

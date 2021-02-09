@@ -52,7 +52,7 @@ onClick(){
    
     const prices = this.context.prices;
     const purch = this.context.purchases;
-    this.state.seat = GreenSeat;
+    this.setState({seat: GreenSeat});
 
     if(this.state.selected === 0/*false*/) {
         this.context.setSeats([...this.context.seats, {id:this.props.id, price: this.props.price}]);
