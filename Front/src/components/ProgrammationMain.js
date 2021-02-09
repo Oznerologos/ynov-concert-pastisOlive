@@ -179,36 +179,36 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
 
         for (let i = 0; i < data.length; i++) {
 
-            let dateTest = dateConvert(data[i]["date"]);
+            let dateTest = dateConvert(data[i]["time"]);
             const dateCheck = new Date(dateTest[0], dateTest[1] - 1, dateTest[2]);
             let inRange = dateCheck >= a && dateCheck <= b;
             if ((categorie != "Toutes") && (cities != "tous")) {
                 if ((inRange === true) && (categorie == data[i]["musicType"]) && (cities == data[i]["concertRoom"]["name"])) {
-                    let sub = data[i]["date"].substring(11, 16);
+                    let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
-                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
             } else if ((categorie != "Toutes") && (cities == "tous")) {
                 if ((inRange === true) && (categorie == data[i]["musicType"])) {
-                    let sub = data[i]["date"].substring(11, 16);
+                    let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
-                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
 
             } else if ((categorie == "Toutes") && (cities != "tous")) {
                 if ((inRange === true) && (cities == data[i]["concertRoom"]["name"])) {
-                    let sub = data[i]["date"].substring(11, 16);
+                    let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
-                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
             } else {
                 if (inRange === true) {
-                    let sub = data[i]["date"].substring(11, 16);
+                    let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
-                    data[i]["date"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+                    data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
             }
@@ -299,7 +299,7 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
                         <div className="detailConcert">
                             <p className="bold">{element.artist}</p>
                             <p>Tournée {element.name}</p>
-                            <p>{element.date}</p>
+                            <p>{element.time}</p>
                             <p>à {element.concertRoom["name"]}</p>
                             <p>Catégorie: {element.musicType}</p>
                             <p>Tarifs: de {findMinPrice(element.maxPrice, element.concertRoom["placeNumber"])}€ à {element.maxPrice}€</p>
