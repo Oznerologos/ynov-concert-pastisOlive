@@ -7,6 +7,10 @@ import { NavLink } from 'react-router-dom';
 
   const context = useContext(SeatsBookingContext);
 
+  const resetSeats = () => {
+    context.setSeats([]);
+  }
+
   return (
 
     <section id="sectionConfirmation">
@@ -66,8 +70,8 @@ import { NavLink } from 'react-router-dom';
       </div>
 
       <div id="btnContainer">
-      <NavLink exact to="/Programmation" className="cancelStep">FAIRE UNE AUTRE COMMANDE</NavLink>
-      <NavLink exact to="/" className="nextStep">RETOUR A LA PAGE D'ACCUEIL</NavLink>
+      <NavLink exact to="/Programmation" className="cancelStep" onClick={resetSeats}>FAIRE UNE AUTRE COMMANDE</NavLink>
+      <NavLink exact to="/" className="nextStep" onClick={resetSeats}>RETOUR A LA PAGE D'ACCUEIL</NavLink>
       </div>
     
     </section>

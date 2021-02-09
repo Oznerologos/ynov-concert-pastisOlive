@@ -22,7 +22,6 @@ import { NavLink } from 'react-router-dom';
       context.setActiveStep(4);
     }, 2000);
     // Réinitialisation panier d'achat
-    context.setSeats([]);
     context.setPurchases(0);
     localStorage.removeItem("itemsPanier");
     localStorage.removeItem("reactContext");
