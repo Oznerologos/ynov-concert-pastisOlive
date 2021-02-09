@@ -182,38 +182,23 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
             let dateTest = dateConvert(data[i]["time"]);
             const dateCheck = new Date(dateTest[0], dateTest[1] - 1, dateTest[2]);
             let inRange = dateCheck >= a && dateCheck <= b;
-<<<<<<< HEAD
-            if ((categorie != "Toutes") && (cities != "tous")) {
-                if ((inRange === true) && (categorie == data[i]["musicType"]) && (cities == data[i]["concertRoom"]["name"])) {
-=======
             if ((categorie !== "Toutes") && (cities !== "tous")) {
                 if ((inRange === true) && (categorie === data[i]["musicType"]) && (cities === data[i]["concertRoom"]["name"])) {
->>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
-<<<<<<< HEAD
-            } else if ((categorie != "Toutes") && (cities == "tous")) {
-                if ((inRange === true) && (categorie == data[i]["musicType"])) {
-=======
             } else if ((categorie !== "Toutes") && (cities === "tous")) {
                 if ((inRange === true) && (categorie === data[i]["musicType"])) {
->>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
 
-<<<<<<< HEAD
-            } else if ((categorie == "Toutes") && (cities != "tous")) {
-                if ((inRange === true) && (cities == data[i]["concertRoom"]["name"])) {
-=======
             } else if ((categorie === "Toutes") && (cities !== "tous")) {
                 if ((inRange === true) && (cities === data[i]["concertRoom"]["name"])) {
->>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
