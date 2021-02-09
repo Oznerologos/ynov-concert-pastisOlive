@@ -11,8 +11,9 @@ import ConcertContext from './ConcertContext';
 import UserContext from './UserContext';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { useAlert } from "react-alert";
 
-const StepPaiement = ({method}) => {
+const StepPaiement = ({ method }) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -159,17 +160,17 @@ const StepPaiement = ({method}) => {
         <div id="stepperButtonsCont">
 
           <Button onClick={() => {
-          alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
-            title: "ATTENTION",
-            closeCopy: "NON",
-            actions: [
-              {
-                copy: "OUI",
-                onClick: () => {context.setActiveStep(1)}
-              },
-            ]
-          });
-        }} className="cancelStep">ANNULER</Button>
+            alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
+              title: "ATTENTION",
+              closeCopy: "NON",
+              actions: [
+                {
+                  copy: "OUI",
+                  onClick: () => { context.setActiveStep(1) }
+                },
+              ]
+            });
+          }} className="cancelStep">ANNULER</Button>
           <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
         </div>
       </div>

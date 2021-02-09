@@ -40,7 +40,7 @@ setValue(event.target.value);
   const context = useContext(SeatsBookingContext);
   const contextUser = useContext(UserContext);
 
-  const [refreshKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const decrypt = async () => {
     const token = window.localStorage.getItem('authToken');
@@ -167,7 +167,7 @@ setValue(event.target.value);
       await AuthApi.auth(credentials);
       setError("");
       setIsAuth(true);
-      refreshKey.setState(1);
+      setRefreshKey(1);
     } catch (errorRequest) {
       setError('error de login');
       console.log(errorRequest);
