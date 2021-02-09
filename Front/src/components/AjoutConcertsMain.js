@@ -104,6 +104,7 @@ class AjoutConcertsMain extends React.Component {
                         <input type="time" name="timeOpen" id="" onChange={this.handleChangeTimeOpen} /><br />
                         <label htmlFor="">Lieu (ville) :</label>
                         <select id="pet-select" onChange={this.handleChangeVille}>
+                            <option>---</option>
                             <option value="1">Aix</option>
                             <option value="2">Bourges</option>
                             <option value="3">Cannes</option>
@@ -112,6 +113,7 @@ class AjoutConcertsMain extends React.Component {
                         </select><br />
                         <label htmlFor="">category</label>
                         <select name="category" id="" onChange={this.handleChangeCategory}>
+                            <option>---</option>
                             <option value="Pop">Pop</option>
                             <option value="Rock">Rock</option>
                             <option value="Electro">Electro</option>
