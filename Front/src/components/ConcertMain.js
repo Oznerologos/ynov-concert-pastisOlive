@@ -4,8 +4,6 @@ import axios from 'axios';
 import CarouselConcert from './CarouselConcert';
 import affiche from '../media/img/affiche-rammstein.jpg';
 import ReactPlayer from 'react-player';
-import SliderConcertContext from './SliderConcertContext';
-import Carousel from 'react-bootstrap/Carousel'
 
 export default function ConcertMain() {
     const [refreshKey] = useState(0);
@@ -29,7 +27,7 @@ export default function ConcertMain() {
     const [data, setData] = React.useState([]);
 
     React.useEffect(() => {
-        if (paramArtist != "") {
+        if (paramArtist !== "") {
             getConcerts().then(res => {
                 setData(res.data)
             })
@@ -55,7 +53,7 @@ export default function ConcertMain() {
     const concerts = () => {
         let resultConcerts = [];
 
-        if (data[0] != undefined) {
+        if (data[0] !== undefined) {
             for (let i = 0; i < data.length; i++) {
                 let date = dateConvert(data[i]["date"]);
 
@@ -87,7 +85,7 @@ export default function ConcertMain() {
         //<SliderConcertContext.Provider value={contextConcert}>
         <main id="concert">
             <div id="topArtist">
-                <img src={affiche} alt="affiche-concert" height={300} />
+                <img src={data[0] ? `/affiches/${data[0].artistImg}` : ""} alt="affiche-concert" height={300} />
                 <ul>
                     <li className="bold">{data[0] ? data[0].artist : ""}</li>
                     <li>{data[0] ? data[0].name : ""}</li>
@@ -157,7 +155,7 @@ export default function ConcertMain() {
 
             <div id="sliderContainer">
                 <h3>A NE PAS MANQUER</h3>
-                <CarouselConcert />
+                <CarouselConcert dataid={data[0] ? data[0].id : ""}/>
             </div>
 
         </main>)

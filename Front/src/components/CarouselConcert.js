@@ -1,13 +1,9 @@
-import React, {useState, useContext} from 'react'; 
+import React from 'react'; 
 import Carousel from 'react-bootstrap/Carousel'
-import mask from '../media/img/mask.png'; 
-import affiche from '../media/img/affiche-rammstein.jpg'
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
-import SliderConcertContext from './SliderConcertContext';
 
-const CarouselConcert = () => { 
+const CarouselConcert = ({dataid}) => { 
 
     //const [refreshKey, setRefreshKey] = useState(0);
     //const context = useContext(SliderConcertContext);
@@ -32,15 +28,19 @@ const CarouselConcert = () => {
         }, []);
 
         const generateCards = () => {
-            if(data[0] != "undefined"){
+
+            if(data[0] !== "undefined"){
+
+                const dataReworked = data.filter( el => el.id !== dataid );
+
             let resultTab = [];
-            let modulo = data.length % 4;
-            let nbArrays = (data.length - modulo) / 4;
+            let modulo = dataReworked.length % 4;
+            let nbArrays = (dataReworked.length - modulo) / 4;
 
             for(let i = 0; i < nbArrays; i++){
-                resultTab.push(data.slice(i, i+4));
+                resultTab.push(dataReworked.slice(i, i+4));
             }
-            resultTab.push(data.slice(nbArrays * 4));
+            resultTab.push(dataReworked.slice(nbArrays * 4));
             return resultTab;
         }
         }
@@ -86,12 +86,12 @@ const CarouselConcert = () => {
                     return(
                     <div className="ConcertSliderCont" key={index}>
                         <div className="afficheContainer">
-                            <img src={`./media/img/${element.artistImg}`} alt={`Affiche ${element.artist}`} height={150} />
+                            <div style={{ backgroundImage: `URL(/affiches/${element.artistImg})` }}></div>
                         </div>
                         <div className="detailsConcert">
                             <p className="bold">{element.artist}</p>
                             <p>Tournée {element.name}</p>
-                            <p>{convertDate(element.date)}</p>
+                            <p>{convertDate(element.time)}</p>
                             <p>à {element.concertRoom["name"]}</p>
                             <p>Catégorie: {element.musicType}</p>
                             <p>Tarifs: de {findMinPrice(element.maxPrice, element.concertRoom["placeNumber"])}€ à {element.maxPrice}€</p>

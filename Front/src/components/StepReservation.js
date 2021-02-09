@@ -84,14 +84,14 @@ export default function StepReservation() {
         <div id="scene">
           <h4>scène</h4>
         </div>
-        <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={null} viewonly={"false"} />
+        <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={null} viewonly={0}/>
       </div>
 
       <div id="ordersRecap">
         <p>Nombre de places choisies:</p>
 
         {context.seats.map((key, index) => {
-          return <div className="resaLine">
+          return <div className="resaLine" key={index}>
             <p className="indexRecap">{index + 1}.</p>
             <p className="recap">Place {key.id.slice(1)}, Rang {key.id.slice(0, 1)}</p>
             <p>{key.price}</p>

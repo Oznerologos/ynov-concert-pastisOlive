@@ -118,7 +118,7 @@
 
 #concertsContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     width: 100%;
@@ -145,6 +145,11 @@
     padding: 0.5rem;
     color: #3c3c3c;
     margin-bottom: 1rem;
+    margin-right: calc(4% / 3);
+}
+
+.concertCard:nth-child(4n) {
+    margin-right: 0;
 }
 
 .concertCard p {

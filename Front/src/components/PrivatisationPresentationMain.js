@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import { NavLink } from 'react-router-dom';
  
 const images = [
   {
@@ -35,16 +36,16 @@ class Privatisation_presentation  extends React.Component{
                     </div>
                </section>
                <section>
-                   <article class="section_desc">
+                   <article className="section_desc">
                        <p>Vous avez toujours rêvé d'organiser des évènements dans l'un de nos lieux mythiques ? Nous vous mettons à <br/>
                             disposition l'une de nos salles pour réaliser vos évènements privés ! 
                         </p>
                    </article>
-                   <article class="section_desc desca">
+                   <article className="section_desc desca">
                        <p>Pour réserver l'une de nos salles, cliquez sur le bouton ci-dessous et remplissez ce formulaire de pré-réservation.<br/>
                             Nous vous rappellerons afin d'échanger sur votre projet.</p>
                    </article>
-                   <a class="section_desc"><button class="btn_pre">PRÉ-RÉSERVER</button></a>
+                   <NavLink exact to="/FakePage" className="section_desc">PRÉ-RÉSERVER</NavLink>
                 </section>
             </div>
         );

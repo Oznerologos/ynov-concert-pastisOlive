@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png';
 import SeatsBookingContext from './SeatsBookingContext';
+import { HashLink as Link } from 'react-router-hash-link';
 
 class HeaderNav extends React.Component {
 
@@ -33,9 +34,13 @@ render() {
 
     let cart;
     let linkCart;
+    const contArray = this.context.seats;
 
     const persistantIconeContext = JSON.parse(localStorage.getItem("itemsPanier"));
-    if(persistantIconeContext !== null){
+    if((contArray.length > 0) && (contArray !== null)){
+        cart = <p>{contArray.length}</p>;
+        linkCart =  <NavLink exact to="/ConcertReservation" onClick={() => this.context.setActiveStep(1)} className="purchase"><i className="fas fa-shopping-basket"></i>{cart}</NavLink>
+    } else if(persistantIconeContext !== null){
         cart = <p>{persistantIconeContext}</p>;
         linkCart =  <NavLink exact to="/ConcertReservation" onClick={() => this.context.setActiveStep(1)} className="purchase"><i className="fas fa-shopping-basket"></i>{cart}</NavLink>
     } else {
@@ -45,34 +50,34 @@ render() {
     return(
 
         <Navbar bg="dark" expand="lg" sticky="top">
-                    <NavLink to="/" className="navbar-brand-link">
+                    <Link exact to="/#topAnchor" className="navbar-brand-link">
                         <Navbar.Brand>
                             <img src={Logo} width="180px" alt="logo"/>
                         </Navbar.Brand>
-                    </NavLink>
+                    </Link>
                     <div className="linksCont">
                     <div className="navContainer">
-                    <NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>
+                    {/*<NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>*/}
                     <NavDropdown title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/Programmation" id={1} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={1} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/Programmation" id={2} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={2} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Aix-en-Provence</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/Programmation" id={3} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={3} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Bourges</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/Programmation" id={4} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={4} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Cannes</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/Programmation" id={5} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={5} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Dunkerque</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/Programmation" id={6} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation#programmationAnchor" id={6} onClick={() => this.setCityFilter()}>
                             <NavDropdown.Item>Echirolles</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/FakePage">
+                        <LinkContainer exact to="/FakePage">
                             <NavDropdown.Item id="">Comment réserver?</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
@@ -107,15 +112,15 @@ render() {
                     <NavLink exact to="/fakePage" className="majorLink">ACTUALITÉS</NavLink>
 
                 <NavDropdown title="INFOS PRATIQUES" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer exact to="/fakePage">
                             <NavDropdown.Item>Comment venir ?</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/FAQ">
+                        <LinkContainer exact to="/FAQ">
                             <NavDropdown.Item>FAQ</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
 
-                <NavLink exact to="/Contact" className="majorLink">CONTACT</NavLink>
+                <Link exact to="/Contact#contactAnchor" className="majorLink">CONTACT</Link>
 </div>
                     
 

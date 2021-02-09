@@ -12,7 +12,7 @@ localStorage.setItem("cityFilter", JSON.stringify(context.cityFilter)); // Persi
 localStorage.setItem("styleFilter", JSON.stringify(1)); // Persistance filtre style
 
     return (
-        <div>
+        <div id="programmationAnchor">
              <HeaderNav/>              
                 <ProgrammationMain city={context.cityFilter} style={context.styleFilter} datedebut={context.dateDebutFilter} datefin={context.dateFinFilter}/>
             <FooterNav/>

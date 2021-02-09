@@ -12,13 +12,12 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { NavLink } from 'react-router-dom';
   
   export default function StepCoordonnees() {
 
     const [hideStep, setHideStep] = useState(0);
 
-        {/*
+        /*
     const [value, setValue] = React.useState('female');
 
 
@@ -31,7 +30,7 @@ import { NavLink } from 'react-router-dom';
 
     const handleChange = (event) => {
       setValue(event.target.value);
-    };*/}
+    };*/
 
     const context = useContext(SeatsBookingContext);
 
@@ -116,7 +115,7 @@ import { NavLink } from 'react-router-dom';
           </FormControl>
           </form>
           <Button className="nextStep" onClick={() => setHideStep(1)}>VALIDER</Button>
-          <a href="#">Mot de passe oublié</a>
+          <a href="/FakePage">Mot de passe oublié</a>
         </div>
   
         <div id="registration">

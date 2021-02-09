@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import FooterNav from '../components/FooterNav';
 import HeaderNav from '../components/HeaderNav';
 import CarouselActu from '../components/CarouselActu';
-import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
-import affiche from '../media/img/affiche-rammstein.jpg';
 import salleConcert from '../media/img/salle-concert.jpg';
 import axios from 'axios';
 
@@ -56,13 +54,13 @@ const Home = () => {
 
         return date;
     }
-
+/*
     const findMinPrice = (maxPrice, nbPlaces) => {
         const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
         const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
         return minPrice;
     }
-/*
+
     const concerts = () => {
         let resultConcerts = [];
 
@@ -100,10 +98,10 @@ const Home = () => {
    // const info = concerts();
 
     return (
-        <div>
+        <div id="topAnchor">
             <HeaderNav />
             <main id="homeMain">
-                <CarouselActu></CarouselActu>
+                <CarouselActu data={data} render={dateConvert}></CarouselActu>
                 <section id="homeSection">
                     <div id="homeSectionCont">
                         <h3>PROCHAINEMENT DANS NOS SALLES</h3>
@@ -113,14 +111,14 @@ const Home = () => {
                                     (data.map((element, index) => {
                                         return <NavLink exact to={"/concert?artist=" + element.artist} key={index} className="cardProgrammation">
                                             <div className="programmationHomePicture">
-                                                <img src={affiche} width={150} alt="" />
+                                                <div style={{ backgroundImage: `URL(/affiches/${element.artistImg})` }}></div>
                                             </div>
                                             <div className="programmationDetail">
                                                 <p>{element.artist}</p>
                                                 <p>{dateConvert(element.time)} </p>
                                                 <p>{element.concertRoom.name}</p>
                                                 <p>{element.musicType}</p>
-                                                <NavLink exact to="/Programmation" className="cardBtn">Réserver</NavLink>
+                                                <p to="/Programmation" className="cardBtn">Réserver</p>
                                             </div>
                                         </NavLink>
                                     })) : (<p>Chargement</p>)
@@ -135,12 +133,13 @@ const Home = () => {
                                     (dataNews.map((element, index) => {
                                         return <NavLink exact to="/fakePage" key={index} className="cardActu">
                                             <div className="actualitePicture">
-                                                <img src={affiche} height={150} alt="" />
+                                                <div style={{ backgroundImage: `URL(https://picsum.photos/320/150?img=${index})` }}></div>
+                                                {/*<img src={`https://picsum.photos/1000/1000?img=${index}`} height={150} alt="" />*/}
                                             </div>
                                             <div className="actualiteDetail">
                                                 <p>{element.title}</p>
                                                 <p>{element.content}</p>
-                                                <NavLink exact to="/fakePage" className="cardBtn">En savoir plus</NavLink>
+                                                <p to="/fakePage" className="cardBtn">En savoir plus</p>
                                             </div>
                                         </NavLink>
 

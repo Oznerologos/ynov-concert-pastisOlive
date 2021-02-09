@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import SeatsBookingContext from './SeatsBookingContext';
-import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
 
@@ -46,7 +45,7 @@ export default function StepConfirmation() {
             </thead>
             <tbody>
               {context.seats.map((key, index) => {
-                return <tr>
+                return <tr key={index}>
                   <td colSpan={2}>{index + 1}</td>
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>

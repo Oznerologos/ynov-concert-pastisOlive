@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from "axios";
 import { Editor } from '@tinymce/tinymce-react';
-import { event } from "jquery";
 
 
 class AjoutConcertsMain extends React.Component {

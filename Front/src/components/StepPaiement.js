@@ -7,7 +7,6 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Loader from './ProgressCircle';
-import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
 
 export default function StepPaiement() {
@@ -51,7 +50,7 @@ export default function StepPaiement() {
             </thead>
             <tbody>
               {context.seats.map((key, index) => {
-                return <tr>
+                return <tr key={index}>
                   <td colSpan={2}>{index + 1}</td>
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
@@ -88,9 +87,9 @@ export default function StepPaiement() {
             <div id="creditCardsContainer">
               <FormControl component="fieldset">
                 <RadioGroup aria-label="bankCard" name="bankCard">
-                  <FormControlLabel value="visa" control={<Radio />} label={<i class="fab fa-cc-visa"></i>} />
-                  <FormControlLabel value="mastercard" control={<Radio />} label={<i class="fab fa-cc-mastercard"></i>} />
-                  <FormControlLabel value="americanexpress" control={<Radio />} label={<i class="fab fa-cc-amex"></i>} />
+                  <FormControlLabel value="visa" control={<Radio />} label={<i className="fab fa-cc-visa"></i>} />
+                  <FormControlLabel value="mastercard" control={<Radio />} label={<i className="fab fa-cc-mastercard"></i>} />
+                  <FormControlLabel value="americanexpress" control={<Radio />} label={<i className="fab fa-cc-amex"></i>} />
                 </RadioGroup>
               </FormControl>
             </div>
@@ -117,7 +116,7 @@ export default function StepPaiement() {
             <FormControl>
               <TextField id="cryptogram" label="Cryptogramme visuel" type="number" variant="filled" InputProps={{
                 inputProps: {
-                  maxlength: 3
+                  maxLength: 3
                 }
               }} />
             </FormControl>

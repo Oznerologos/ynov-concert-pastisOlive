@@ -11,9 +11,13 @@ export default function StepReservation() {
   const contextConcert = useContext(ConcertContext);
 
   const deleteRow = (dataid, dataprice) => {
-    if ((context.seats).length == 1) {
+    console.log("dataid: ", dataid, "dataprice: ", dataprice);
+    console.log(persistantContext);
+    console.log(context.seats);
+    if ((persistantContext).length === 1) {
       context.setPrices(context.prices - parseInt(dataprice));
       context.setSeats(context.seats.filter(item => item.id !== dataid))
+      localStorage.setItem("reactContext", JSON.stringify([]));
       context.setDeliveryMode('');
       context.setDeliveryPrice(0);
       context.setPurchases(null);
@@ -21,6 +25,7 @@ export default function StepReservation() {
       context.setPrices(context.prices - parseInt(dataprice));
       context.setSeats(context.seats.filter(item => item.id !== dataid))
       context.setPurchases(context.purchases - 1);
+      localStorage.setItem("reactContext", JSON.stringify(persistantContext.filter(item => item.id !== dataid)));
     }
 
   }
@@ -45,7 +50,7 @@ export default function StepReservation() {
           <div id="scene">
             <h4>scène</h4>
           </div>
-          <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={persistantContext} viewonly={"true"} />
+          <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={persistantContext} viewonly={1} />
         </div>
         <div className="artistHead">
           <div>
@@ -56,7 +61,7 @@ export default function StepReservation() {
           <div>
             {persistantContext.map((key, index) => {
               return <div className="resaLine">
-                <p>Place {key.id.slice(1)}, Rang {key.id.slice(0, 1)}</p>
+                <p>Place {parseInt(key.id.slice(1))+1}, Rang {key.id.slice(0, 1)}</p>
               </div>
             })
             }
