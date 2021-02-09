@@ -40,15 +40,14 @@ class InVoiceController extends AbstractController
         $serializer = new Serializer($normalizers, $encoders);
 
         $inVoice = new InVoice();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(InVoiceType::class, $inVoice);
 
-        $userDeserialized = $serializer->deserialize($request->getContent(), User::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $user]);
+        $inVoiceDeserialized = $serializer->deserialize($request->getContent(), InVoice::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $inVoice]);
         $entityManager = $this->getDoctrine()->getManager();
-        $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-        $entityManager->persist($user);
+        $entityManager->persist($inVoice);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('in_voice_index');
     }
 
     /**
