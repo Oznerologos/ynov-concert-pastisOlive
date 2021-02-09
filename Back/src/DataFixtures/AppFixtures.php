@@ -426,6 +426,9 @@ class AppFixtures extends Fixture
         $user = new User();
         $user->setMail("test@mail.com");
         $user->setPassword($this->encoder->encodePassword($user,"jesuishashé"));
+        $user->setName("Cabrel");
+        $user->setFirstname("Bobby");
+        $user->setCity("Paris");
         $user->setGender("male");
         $user->setRoles([]);
         $user->setStreet("80 avenue des chartreux");
@@ -438,6 +441,9 @@ class AppFixtures extends Fixture
         $admin = new User();
         $admin->setMail("admin@mail.com");
         $admin->setPassword($this->encoder->encodePassword($admin,"moiaussijesuishashé"));
+        $admin->setName("Craquante");
+        $admin->setFirstname("Micheline");
+        $admin->setCity("Marseille");
         $admin->setGender("male");
         $admin->setRoles(["ROLE_ADMIN"]);
         $admin->setStreet("9 rue des frères Vallon");
@@ -451,7 +457,7 @@ class AppFixtures extends Fixture
         // Invoice (qui est en fait un panier)----------------------------------------------------------------
 
         $invoice = new InVoice();
-        $invoice->setDate(new DateTime());
+        $invoice->setDate("04/26/1968");
         $invoice->setUser($user);
         $manager->persist($invoice);
 

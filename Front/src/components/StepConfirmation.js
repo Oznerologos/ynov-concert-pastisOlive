@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import SeatsBookingContext from './SeatsBookingContext';
 import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
+import UserContext from './UserContext';
 
 const StepConfirmation = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
+  const contextUser = useContext(UserContext);
 
   // context.setSeats([]);
   // context.setPurchases(0);
@@ -20,7 +22,7 @@ const StepConfirmation = ({method}) => {
     <section id="sectionConfirmation">
 
       <div id="panierRecap">
-        <h2>MERCI JEAN-BRYAN POUR VOTRE ACHAT !</h2>
+        <h2>MERCI {contextUser.user.name} POUR VOTRE ACHAT !</h2>
         <p>La référence de cette réservation est le 3008241.</p>
         <p>Vous allez recevoir un e-mail de confirmation.</p>
         {/*<p>Si vous avez choisi pour l'obtention des billets le mode "E-Ticket" vous pouvez le télécharger et
@@ -74,8 +76,8 @@ const StepConfirmation = ({method}) => {
       </div>
 
       <div id="btnContainer">
-      <NavLink exact to="/Programmation" className="cancelStep" onClick={resetSeats}>FAIRE UNE AUTRE COMMANDE</NavLink>
-      <NavLink exact to="/" className="nextStep" onClick={resetSeats}>RETOUR A LA PAGE D'ACCUEIL</NavLink>
+        <NavLink exact to="/Programmation" className="cancelStep" onClick={resetSeats}>FAIRE UNE AUTRE COMMANDE</NavLink>
+        <NavLink exact to="/" className="nextStep" onClick={resetSeats}>RETOUR A LA PAGE D'ACCUEIL</NavLink>
       </div>
 
     </section>

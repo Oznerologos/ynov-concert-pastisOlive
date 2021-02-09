@@ -8,18 +8,47 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Loader from './ProgressCircle';
 import ConcertContext from './ConcertContext';
-import { useAlert } from "react-alert";
+import UserContext from './UserContext';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const StepPaiement = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
+  const contextUser = useContext(UserContext);
+
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let in_voiceDate = new Date().toLocaleDateString();
+  let reference = Math.floor(Math.random() * (
+    999999 - 100000) + 100000);
+  let query = useQuery();
+  let paramId = "";
+  paramId = query.get("id");
+
+  let in_voice = { user: contextUser.user[0], date: in_voiceDate };
+  let reservation = "";
+  let res = "";
+
+  const newReservation = () => {
+    let result = "";
+    result = axios
+      .post("https://localhost:8000/invoice/new", in_voice).then(res =>
+        console.log(res),
+        reservation = { concert_id: paramId, in_voice: res.id, reference: reference, total_price: context.prices, ticket_type: context.deliveryMode, seats: context.seats },
+        axios.post("https://localhost:8000/reservation/new").then(response => console.log(response))
+      );
+  }
 
   const alert = useAlert();
 
   const [loader, setLoader] = useState(false);
 
   const load = () => {
+    newReservation();
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
@@ -36,7 +65,7 @@ const StepPaiement = ({method}) => {
     <section id="sectionStepPanier">
 
       <div id="panierRecap">
-        <h2>BONJOUR JEAN-BRYAN</h2>
+        <h2>BONJOUR {contextUser.user.name}</h2>
         <h3>Récapitulatif de votre panier</h3>
         <div id="tableContainer">
           <table>

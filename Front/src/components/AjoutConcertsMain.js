@@ -18,15 +18,15 @@ class AjoutConcertsMain extends React.Component {
             artist: this.state.artist,
             name: this.state.name,
             date: this.state.date,
-            time: this.state.time,
+            time: this.state.heures,
             timeOpen: this.state.timeOpen,
-            concertRoom: this.state.concertRoom
-            // maxPrice: this.state.maxPrice,
-            // priceRate: this.state.priceRate,
-            // restaurant: this.state.restaurant,
-            // parking: this.state.parking,
-            // artistPres: this.state.artistPres,
-            // musicType:this.state.musicType
+            concertRoom: this.state.concertRoom,
+            maxPrice: this.state.maxPrice,
+            priceRate: this.state.priceRate,
+            restaurant: this.state.restaurant,
+            parking: this.state.parking,
+            artistPres: this.state.artistPres.level.content,
+            musicType:this.state.musicType
         }
 
         console.log(concert);
@@ -60,12 +60,37 @@ class AjoutConcertsMain extends React.Component {
     handleChangeVille = event => {
         this.setState({ concertRoom: event.target.value });
     }
+    handleChangeMaxPrice = event => {
+        this.setState({ maxPrice: event.target.value });
+    }
+    handleChangePriceRate = event => {
+        this.setState({ priceRate: event.target.value });
+    }
+    handleChangeParking = event => {
+        this.setState({ parking: event.target.value });
+    }
+    handleChangeRestaurant = event => {
+        this.setState({ restaurant: event.target.value });
+    }
+
+    handleEditorChange = (content, editor) => {
+        this.setState({ artistPres: content });
+      }
+    handleChangeCategory = event => {
+        this.setState({ musicType: event.target.value });
+    }
+
+
+  
 
     render() {
+
         return (
             <div className="contenaireAjout">
-                <form onSubmit={this.handleSubmit}>
-                    <div>
+                <h1>Ajout Concerts</h1>
+                <div className="froma">
+                <form id="myForm" onSubmit={this.handleSubmit}>
+                    <div className="Lab_i">
                         <label htmlFor="">Nom de l'artiste / groupe :</label>
                         <input type="text" name="artist" onChange={this.handleChangeNom} />
                         <br />
@@ -74,20 +99,21 @@ class AjoutConcertsMain extends React.Component {
                         <label>Date : </label>
                         <input type="date" name="date" onChange={this.handleChangeDate} /><br />
                         <label>Heures  : </label>
-                        <input type="time" name="Heures" nChange={this.handleChangeTime} /><br />
+                        <input type="time" name="Heures" onChange={this.handleChangeTime} /><br />
                         <label>Heures d'ouverture : </label>
-                        <input type="time" name="timeOpen" id="" nChange={this.handleChangeTimeOpen} /><br />
+                        <input type="time" name="timeOpen" id="" onChange={this.handleChangeTimeOpen} /><br />
                         <label htmlFor="">Lieu (ville) :</label>
-                        <select id="pet-select" nChange={this.handleChangeVille}>
+                        <select id="pet-select" onChange={this.handleChangeVille}>
+                            <option>---</option>
                             <option value="1">Aix</option>
                             <option value="2">Bourges</option>
                             <option value="3">Cannes</option>
                             <option value="4">Dunkerque</option>
                             <option value="5">Echirolles</option>
-
                         </select><br />
                         <label htmlFor="">category</label>
-                        <select name="category" id="" nChange={this.handleChangeCategory}>
+                        <select name="category" id="" onChange={this.handleChangeCategory}>
+                            <option>---</option>
                             <option value="Pop">Pop</option>
                             <option value="Rock">Rock</option>
                             <option value="Electro">Electro</option>
@@ -98,18 +124,18 @@ class AjoutConcertsMain extends React.Component {
                             <option value="World">World</option>
                         </select><br />
                         <label htmlFor=""  >Tarif MAX : </label>
-                        <input type="text" name="maxPrice" id="" nChange={this.handleChangeMaxPrice} /><br />
+                        <input type="text" name="maxPrice" id="" onChange={this.handleChangeMaxPrice} /><br />
                         <label>Pourcentage tarif dégressif :</label>
-                        <input type="text" name="priceRate" id="" nChange={this.handleChangePriceRate} /><br />
+                        <input type="text" name="priceRate" id="" onChange={this.handleChangePriceRate} /><br />
                         <label htmlFor="Parking :">Parking :  </label>
-                        <input type="radio" name="parking" id="" value="0" nChange={this.handleChangeParking} />
+                        <input type="radio" name="parking" id="" value="0" onChange={this.handleChangeParking} />
                         <label>oui</label>
-                        <input type="radio" name="parking" id="" value="1" nChange={this.handleChangeParking} />
+                        <input type="radio" name="parking" id="" value="1" onChange={this.handleChangeParking} />
                         <label>non</label><br />
                         <label htmlFor="Restaurant :">Restaurant :  </label>
-                        <input type="radio" name="Restaurant" id="" value="0" nChange={this.handleChangeRestaurant} />
+                        <input type="radio" name="Restaurant" id="" value="0" onChange={this.handleChangeRestaurant} />
                         <label>oui</label>
-                        <input type="radio" name="Restaurant" id="" value="1" nChange={this.handleChangeRestaurant} />
+                        <input type="radio" name="Restaurant" id="" value="1" onChange={this.handleChangeRestaurant} />
                         <label>non</label>
                     </div>
                     <div className="edit">
@@ -123,10 +149,14 @@ class AjoutConcertsMain extends React.Component {
                         />
                     </div>
 
-                    <a href="/"><button>ANNULER</button></a>
-                    <button onClick={this.clear}>EFFACER</button>
-                    <button> CRÉER LE CONCERT</button>
+                  
+                    <button  className="btn_pre vert btn_k" > CRÉER LE CONCERT</button>
                 </form>
+                </div>
+                <div className="dep">
+                <a href="/"><button className=" btn_pre rouge">ANNULER</button></a>
+                <button className="btn_pre effa" onClick={this.clear}>EFFACER</button>
+                </div>
             </div>
         );
     }

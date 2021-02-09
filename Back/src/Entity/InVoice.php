@@ -25,7 +25,7 @@ class InVoice
 
     /**
      * @Groups("invoice")
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     private $date;
 
@@ -52,12 +52,12 @@ class InVoice
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(string $date): self
     {
         $this->date = $date;
 

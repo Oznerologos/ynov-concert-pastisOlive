@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import SeatsBookingContext from '../components/SeatsBookingContext';
 
-const ProgrammationMain = ({city, style, datedebut, datefin}) => {
+const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
 
     const [cities, setCities] = useState('tous');
     const [refreshKey, setRefreshKey] = useState(0);
@@ -41,39 +41,39 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
             setCategories({ ...categories, [event.target.name]: event.target.checked });
         };*/
 
-        const [cityButton, setCityButton] = useState([
-            {
-                id: 1,
-                name: "tous",
-                label: "TOUS",
-            },
-            {
-              id: 2,
-              name: "Aix",
-              label: "AIX-EN-PROVENCE",
-            },
-            {
-                id: 3,
-                name: "Bourges",
-                label: "BOURGES",
-            },
-            {
-                id: 4,
-                name: "Cannes",
-                label: "CANNES",
-            },
-            {
-                id: 5,
-                name: "Dunkerque",
-                label: "DUNKERQUE",
-            },
-            {
-                id: 6,
-                name: "Echirolles",
-                label: "ECHIROLLES",
-            }
-        ]);
-    
+    const [cityButton, setCityButton] = useState([
+        {
+            id: 1,
+            name: "tous",
+            label: "TOUS",
+        },
+        {
+            id: 2,
+            name: "Aix",
+            label: "AIX-EN-PROVENCE",
+        },
+        {
+            id: 3,
+            name: "Bourges",
+            label: "BOURGES",
+        },
+        {
+            id: 4,
+            name: "Cannes",
+            label: "CANNES",
+        },
+        {
+            id: 5,
+            name: "Dunkerque",
+            label: "DUNKERQUE",
+        },
+        {
+            id: 6,
+            name: "Echirolles",
+            label: "ECHIROLLES",
+        }
+    ]);
+
     //const cityPersistance = JSON.parse(localStorage.getItem("cityFilter"));
     //console.log(cityPersistance);
     const stylePersistance = JSON.parse(localStorage.getItem("styleFilter"));
