@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from "axios";
 import { Editor } from '@tinymce/tinymce-react';
-import { event } from "jquery";
 
 
 class AjoutConcertsMain extends React.Component {
@@ -17,7 +16,7 @@ class AjoutConcertsMain extends React.Component {
 
         const concert = {
             artist: this.state.artist,
-            name: this.state.name ,
+            name: this.state.name,
             date: this.state.date,
             time: this.state.time,
             timeOpen: this.state.timeOpen,
@@ -62,7 +61,6 @@ class AjoutConcertsMain extends React.Component {
         this.setState({ concertRoom: event.target.value });
     }
 
-
     render() {
         return (
             <div className="contenaireAjout">
@@ -76,7 +74,7 @@ class AjoutConcertsMain extends React.Component {
                         <label>Date : </label>
                         <input type="date" name="date" onChange={this.handleChangeDate} /><br />
                         <label>Heures  : </label>
-                        <input type="time" name="Heures"  nChange={this.handleChangeTime}  /><br />
+                        <input type="time" name="Heures" nChange={this.handleChangeTime} /><br />
                         <label>Heures d'ouverture : </label>
                         <input type="time" name="timeOpen" id="" nChange={this.handleChangeTimeOpen} /><br />
                         <label htmlFor="">Lieu (ville) :</label>

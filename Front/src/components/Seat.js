@@ -21,24 +21,24 @@ class Seat extends React.Component {
     }   
 
     onHover(f){
-    if((this.props.src === RedSeat)&&(this.state.selected === "false")){
+    if((this.props.src === RedSeat)&&(this.state.selected === 0/*false*/)){
         this.setState({seat:RedSeat});
         return
-    } else if((this.props.src !== RedSeat)&&(this.state.selected === "false")){
+    } else if((this.props.src !== RedSeat)&&(this.state.selected === 0/*false*/)){
         this.setState({seat:BlueSeat});
         return
-    } else if ((this.state.selected === "true") && (this.context.seats.findIndex((el) => el === this.props.id) < 0) && (this.props.viewonly === "true")) {
+    } else if ((this.state.selected === 1/*true*/) && (this.context.seats.findIndex((el) => el === this.props.id) < 0) && (this.props.viewonly === 1/*true*/)) {
         this.setState({seat: GreySeat})
-        this.setState({selected: 'false'});
+        this.setState({selected: 0/*false*/});
     } else {
         this.setState({seat:GreenSeat});
-        this.setState({selected: "true"});
+        this.setState({selected: 1/*true*/});
     }
         
 }
 
 onLeave(f){
-        if(this.state.selected === "true") {
+        if(this.state.selected === 1/*true*/) {
             this.setState({seat: GreenSeat});
         } else {
             this.setState({seat: this.props.seat})
@@ -48,22 +48,22 @@ onLeave(f){
 }
 
 onClick(){
-    if((this.props.className !== "seats Reserved") &&(this.props.viewonly !== "true")){
+    if((this.props.className !== "seats Reserved") &&(this.props.viewonly !== 1/*true*/)){
    
     const prices = this.context.prices;
     const purch = this.context.purchases;
     this.state.seat = GreenSeat;
 
-    if(this.state.selected === "false") {
+    if(this.state.selected === 0/*false*/) {
         this.context.setSeats([...this.context.seats, {id:this.props.id, price: this.props.price}]);
         this.context.setPrices(prices + parseInt(this.props.price));
         localStorage.setItem("itemsPanier", JSON.stringify(this.context.purchases +1)); // Persistance icone panier d'achat
         this.context.setPurchases(purch + 1); 
-        this.setState({selected: "true"});       
+        this.setState({selected: 1/*true*/});       
     } else {
 
     this.context.setSeats(this.context.seats.filter(item=> item.id !== this.props.id))
-    if(this.context.purchases == 1) {
+    if(this.context.purchases === 1) {
         this.context.setPurchases(0);
         localStorage.removeItem("itemsPanier");
     } else {
@@ -72,7 +72,7 @@ onClick(){
     }   
 
     this.context.setPrices(prices - parseInt(this.props.price));
-    this.setState({selected: "false"});
+    this.setState({selected: 0/*false*/});
     }
     }
 }

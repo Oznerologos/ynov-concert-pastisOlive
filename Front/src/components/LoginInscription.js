@@ -2,10 +2,6 @@ import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import AuthApi from '../services/authApi';
 
-
-
-
-
 const LoginPage = ({ history }) => {
 
     const { setIsAuth } = useContext(AuthContext);

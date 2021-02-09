@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { event } from "jquery";
 
 let loc;
 
@@ -80,7 +79,7 @@ class InscriptionMain extends React.Component {
 
     loc = (window.location.pathname);
 
-    if (loc == "/Inscription/achat") {
+    if (loc === "/Inscription/achat") {
       return (
         <div className="contIn">
           <div id="myForm" >

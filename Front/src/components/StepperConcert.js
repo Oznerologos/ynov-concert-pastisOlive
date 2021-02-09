@@ -4,15 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import StepReservation from './StepReservation';
 import StepPanier from './StepPanier';
 import StepCoordonnees from './StepCoordonnees';
 import SeatsBookingContext from './SeatsBookingContext';
 import StepPaiement from './StepPaiement';
 import StepConfirmation from './StepConfirmation';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import ConcertContext from './ConcertContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,19 +50,19 @@ function getStepContent(step) {
 
 export default function HorizontalLinearStepper() {
   const classes = useStyles();
-  {/*const [activeStep, setActiveStep] = React.useState(0);*/ }
-  const [skipped, setSkipped] = React.useState(new Set());
+  //const [activeStep, setActiveStep] = React.useState(0);
+  //const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const context = useContext(SeatsBookingContext);
-
+/*
   const isStepOptional = (step) => {
     return false; //step === 1;
   };
 
   const isStepSkipped = (step) => {
     return skipped.has(step);
-  };
-
+  };*/
+/*
   const handleNext = () => {
     let newSkipped = skipped;
     if (isStepSkipped(context.activeStep)) {
@@ -92,11 +91,11 @@ export default function HorizontalLinearStepper() {
       newSkipped.add(context.activeStep);
       return newSkipped;
     });
-  };
-
+  };*/
+/*
   const handleReset = () => {
     context.setActiveStep(0);
-  };
+  };*/
 
   const [refreshKey] = useState(0);
 
@@ -125,18 +124,23 @@ export default function HorizontalLinearStepper() {
     })
   }, [refreshKey]);
 
+  const contextConcert = useContext(ConcertContext);
+
+  contextConcert.setConcert(data);
+
   return (
     <div className={classes.root}>
       <Stepper activeStep={context.activeStep} className="titleCont">
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
+          /*
           if (isStepOptional(index)) {
             labelProps.optional = <Typography variant="caption">Optional</Typography>;
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
-          }
+          }*/
           return (
             <Step key={label} {...stepProps}>
               <StepLabel {...labelProps}>{label}</StepLabel>
@@ -161,7 +165,7 @@ export default function HorizontalLinearStepper() {
         {/* <div>
           <NavLink exact to={"/Concert?artist=" + data.artist} onClick={handleBack} className="cancelStep">
             ANNULER
-              </NavLink>
+          </NavLink>
           {isStepOptional(context.activeStep) && (
             <Button
               variant="contained"
@@ -183,7 +187,6 @@ export default function HorizontalLinearStepper() {
           </Button>
         </div> */}
       </div>
-          )
     </div>
   );
 }

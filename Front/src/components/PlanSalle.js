@@ -19,7 +19,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
                 Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR'}).format(Math.round(maxprice-(maxprice * (5*index)/100))),
                 'Free',
                 GreySeat,
-                'false',
+                0,//false,
                 '60px',
             ]
         }
@@ -28,7 +28,14 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
     if(modulo !== 0){
         planArray[nbLigne] = [];
         for (let i = 0; i < modulo;i++){
-            planArray[nbLigne][i] = 1;
+            planArray[nbLigne][i] = [
+                String.fromCharCode('A'.charCodeAt() + nbLigne)+(i+1), 
+                Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR'}).format(Math.round(maxprice-(maxprice * (5*nbLigne)/100))),
+                'Free',
+                GreySeat,
+                0,//false,
+                '60px',
+            ];//1;
         }
     }
 
@@ -42,7 +49,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
     const placesReservees = ['A4', 'B8', 'C3', 'D2', 'E11'];
     const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-    if((Array.isArray(selectedPlaces) == true) &&(selectedPlaces.length > 0)){
+    if((Array.isArray(selectedPlaces) === true) &&(selectedPlaces.length > 0)){
 
         for (let index = 0; index < nbLigne; index++) {
             planArray[index] = []; 
@@ -52,7 +59,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
                     Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR'}).format(Math.round(maxprice-(maxprice * (5*index)/100))),
                     'Free',
                     GreySeat,
-                    'false',
+                    0,//false,
                     '30px',
                 ]
             }
@@ -62,7 +69,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
             let line = alphabet.findIndex((el) => el === selectedPlaces[s].id.slice(0,1));
             let ind = selectedPlaces[s].id.slice(1);
             planArray[line][ind][3] = GreenSeat;
-            planArray[line][ind][4] = "true";            
+            planArray[line][ind][4] = 1;//true;            
         }
 
         Styles[marginIndex-1] = {marginBottom:'20px'};
@@ -91,7 +98,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
                             {String.fromCharCode('A'.charCodeAt() + indexLine)}
                             </p>
                         {ligne.map((element, index) => {
-                            return <Seat src={element[3]} id={String.fromCharCode('A'.charCodeAt() + indexLine)+(index+1)} alt={"seat"} width={element[5]} className={`seats ${element[2]}`} price={element[1]} selected={element[4]} viewonly={viewonly}/>
+                            return <Seat src={element[3]} key={index} id={String.fromCharCode('A'.charCodeAt() + indexLine)+(index+1)} alt={"seat"} width={element[5]} className={`seats ${element[2]}`} price={element[1]} selected={element[4]} viewonly={viewonly}/>
                         })}
                     </div>
                 })

@@ -1,74 +1,43 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import mask from '../media/img/mask.png';
-import affiche from '../media/img/affiche-rammstein.jpg'
-import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
 class CarouselActu extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }   
 
     render() {
+
+        const data = this.props.data;
+        const dateRender = this.props.render;
+
         return (
             <div className='container-fluid'>
                 <div className="row">
                     <div className="col-12">
                         <Carousel interval={null}>
-
-                            <Carousel.Item>
-                                <div className="flexCont">
-                                    <Carousel.Caption>
-                                        <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
-                                    </Carousel.Caption>
-                                    <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{ backgroundImage: 'URL(https://picsum.photos/1000/1000?img=1)' }} src={mask} alt="test" />
-                                    </div>
-
-                                </div>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <div className="flexCont">
-
-                                    <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{ backgroundImage: 'URL(https://picsum.photos/1000/1000?img=2)' }} src={mask} alt="test" />
-                                    </div>
-                                    <Carousel.Caption>
-                                        <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
-                                    </Carousel.Caption>
-                                </div>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <div className="flexCont">
-                                    <Carousel.Caption>
-                                        <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
-                                    </Carousel.Caption>
-                                    <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{ backgroundImage: 'URL(https://picsum.photos/1000/1000?img=3)' }} src={mask} alt="test" />
-                                    </div>
-
-                                </div>
-                            </Carousel.Item>
-
-
-                            <Carousel.Item>
-                                <div className="flexCont">
-
-                                    <div className="parallelogram-container">
-                                        <img className="parallelogram" style={{ backgroundImage: `url(${affiche})` }} src={mask} alt="test" />
-                                    </div>
-                                    <Carousel.Caption>
-                                        <h3>GROUP TITLE</h3>
-                                        <p>Dates and location of the concert</p>
-                                        <Button variant="outline-blue">INFOS & BILLETS</Button>
-                                    </Carousel.Caption>
-                                </div>
-                            </Carousel.Item>
-
+                        {data.map((element, index) => {
+                                        return(
+                                            <Carousel.Item key={index}>
+                                            <div className="flexCont">
+                                            
+                                                <Carousel.Caption>
+                                                    <h3>{element.artist}</h3>
+                                                    <p>{dateRender(element.time)} à {element.concertRoom.name}</p>
+                                                    <NavLink exact to={"/Concert?artist=" + element.artist} className="carouselActuBtn">INFOS & BILLETS</NavLink>
+                                                </Carousel.Caption>
+                                                <div className="parallelogram-container">
+                                                    <img className="parallelogram" style={{ backgroundImage: `URL(/affiches/${element.artistImg})` }} src={mask} alt="test" />
+                                                </div>
+            
+                                            </div>
+                                        </Carousel.Item> 
+                                        )
+                                    })
+                                    }
                         </Carousel>
                     </div>
                 </div>

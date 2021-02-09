@@ -5,7 +5,7 @@ import ContactMain from '../components/ContactMain';
 
 const Contact = () => {
     return (
-        <div>
+        <div id="contactAnchor">
              <HeaderNav/>              
                 <ContactMain/>
             <FooterNav/>

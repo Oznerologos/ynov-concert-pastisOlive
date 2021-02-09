@@ -1,14 +1,14 @@
 import React from 'react';
 import FooterNav from '../components/FooterNav';
 import HeaderNav from '../components/HeaderNav';
-import P_Presentation from '../components/Privatisation_presentation';
+import PrivatisationPresentationMain from '../components/PrivatisationPresentationMain';
 
 
 const FAQ = () => {
     return (
         <div>
             <HeaderNav/>
-                <P_Presentation/>
+                <PrivatisationPresentationMain/>
             <FooterNav/>
         </div>
     );

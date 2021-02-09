@@ -82,8 +82,8 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
     console.log(context.cityFilter);
     const [activeRadio, setActiveRadio] = useState(parseInt(stylePersistance));
 
-    const today = new Date;
-    const inTenDays = new Date(today.getTime() + 86400000 * 10);
+    const today = new Date();
+    const inTenDays = new Date(today.getTime() + 86400000 * 120); // Multiplier par le nombre de jours souhaités entre la date de début et la date de fin
     const [selectedFirstDate, setSelectedFirstDate] = React.useState(today);
     const [selectedLastDate, setSelectedLastDate] = React.useState(inTenDays);
     const [feedBack, setFeedBack] = useState(null);
@@ -182,23 +182,38 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
             let dateTest = dateConvert(data[i]["time"]);
             const dateCheck = new Date(dateTest[0], dateTest[1] - 1, dateTest[2]);
             let inRange = dateCheck >= a && dateCheck <= b;
+<<<<<<< HEAD
             if ((categorie != "Toutes") && (cities != "tous")) {
                 if ((inRange === true) && (categorie == data[i]["musicType"]) && (cities == data[i]["concertRoom"]["name"])) {
+=======
+            if ((categorie !== "Toutes") && (cities !== "tous")) {
+                if ((inRange === true) && (categorie === data[i]["musicType"]) && (cities === data[i]["concertRoom"]["name"])) {
+>>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
+<<<<<<< HEAD
             } else if ((categorie != "Toutes") && (cities == "tous")) {
                 if ((inRange === true) && (categorie == data[i]["musicType"])) {
+=======
+            } else if ((categorie !== "Toutes") && (cities === "tous")) {
+                if ((inRange === true) && (categorie === data[i]["musicType"])) {
+>>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
 
+<<<<<<< HEAD
             } else if ((categorie == "Toutes") && (cities != "tous")) {
                 if ((inRange === true) && (cities == data[i]["concertRoom"]["name"])) {
+=======
+            } else if ((categorie === "Toutes") && (cities !== "tous")) {
+                if ((inRange === true) && (cities === data[i]["concertRoom"]["name"])) {
+>>>>>>> e80205cc1e4c0a39b7c2953efad9832dcdeb076f
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
@@ -294,7 +309,7 @@ const ProgrammationMain = ({city, style, datedebut, datefin}) => {
                 {feedBack ? <h3>Désolé, aucun concert trouvé avec ces critères</h3> : init.map((element, index) => {
                     return <div className="concertCard" key={index}>
                         <div className="programmationPicture">
-                            <img src={`./media/img/${element.artistImg}`} alt={`Affiche ${element.artist}`} height={150} />
+                            <div style={{ backgroundImage: `URL(/affiches/${element.artistImg})` }}></div>
                         </div>
                         <div className="detailConcert">
                             <p className="bold">{element.artist}</p>
