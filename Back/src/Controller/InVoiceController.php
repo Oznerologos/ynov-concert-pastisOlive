@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\InVoice;
 use App\Form\InVoiceType;
 use App\Repository\InVoiceRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/invoice")
@@ -31,7 +35,7 @@ class InVoiceController extends AbstractController
     public function new(Request $request): Response
     {
         $inVoice = new InVoice();
-        $form = $this->createForm(InVoiceType::class, $inVoice);
+        $form = $this->createForm(InVoice::class, $inVoice);
         $data=json_decode($request->getContent(),true);
         $form->submit($data);
 

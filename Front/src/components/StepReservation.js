@@ -84,7 +84,7 @@ export default function StepReservation() {
         <div id="scene">
           <h4>scène</h4>
         </div>
-        <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={null} viewonly={0}/>
+        <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={null} viewonly={0} />
       </div>
 
       <div id="ordersRecap">

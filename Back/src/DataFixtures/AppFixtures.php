@@ -451,7 +451,7 @@ class AppFixtures extends Fixture
         // Invoice (qui est en fait un panier)----------------------------------------------------------------
 
         $invoice = new InVoice();
-        $invoice->setDate(new DateTime());
+        $invoice->setDate("04/26/1968");
         $invoice->setUser($user);
         $manager->persist($invoice);
 
