@@ -8,11 +8,14 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Loader from './ProgressCircle';
 import ConcertContext from './ConcertContext';
+import { useAlert } from "react-alert";
 
-export default function StepPaiement() {
+const StepPaiement = ({method}) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
+
+  const alert = useAlert();
 
   const [loader, setLoader] = useState(false);
 
@@ -55,7 +58,7 @@ export default function StepPaiement() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                 </tr>
@@ -126,7 +129,18 @@ export default function StepPaiement() {
         </div>
         <div id="stepperButtonsCont">
 
-          <Button className="cancelStep">ANNULER</Button>
+          <Button onClick={() => {
+          alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
+            title: "ATTENTION",
+            closeCopy: "NON",
+            actions: [
+              {
+                copy: "OUI",
+                onClick: () => {context.setActiveStep(1)}
+              },
+            ]
+          });
+        }} className="cancelStep">ANNULER</Button>
           <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
         </div>
       </div>
@@ -144,3 +158,5 @@ export default function StepPaiement() {
 
   );
 }
+
+export default StepPaiement

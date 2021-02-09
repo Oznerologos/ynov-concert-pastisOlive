@@ -25,6 +25,7 @@ import MentionsLegales from './pages/MentionsLegales';
 import ConcertContext from './components/ConcertContext';
 import ScrollToTop from './components/ScrollToTop';
 
+
 AuthApi.init();
 
 const App = () => {
@@ -56,7 +57,7 @@ const App = () => {
   const contextConcert = { concert, setConcert };
 
   return (
-    <AuthContext.Provider value={contextValue}>
+    <AuthContext.Provider value={contextValue}>     
       <ConcertContext.Provider value={contextConcert}>
         <SeatsBookingContext.Provider value={contextVal}>
           <BrowserRouter>

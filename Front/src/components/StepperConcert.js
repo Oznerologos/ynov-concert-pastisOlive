@@ -12,6 +12,8 @@ import StepPaiement from './StepPaiement';
 import StepConfirmation from './StepConfirmation';
 import { useLocation } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
+import { positions, Provider } from "react-alert";
+import AlertMUITemplate from "react-alert-template-mui";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,19 +32,38 @@ function getSteps() {
   return ['Réservation', 'Panier d\'achat', 'Coordonnées', 'Paiement', 'Confirmation'];
 }
 
+function dateConvert(date) {
+  if((date !== null) && (date !== undefined)){
+  let dateIntermediaire = date;
+  dateIntermediaire = dateIntermediaire.toString();
+  dateIntermediaire = dateIntermediaire.split('T');
+  dateIntermediaire = dateIntermediaire[0].split('-');
+
+  for (let i = 0; i < dateIntermediaire.length; i++) {
+      dateIntermediaire[i] = parseInt(dateIntermediaire[i]);
+  }
+
+  let sub = date.substring(11, 16);
+  sub = sub.split(':');
+  date = "Le " + dateIntermediaire[2] + "/" + dateIntermediaire[1] + "/" + dateIntermediaire[0] + " à " + sub[0] + "H" + sub[1];
+
+  return date;
+}
+}
+
 function getStepContent(step) {
 
   switch (step) {
     case 0:
-      return <StepReservation />;
+      return <StepReservation method={dateConvert}/>;
     case 1:
-      return <StepPanier />;
+      return <StepPanier method={dateConvert}/>;
     case 2:
-      return <StepCoordonnees />;
+      return <StepCoordonnees/>;
     case 3:
-      return <StepPaiement />;
+      return <StepPaiement method={dateConvert}/>;
     case 4:
-      return <StepConfirmation />;
+      return <StepConfirmation method={dateConvert}/>;
     default:
       return 'Unknown step';
   }
@@ -128,7 +149,13 @@ export default function HorizontalLinearStepper() {
 
   contextConcert.setConcert(data);
 
+    // Alert step Paiement
+    const options = {
+      position: positions.MIDDLE
+    };
+
   return (
+    <Provider template={AlertMUITemplate} {...options}>
     <div className={classes.root}>
       <Stepper activeStep={context.activeStep} className="titleCont">
         {steps.map((label, index) => {
@@ -188,5 +215,7 @@ export default function HorizontalLinearStepper() {
         </div> */}
       </div>
     </div>
+    </Provider>
   );
+  
 }

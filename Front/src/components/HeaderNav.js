@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png';
 import SeatsBookingContext from './SeatsBookingContext';
-import { HashLink as Link } from 'react-router-hash-link';
 
 class HeaderNav extends React.Component {
 
@@ -50,11 +49,11 @@ render() {
     return(
 
         <Navbar bg="dark" expand="lg" sticky="top">
-                    <Link exact to="/#topAnchor" className="navbar-brand-link">
+                    <NavLink exact to="/" className="navbar-brand-link">
                         <Navbar.Brand>
                             <img src={Logo} width="180px" alt="logo"/>
                         </Navbar.Brand>
-                    </Link>
+                    </NavLink>
                     <div className="linksCont">
                     <div className="navContainer">
                     {/*<NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>*/}
@@ -83,19 +82,19 @@ render() {
                     </NavDropdown>
 
                     <NavDropdown title="RESTAURATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/RestaurationPresentation">
+                        <LinkContainer exact to="/RestaurationPresentation">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/RestaurationReservation">
+                        <LinkContainer exact to="/RestaurationReservation">
                             <NavDropdown.Item>Réserver</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
 
                 <NavDropdown title="PARKING" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer exact to="/fakePage">
                             <NavDropdown.Item>Présentation</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to="/fakePage">
+                        <LinkContainer exact to="/fakePage">
                             <NavDropdown.Item>Réserver</NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
@@ -120,7 +119,7 @@ render() {
                         </LinkContainer>
                     </NavDropdown>
 
-                <Link exact to="/Contact#contactAnchor" className="majorLink">CONTACT</Link>
+                <NavLink exact to="/Contact" className="majorLink">CONTACT</NavLink>
 </div>
                     
 

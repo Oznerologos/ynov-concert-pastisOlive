@@ -5,10 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 class CarouselActu extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }   
-
     render() {
 
         const data = this.props.data;
