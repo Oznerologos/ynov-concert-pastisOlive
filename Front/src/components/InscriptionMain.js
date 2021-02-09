@@ -139,11 +139,12 @@ class InscriptionMain extends React.Component {
                 <input id="" type="date" name="" id="" name="naissance" onChange={this.handleChangeNaissance} />
                 <p>* Champs obligatoire *</p>
                 <br />
-                <a href="/"><button className="btn_pre rouge">ANNULER</button></a>
+               
 
                 <button className="btn_pre vert">CRÉER MON COMPTE</button>
               </div>
             </form>
+            <a href="/"><button className="btn_pre rouge">ANNULER</button></a>
             <button className="btn_pre effa" onClick={this.clear}>EFFACER</button>
           </div>
         </div>
