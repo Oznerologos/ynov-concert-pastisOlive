@@ -34,23 +34,21 @@ class InVoiceController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+  
+        $serializer = new Serializer($normalizers, $encoders);
+
         $inVoice = new InVoice();
-        $form = $this->createForm(InVoice::class, $inVoice);
-        $data=json_decode($request->getContent(),true);
-        $form->submit($data);
+        $form = $this->createForm(UserType::class, $user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($inVoice);
-            $entityManager->flush();
+        $userDeserialized = $serializer->deserialize($request->getContent(), User::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $user]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('in_voice_index');
-        }
-
-        return $this->render('in_voice/new.html.twig', [
-            'in_voice' => $inVoice,
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('user_index');
     }
 
     /**

@@ -38,7 +38,7 @@ export default function StepPaiement() {
     result = axios
       .post("https://localhost:8000/invoice/new", in_voice).then(res =>
         console.log(res),
-        reservation = { concert_id: paramId, in_voice: res.id, reference: this.reference, total_price: context.prices, ticket_type: context.deliveryMode, seats: context.seats },
+        reservation = { concert_id: paramId, in_voice: res.id, reference: reference, total_price: context.prices, ticket_type: context.deliveryMode, seats: context.seats },
         axios.post("https://localhost:8000/reservation/new").then(response => console.log(response))
       );
   }
