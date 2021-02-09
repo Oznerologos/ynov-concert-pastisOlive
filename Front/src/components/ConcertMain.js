@@ -8,40 +8,6 @@ import SliderConcertContext from './SliderConcertContext';
 import Carousel from 'react-bootstrap/Carousel'
 
 export default function ConcertMain() {
-/*
-const [concertData, setConcertData] = useState();
-const [concertDataReworked, setConcertDataReworked] = useState();
-
-const contextConcert = {concertData, setConcertData, concertDataReworked, setConcertDataReworked};
-
-const getConcerts = async () => {
-    let result = await axios(
-        'https://localhost:8000/concert',
-    );
-    // return the result
-    return result;
-};
-
-const [data, setData] = React.useState([])
-//const [subData, setSubData] = React.useState([])
-
-React.useEffect(() => {
-
-    getConcerts().then(res => {
-        setData(res.data);
-    });
-}, []);
-
-const findMinPrice = (maxPrice, nbPlaces) => {
-    const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
-    const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
-    return minPrice;
-}*/
-
-/*
-const init = generateCards();
-console.log(init);*/
-
     const [refreshKey] = useState(0);
 
     function useQuery() {
@@ -155,7 +121,7 @@ console.log(init);*/
                                             <td colSpan={2}>{element.timeOpen}</td>
                                             <td colSpan={2}>{element.category}</td>
                                             <td colSpan={2}>{element.maxPrice}</td>
-                                            <td><NavLink exact to="/FakePage" className="bookingLink">Réserver</NavLink></td>
+                                            <td><NavLink exact to={"/ConcertReservation?id=" + element.id} className="bookingLink">Réserver</NavLink></td>
                                         </tr>
                                     </tbody>
                                 })
@@ -190,10 +156,10 @@ console.log(init);*/
             </section>
 
             <div id="sliderContainer">
-                    <h3>A NE PAS MANQUER</h3>
-                    <CarouselConcert />
-                </div>
-                
+                <h3>A NE PAS MANQUER</h3>
+                <CarouselConcert />
+            </div>
+
         </main>)
-        //</SliderConcertContext.Provider>;
+    //</SliderConcertContext.Provider>;
 }

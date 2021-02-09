@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -11,7 +12,8 @@ import StepCoordonnees from './StepCoordonnees';
 import SeatsBookingContext from './SeatsBookingContext';
 import StepPaiement from './StepPaiement';
 import StepConfirmation from './StepConfirmation';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import ConcertContext from './ConcertContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,6 +99,37 @@ export default function HorizontalLinearStepper() {
     context.setActiveStep(0);
   };
 
+  const [refreshKey] = useState(0);
+
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+  let paramId = "";
+  paramId = query.get("id");
+
+  const getSalle = async () => {
+    let result = await axios(
+      'https://localhost:8000/concert/' + paramId,
+    );
+    // return the result
+    return result;
+  };
+
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+
+    getSalle().then(res => {
+      setData(res.data)
+    })
+  }, [refreshKey]);
+
+  const contextConcert = useContext(ConcertContext);
+
+  contextConcert.setConcert(data);
+
   return (
     <div className={classes.root}>
       <Stepper activeStep={context.activeStep} className="titleCont">
@@ -116,7 +149,7 @@ export default function HorizontalLinearStepper() {
           );
         })}
       </Stepper>
-     {/*  <div>
+      {/*  <div>
         
         {context.activeStep === steps.length ? (
           <div className="stepBody">
@@ -128,37 +161,34 @@ export default function HorizontalLinearStepper() {
             </Button>
           </div>
         ) : (*/}
-            <div className="stepBody">
-              <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
-             
-              </div>
-                 {/* 
-                <NavLink exact to="/Concert" onClick={handleBack} className="cancelStep">
-                  ANNULER
-              </NavLink>
-                {isStepOptional(context.activeStep) && (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleSkip}
-                    className={classes.button}
-                  >
-                    Passer
-                  </Button>
-                )}
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  className={classes.button}
-                >
-                  {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
-                </Button>
-              </div>
-            </div>
+      <div className="stepBody">
+        <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
+        {/* <div>
+          <NavLink exact to={"/Concert?artist=" + data.artist} onClick={handleBack} className="cancelStep">
+            ANNULER
+          </NavLink>
+          {isStepOptional(context.activeStep) && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSkip}
+              className={classes.button}
+            >
+              Passer
+            </Button>
           )}
-      </div>*/}
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleNext}
+            className={classes.button}
+          >
+            {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
+          </Button>
+        </div> */}
+      </div>
+          )
     </div>
   );
 }

@@ -10,10 +10,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SeatsBookingContext from './SeatsBookingContext';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import ConcertContext from './ConcertContext';
 
 export default function StepReservation() {
 
   const context = useContext(SeatsBookingContext);
+  const contextConcert = useContext(ConcertContext);
 
   const onChange = (event) => {
 
@@ -33,22 +35,46 @@ export default function StepReservation() {
     context.setActiveStep(1);
   }
 
+  function dateConvert(date) {
+    date = date.toString();
+    date = date.split('T');
+    date = date[0].split('-');
+    for (let i = 0; i < date.length; i++) {
+      date[i] = parseInt(date[i]);
+    }
+    return date;
+  }
+
+  const concert = () => {
+    if (contextConcert.concert != [] && contextConcert.concert != "" && contextConcert.concert != null && contextConcert.concert != undefined) {
+      let dateTest = dateConvert(contextConcert.concert["time"]);
+
+      let sub = contextConcert.concert["time"].substring(11, 16);
+      sub = sub.split(':');
+      contextConcert.concert["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
+
+      return contextConcert.concert;
+    }
+  }
+
+  concert();
+
   return (
 
     <section id="sectionConcertBooking">
       <div className="artistHead">
         <Row lg={12}>
           <Col lg={4} className="verticalCol">
-            <h3>Nom de l'artiste</h3>
+            <h3>{contextConcert.concert ? contextConcert.concert.artist : ""}</h3>
             <img src={affiche} alt="affiche-artiste" width="300px" className="afficheConcert" />
           </Col>
           <Col lg={4} className="verticalCol">
-            <p>Date et heure</p>
-            <p>Lieu</p>
-            <p>Catégorie de musique</p>
+            <p>{contextConcert.concert ? contextConcert.concert.time : ""}</p>
+            <p>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</p>
+            <p>{contextConcert.concert ? contextConcert.concert.musicType : ""}</p>
           </Col>
           <Col lg={4} className="verticalCol mapContainer">
-            <GoogleMap lieu="Aix" />
+            <GoogleMap lieu={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""} />
           </Col>
         </Row>
 
@@ -58,7 +84,7 @@ export default function StepReservation() {
         <div id="scene">
           <h4>scène</h4>
         </div>
-        <PlanSalle nbplaces={132} maxprice={87} selectedPlaces={null} viewonly={"false"} />
+        <PlanSalle nbplaces={contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.placeNumber : 100} maxprice={contextConcert.concert.concertRoom ? contextConcert.concert.maxPrice : 100} selectedPlaces={null} viewonly={"false"} />
       </div>
 
       <div id="ordersRecap">
@@ -112,11 +138,11 @@ export default function StepReservation() {
       </div>
 
       <div id="stepperButtonsCont">
-        <NavLink exact to="/Concert" className="cancelStep">ANNULER</NavLink>
+        <NavLink exact to={`/Concert?artist=${contextConcert.concert.artist}`} className="cancelStep">ANNULER</NavLink>
         <Button onClick={stepButton} className="nextStep">VALIDER</Button>
       </div>
 
-    </section>
+    </section >
 
   );
 }
