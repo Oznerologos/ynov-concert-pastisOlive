@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import SeatsBookingContext from '../components/SeatsBookingContext';
 
-const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
+const ProgrammationMain = () => {
 
     const [cities, setCities] = useState('tous');
     const [refreshKey, setRefreshKey] = useState(0);
@@ -74,48 +74,57 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
         }
     ]);
 
-    //const cityPersistance = JSON.parse(localStorage.getItem("cityFilter"));
-    //console.log(cityPersistance);
+    const cityPersistance = JSON.parse(localStorage.getItem("cityFilter"));
+    console.log("cityPersistance: ",cityPersistance);
+    console.log("context.cityFilter: ",context.cityFilter);
     const stylePersistance = JSON.parse(localStorage.getItem("styleFilter"));
-    const [activeButton, setActiveButton] = useState(city);//cityPersistance));
+    const dateDebutPersistance = JSON.parse(localStorage.getItem("dateDebutFilter"));
+    const dateFinPersistance = JSON.parse(localStorage.getItem("dateFinFilter"));
+    const [activeButton, setActiveButton] = useState(cityPersistance ? cityPersistance : context.cityFilter);
     console.log(activeButton);
-    console.log(context.cityFilter);
-    const [activeRadio, setActiveRadio] = useState(parseInt(stylePersistance));
+    
+    //const [activeRadio, setActiveRadio] = useState(parseInt(stylePersistance));
 
     const today = new Date();
-    const inTenDays = new Date(today.getTime() + 86400000 * 120); // Multiplier par le nombre de jours souhaités entre la date de début et la date de fin
-    const [selectedFirstDate, setSelectedFirstDate] = React.useState(today);
-    const [selectedLastDate, setSelectedLastDate] = React.useState(inTenDays);
+    const inTenDays = new Date(today.getTime() + 86400000 * 60); // Multiplier par le nombre de jours souhaités entre la date de début et la date de fin
+    //const [selectedFirstDate, setSelectedFirstDate] = React.useState(today);
+    //const [selectedLastDate, setSelectedLastDate] = React.useState(inTenDays);
     const [feedBack, setFeedBack] = useState(null);
 
     const handleFirstDateChange = (date) => {
-        setSelectedFirstDate(date);
+        context.setDateDebutFilter(date);
+        //setSelectedFirstDate(date);
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
-
+        localStorage.setItem("dateDebutFilter", JSON.stringify(date)); // Persistance filtre date debut
+        
     };
 
     const handleLastDateChange = (date) => {
-        setSelectedLastDate(date);
+        context.setDateFinFilter(date);
+        //setSelectedLastDate(date);
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
-
+        localStorage.setItem("dateFinFilter", JSON.stringify(date)); // Persistance filtre date fin
+        
     };
 
     const resetDates = () => {
-        setSelectedFirstDate(today);
-        setSelectedLastDate(inTenDays);
+        //setSelectedFirstDate(today);
+        context.setDateDebutFilter(today);
+        //setSelectedLastDate(inTenDays);
+        context.setDateFinFilter(inTenDays);
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
     }
 
-    // MAJ FILTRE CATEGORIES
-    const [categorie, setCategorie] = useState('Toutes');
-
     const handleChange = (event) => {
-        setCategorie(event.target.value);
+        context.setCategorie(event.target.value);
         setRefreshKey(oldKey => oldKey + 1);
+        localStorage.setItem("styleFilter", JSON.stringify(event.currentTarget.value)); // Persistance filtre ville
         createCards();
+        
+        //context.setCityFilter(event.currentTarget.value);
     };
 
     const activeBtn = (event) => {
@@ -123,6 +132,7 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
         console.log(cities);
         setActiveButton(event.currentTarget.id.substring(6));
         localStorage.setItem("cityFilter", JSON.stringify(event.currentTarget.id.substring(6))); // Persistance filtre ville
+        context.setCityFilter(event.currentTarget.id.substring(6));
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
 
@@ -169,8 +179,8 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
         //console.log("categorie: ",categorie);
         //console.log("_______________________");
 
-        let firstD = formatDate(selectedFirstDate);
-        let lastD = formatDate(selectedLastDate);
+        let firstD = formatDate(dateDebutPersistance ? dateDebutPersistance : context.dateDebutFilter);//(context.dateDebutFilter ? context.dateDebutFilter : dateDebutPersistance);
+        let lastD = formatDate(dateFinPersistance ? dateFinPersistance : context.dateFinFilter);
 
         var a = new Date(firstD[0], firstD[1] - 1, firstD[2]);
         var b = new Date(lastD[0], lastD[1] - 1, lastD[2]);
@@ -182,22 +192,22 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
             let dateTest = dateConvert(data[i]["time"]);
             const dateCheck = new Date(dateTest[0], dateTest[1] - 1, dateTest[2]);
             let inRange = dateCheck >= a && dateCheck <= b;
-            if ((categorie !== "Toutes") && (cities !== "tous")) {
-                if ((inRange === true) && (categorie === data[i]["musicType"]) && (cities === data[i]["concertRoom"]["name"])) {
+            if ((context.categorie !== "Toutes") && (cities !== "tous")) {
+                if ((inRange === true) && (context.categorie === data[i]["musicType"]) && (cities === data[i]["concertRoom"]["name"])) {
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
-            } else if ((categorie !== "Toutes") && (cities === "tous")) {
-                if ((inRange === true) && (categorie === data[i]["musicType"])) {
+            } else if ((context.categorie !== "Toutes") && (cities === "tous")) {
+                if ((inRange === true) && (context.categorie === data[i]["musicType"])) {
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
                     data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
                     resultCards.push(data[i]);
                 }
 
-            } else if ((categorie === "Toutes") && (cities !== "tous")) {
+            } else if ((context.categorie === "Toutes") && (cities !== "tous")) {
                 if ((inRange === true) && (cities === data[i]["concertRoom"]["name"])) {
                     let sub = data[i]["time"].substring(11, 16);
                     sub = sub.split(':');
@@ -233,18 +243,11 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
                             <Button key={index} id={`button${element.id}`} className={activeButton == element.id ? "cityFilter actif" : "cityFilter"} name={element.name} onClick={activeBtn}>{element.label}</Button>
                         )
                     })}
-                    {/*
-                    <Button className="cityFilter" name="tous" onClick={activeBtn} autoFocus>TOUS</Button>
-                    <Button className="cityFilter" name="Aix" onClick={activeBtn}>AIX-EN-PROVENCE</Button>
-                    <Button className="cityFilter" name="Bourges" onClick={activeBtn}>BOURGES</Button>
-                    <Button className="cityFilter" name="Cannes" onClick={activeBtn}>CANNES</Button>
-                    <Button className="cityFilter" name="Dunkerque" onClick={activeBtn}>DUNKERQUE</Button>
-                    <Button className="cityFilter" name="Echirolles" onClick={activeBtn}>ECHIROLLES</Button>*/}
                 </div>
                 <div id="categoriesContainer">
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Catégorie de musique:</FormLabel>
-                        <RadioGroup aria-label="cat" name="category" value={categorie} onChange={handleChange} row>
+                        <RadioGroup aria-label="cat" name="category" value={stylePersistance ? stylePersistance : context.categorie} onChange={handleChange} row>
                             <FormControlLabel value="Toutes" control={<Radio />} label="Toutes" />
                             <FormControlLabel value="Pop" control={<Radio />} label="Pop" />
                             <FormControlLabel value="Rock" control={<Radio />} label="Rock" />
@@ -266,7 +269,7 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
                             margin="normal"
                             id="date-picker-first-date"
                             label="Du"
-                            value={selectedFirstDate}
+                            value={dateDebutPersistance ? dateDebutPersistance : context.dateDebutFilter}
                             onChange={handleFirstDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',
@@ -279,7 +282,7 @@ const ProgrammationMain = ({ city, style, datedebut, datefin }) => {
                             margin="normal"
                             id="date-picker-last-date"
                             label="Au"
-                            value={selectedLastDate}
+                            value={dateFinPersistance ? dateFinPersistance : context.dateFinFilter}
                             onChange={handleLastDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',

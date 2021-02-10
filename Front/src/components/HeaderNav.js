@@ -25,8 +25,12 @@ class HeaderNav extends React.Component {
          this.setState({ isOpen: false })
       }
 
-      setCityFilter(){
-        this.context.setCityFilter(this.props.id); // Persistance filtre ville        
+      setCityFilt = (i) => {
+        const today = new Date();
+        this.context.setCityFilter(i); // Persistance filtre ville  
+        this.context.setCategorie('Toutes');  
+        this.context.setDateDebutFilter(today);
+        this.context.setDateFinFilter(new Date(today.getTime() + 86400000 * 60));  
       }
 
 render() {
@@ -58,22 +62,22 @@ render() {
                     <div className="navContainer">
                     {/*<NavLink exact to="/Programmation" className="majorLink">PROGRAMMATION</NavLink>*/}
                     <NavDropdown title="PROGRAMMATION" id="nav-dropdown" renderMenuOnMount={true}>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={1} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={1} onClick={() => this.setCityFilt(1)}>
                             <NavDropdown.Item>Tous les évènements</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={2} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={2} onClick={() => this.setCityFilt(2)}>
                             <NavDropdown.Item>Aix-en-Provence</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={3} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={3} onClick={() => this.setCityFilt(3)}>
                             <NavDropdown.Item>Bourges</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={4} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={4} onClick={() => this.setCityFilt(4)}>
                             <NavDropdown.Item>Cannes</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={5} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={5} onClick={() => this.setCityFilt(5)}>
                             <NavDropdown.Item>Dunkerque</NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer exact to="/Programmation#programmationAnchor" id={6} onClick={() => this.setCityFilter()}>
+                        <LinkContainer exact to="/Programmation" id={6} onClick={() => this.setCityFilt(6)}>
                             <NavDropdown.Item>Echirolles</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer exact to="/FakePage">

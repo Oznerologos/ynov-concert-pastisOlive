@@ -8,8 +8,10 @@ const Programmation = () => {
 
     const context = useContext(SeatsBookingContext);
 
-localStorage.setItem("cityFilter", JSON.stringify(context.cityFilter)); // Persistance filtre ville
-localStorage.setItem("styleFilter", JSON.stringify(1)); // Persistance filtre style
+localStorage.setItem("cityFilter", JSON.stringify(context.cityFilter ? context.cityFilter : JSON.parse(localStorage.getItem("cityFilter")))); // Persistance filtre ville
+localStorage.setItem("styleFilter", JSON.stringify(context.categorie ? context.categorie : JSON.parse(localStorage.getItem("styleFilter")))); // Persistance filtre style
+localStorage.setItem("dateDebutFilter", JSON.stringify(context.dateDebutFilter ? context.dateDebutFilter : JSON.parse(localStorage.getItem("dateDebutFilter")))); // Persistance filtre date debut
+localStorage.setItem("dateFinFilter", JSON.stringify(context.dateFinFilter ? context.dateFinFilter : JSON.parse(localStorage.getItem("dateFinFilter")))); // Persistance filtre date fin
 
     return (
         <div id="programmationAnchor">
