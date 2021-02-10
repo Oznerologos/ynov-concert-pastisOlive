@@ -66,7 +66,9 @@ const App = () => {
   return (
     <AuthContext.Provider value={contextValue}>
       <ConcertContext.Provider value={contextConcert}>
+      <UserContext.Provider value={contextUser}>
         <SeatsBookingContext.Provider value={contextVal}>
+
           <BrowserRouter>
           <ScrollToTop>
             <Switch>
@@ -91,32 +93,7 @@ const App = () => {
             </ScrollToTop>
           </BrowserRouter>
         </SeatsBookingContext.Provider>
-        <UserContext.Provider value={contextUser}>
-          <SeatsBookingContext.Provider value={contextVal}>
-            <BrowserRouter>
-              <ScrollToTop>
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/Contact" component={Contact} />
-                  <Route path="/FAQ" component={FAQ} />
-                  <Route path="/MentionsLegales" component={MentionsLegales} />
-                  <Route path="/RestaurationPresentation" component={RestaurationPresentation} />
-                  <Route path="/RestaurationReservation" component={RestaurationReservation} />
-                  <Route path="/ConcertReservation" component={ConcertReservation} />
-                  <Route path="/Programmation" component={Programmation} />
-                  <Route path="/PrivatisationPresentation" component={PrivatisationPresentation} />
-                  <Route path="/From_re" component={From_re} />
-                  <Route path="/Concert" component={Concert} />
-                  <Route path="/CGU" component={CGU} />
-                  <Route path="/Login" component={Login} />
-                  <Route path="/FakePage" component={FakePage} />
-                  <Route path="/Inscription" component={Inscription} />
-                  <Route path="/AjoutConcerts" component={AjoutConcerts} />
-                  <Route component={NotFound} />
-                </Switch>
-              </ScrollToTop>
-            </BrowserRouter>
-          </SeatsBookingContext.Provider>
+
         </UserContext.Provider>
       </ConcertContext.Provider>
     </AuthContext.Provider>
