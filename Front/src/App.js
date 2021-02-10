@@ -93,9 +93,6 @@ const App = () => {
             </ScrollToTop>
           </BrowserRouter>
         </SeatsBookingContext.Provider>
-       
-          
-          
         </UserContext.Provider>
       </ConcertContext.Provider>
     </AuthContext.Provider>

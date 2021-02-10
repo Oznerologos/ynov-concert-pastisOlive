@@ -22,7 +22,11 @@ class InscriptionMain extends React.Component {
       address_complement: this.state.etc,
       postal_code: this.state.cp,
       country: this.state.pays,
-      phone: this.state.telephone
+      phone: this.state.telephone,
+      name: this.state.nom,
+      fristname:this.state.prenom,
+      city:this.state.ville,
+
     }
 
 
@@ -91,16 +95,9 @@ class InscriptionMain extends React.Component {
                 <label className="lc">Adresse e-mai *</label>
                 <input id="clear1" type="mail" name="email" onChange={this.handleChange} />
                 <br />
-                <label className="lc">Comfirmation e-mai *</label>
-                <input id="clear2" type="mail" name="emailconfirme" />
-                <br />
                 <label className="lc">Mot de passe *</label>
                 <input id="pas1" type="password" name="password" onChange={this.handleChangePass} />
                 <br />
-                <label className="lc">Comfirmation mot de passe *</label>
-                <input id="pas2" type="password" name="" />
-                <br />
-
                 <label>Civilité *</label>
                 <input id="" className="ci" type="radio" name="sexe" id="" value="femme" onChange={this.handleChangeSexe} />
                 <label>femme</label>
@@ -161,14 +158,9 @@ class InscriptionMain extends React.Component {
               <label className="lc">Adresse e-mai *</label>
               <input id="clear1" type="mail" name="email" onChange={this.handleChange} />
               <br />
-              <label className="lc">Comfirmation e-mai *</label>
-              <input id="clear2" type="mail" name="emailconfirme" />
-              <br />
               <label className="lc">Mot de passe *</label>
               <input id="pas1" type="password" name="password" onChange={this.handleChangePass} />
               <br />
-              <label className="lc">Comfirmation mot de passe *</label>
-              <input id="pas2" type="password" name="" />
               <br />
 
               <label>Civilité *</label>

@@ -31,7 +31,7 @@ class HeaderNav extends React.Component {
         this.context.setCityFilter(this.props.id); // Persistance filtre ville        
       }
 
-render() {
+render(history) {
 
     let cart;
     let linkCart;
@@ -133,7 +133,7 @@ render() {
             </div>
          
             </div>
-            <Menu/>
+            <Menu history={history}/>
          
            {linkCart}
             </Navbar>
