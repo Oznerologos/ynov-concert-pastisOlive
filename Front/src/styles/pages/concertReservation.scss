@@ -690,6 +690,20 @@ form.login-form .MuiInputBase-root {
     margin: 3rem 0;
 }
 
+.MuiDialog-paperWidthSm {
+    background-color: white !important;
+}
+
+.MuiDialog-paperWidthSm .MuiButtonBase-root {
+    color: white !important;
+    background-color: #3c3c3c !important;
+}
+
+.MuiDialog-paperWidthSm .MuiButtonBase-root:hover {
+    color: white !important;
+    background-color: #02c6d0 !important;
+}
+
 .cancelStep {
     padding: 0.5rem 1rem;
     background-color: #3c3c3c;
@@ -727,7 +741,7 @@ form.login-form .MuiInputBase-root {
 
 .otherCommand:hover,
 .otherCommand:focus {
-    border: 1px solid#02c6d0;
+    border: 1px solid #02c6d0;
     color: #02c6d0;
     background-color: transparent;
     text-decoration: none;

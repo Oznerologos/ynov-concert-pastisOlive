@@ -8,15 +8,66 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Loader from './ProgressCircle';
 import ConcertContext from './ConcertContext';
+import UserContext from './UserContext';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useAlert } from "react-alert";
 
-export default function StepPaiement() {
+const StepPaiement = ({ method }) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
+  const contextUser = useContext(UserContext);
+
+  const [refreshKey] = useState(0);
+
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let in_voiceDate = new Date().toLocaleDateString();
+  let reference = Math.floor(Math.random() * (
+    999999 - 100000) + 100000);
+  let query = useQuery();
+  let paramId = "";
+  paramId = query.get("id");
+
+  const [dataInVoice, setDataInVoice] = React.useState([])
+  const [dataReservation, setDataReservation] = React.useState([])
+
+  contextUser.setReservation(dataReservation);
+
+  let in_voice = { user: contextUser.user[0].id, date: in_voiceDate };
+  let reservation = "";
+
+  const newInVoice = async () => {
+    let result = await axios
+      .post("https://localhost:8000/invoice/new", in_voice
+      );
+    // return the result
+    return result;
+  };
+
+  const newReservation = async () => {
+    reservation = { concert: paramId, invoice: JSON.stringify(dataInVoice), reference: reference, totalPrice: (parseInt(context.prices) + parseFloat(context.deliveryPrice)), ticketType: context.deliveryMode, seats: JSON.stringify(context.seats) };
+    let result2 = await axios.post("https://localhost:8000/reservation/new", reservation);
+    return result2;
+  }
+
+  React.useEffect(() => {
+    newInVoice().then(res => {
+      setDataInVoice(res.data)
+    });
+  }, [refreshKey]);
+
+  const alert = useAlert();
 
   const [loader, setLoader] = useState(false);
 
   const load = () => {
+    newReservation().then(res => {
+      setDataReservation(res.data)
+    });
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
@@ -33,7 +84,7 @@ export default function StepPaiement() {
     <section id="sectionStepPanier">
 
       <div id="panierRecap">
-        <h2>BONJOUR JEAN-BRYAN</h2>
+        <h2>BONJOUR {contextUser.user[0].name}</h2>
         <h3>Récapitulatif de votre panier</h3>
         <div id="tableContainer">
           <table>
@@ -55,7 +106,7 @@ export default function StepPaiement() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                 </tr>
@@ -126,7 +177,18 @@ export default function StepPaiement() {
         </div>
         <div id="stepperButtonsCont">
 
-          <Button className="cancelStep">ANNULER</Button>
+          <Button onClick={() => {
+            alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
+              title: "ATTENTION",
+              closeCopy: "NON",
+              actions: [
+                {
+                  copy: "OUI",
+                  onClick: () => { context.setActiveStep(1) }
+                },
+              ]
+            });
+          }} className="cancelStep">ANNULER</Button>
           <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
         </div>
       </div>
@@ -144,3 +206,5 @@ export default function StepPaiement() {
 
   );
 }
+
+export default StepPaiement

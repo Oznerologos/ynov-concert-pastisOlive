@@ -62,13 +62,45 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="user_show", methods={"GET"})
+     * @Route("/{mail}", name="user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(UserRepository $userRepository, $mail): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($userRepository->findBy(["mail" => $mail]), 'json', ['groups' => ['user']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/show/{id}", name="user_show_id", methods={"GET"})
+     */
+    public function showId(UserRepository $userRepository, $id): Response
+    {
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($userRepository->find($id), 'json', ['groups' => ['user']]);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**

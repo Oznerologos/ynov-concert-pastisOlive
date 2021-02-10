@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import SeatsBookingContext from './SeatsBookingContext';
 import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
+import UserContext from './UserContext';
 
-export default function StepConfirmation() {
+const StepConfirmation = ({ method }) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
+  const contextUser = useContext(UserContext);
 
   // context.setSeats([]);
   // context.setPurchases(0);
@@ -20,8 +22,8 @@ export default function StepConfirmation() {
     <section id="sectionConfirmation">
 
       <div id="panierRecap">
-        <h2>MERCI JEAN-BRYAN POUR VOTRE ACHAT !</h2>
-        <p>La référence de cette réservation est le 3008241.</p>
+        <h2>MERCI {contextUser.user[0].name.toUpperCase()} POUR VOTRE ACHAT !</h2>
+        <p>La référence de cette réservation est le {contextUser.reservation.reference}.</p>
         <p>Vous allez recevoir un e-mail de confirmation.</p>
         {/*<p>Si vous avez choisi pour l'obtention des billets le mode "E-Ticket" vous pouvez le télécharger et
         l'imprimer depuis votre compte (ou sur cette page en cliquant sur VOIR).</p>*/}
@@ -50,7 +52,7 @@ export default function StepConfirmation() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                 </tr>
@@ -74,11 +76,13 @@ export default function StepConfirmation() {
       </div>
 
       <div id="btnContainer">
-      <NavLink exact to="/Programmation" className="cancelStep" onClick={resetSeats}>FAIRE UNE AUTRE COMMANDE</NavLink>
-      <NavLink exact to="/" className="nextStep" onClick={resetSeats}>RETOUR A LA PAGE D'ACCUEIL</NavLink>
+        <NavLink exact to="/Programmation" className="cancelStep" onClick={resetSeats}>FAIRE UNE AUTRE COMMANDE</NavLink>
+        <NavLink exact to="/" className="nextStep" onClick={resetSeats}>RETOUR A LA PAGE D'ACCUEIL</NavLink>
       </div>
 
     </section>
 
   );
 }
+
+export default StepConfirmation

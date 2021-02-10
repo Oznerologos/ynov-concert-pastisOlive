@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
 
-export default function StepReservation() {
+export default function StepReservation({method}) {
+
+  window.scrollTo(0, 0);
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -35,7 +37,6 @@ export default function StepReservation() {
   }
 
   const persistantContext = JSON.parse(localStorage.getItem("reactContext"));
-
 
   return (
 
@@ -92,7 +93,7 @@ export default function StepReservation() {
                   <td colSpan={2}>1 place</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.artist : ""}</td>
                   <td colSpan={2}>{contextConcert.concert.concertRoom ? contextConcert.concert.concertRoom.name : ""}</td>
-                  <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.time : ""}</td>
+                  <td colSpan={2}>{contextConcert.concert ? method(contextConcert.concert.time) : ""}</td>
                   <td colSpan={2}>{contextConcert.concert ? contextConcert.concert.category : ""}</td>
                   <td colSpan={2}>{key.price}</td>
                   <td><Button datadelete={key.id} onClick={() => deleteRow(key.id, key.price)}><i className="fas fa-trash-alt"></i></Button></td>
