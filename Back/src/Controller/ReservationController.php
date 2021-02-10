@@ -24,9 +24,20 @@ class ReservationController extends AbstractController
      */
     public function index(ReservationRepository $reservationRepository): Response
     {
-        return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
-        ]);
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        $serializer = $this->container->get('serializer');
+        $json = $serializer->serialize($reservationRepository->findAll(), 'json', ['groups' => 'reservation']);
+    
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**
