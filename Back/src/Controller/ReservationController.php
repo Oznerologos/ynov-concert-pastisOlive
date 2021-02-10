@@ -22,7 +22,7 @@ class ReservationController extends AbstractController
     /**
      * @Route("/", name="reservation_index", methods={"GET"})
      */
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository, Request $request): Response
     {
         $response = new Response();
 
@@ -30,7 +30,9 @@ class ReservationController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $serializer = $this->container->get('serializer');
-        $json = $serializer->serialize($reservationRepository->findAll(), 'json', ['groups' => 'reservation']);
+        $concert = $request->query->get('id');
+        
+        $json = $serializer->serialize($reservationRepository->findBy(['concert' => $concert]), 'json', ['groups' => 'seats']);
     
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');

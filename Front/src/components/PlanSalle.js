@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react'
 import Seat from './Seat';
 import GreySeat from '../media/img/seatgrey.png';
 import RedSeat from '../media/img/seat.png';
 import GreenSeat from '../media/img/seatGreen.png';
 import axios from 'axios';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
+    const [refreshKey] = useState(0);
+    function useQuery() {
+        return new URLSearchParams(useLocation().search);
+    }
+
+    let query = useQuery();
+    let paramConcert = "";
+    paramConcert = query.get("id");
 
     const getResa = async () => {
         let result = await axios(
-            
-        )
+            'https://localhost:8000/reservation?id='+ paramConcert
+        );
+        return result;
     }
+
+    const [data, setData] = React.useState([]);
+    
+    React.useEffect(() => {
+        if (paramConcert !== "") {
+            getResa().then(res => {
+                setData(res.data)
+            })
+        }
+    }, [refreshKey]);
+
+
+
+
+    let placesResa = [];
+    
+    data.forEach(resa => {    
+        JSON.parse(resa.seats).forEach(element => {
+            console.log(element.id)
+            placesResa.push((element.id))
+        });  
+    });
+    console.log(placesResa)
+
+
 
     let planArray = [];
     const nbPlacePerLigne = 12;
@@ -53,7 +88,7 @@ const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
         Styles[j] = {marginBottom:'0'};
     }
 
-    const placesReservees = ['A4', 'B8', 'C3', 'D2', 'E11'];
+    const placesReservees = placesResa;
     const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
     if((Array.isArray(selectedPlaces) === true) &&(selectedPlaces.length > 0)){

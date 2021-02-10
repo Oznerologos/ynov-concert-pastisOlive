@@ -39,7 +39,7 @@ const StepPaiement = ({ method }) => {
 
   let in_voice = { user: contextUser.user[0].id, date: in_voiceDate };
   let reservation = "";
-
+    console.log(contextUser)
   const newInVoice = async () => {
     let result = await axios
       .post("https://localhost:8000/invoice/new", in_voice
