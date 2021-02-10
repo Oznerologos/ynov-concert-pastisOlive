@@ -7,6 +7,8 @@ import ConcertContext from './ConcertContext';
 
 export default function StepReservation({method}) {
 
+  window.scrollTo(0, 0);
+
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
 
