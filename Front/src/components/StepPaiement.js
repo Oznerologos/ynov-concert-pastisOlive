@@ -30,17 +30,16 @@ const StepPaiement = ({ method }) => {
   let paramId = "";
   paramId = query.get("id");
 
-  let in_voice = { user: contextUser.user[0], date: in_voiceDate };
+  let in_voice = { user: contextUser.user[0].id, date: in_voiceDate };
   let reservation = "";
   let res = "";
 
-  const newReservation = () => {
-    let result = "";
-    result = axios
+  const newReservation = async () => {
+    await axios
       .post("https://localhost:8000/invoice/new", in_voice).then(res =>
         console.log(res),
-        reservation = { concert_id: paramId, in_voice: res.id, reference: reference, total_price: context.prices, ticket_type: context.deliveryMode, seats: context.seats },
-        axios.post("https://localhost:8000/reservation/new").then(response => console.log(response))
+        reservation = { concert: paramId, invoice: "8", reference: reference, totalPrice: context.prices, ticketType: context.deliveryMode, seats: JSON.stringify(context.seats) },
+        axios.post("https://localhost:8000/reservation/new", reservation).then(response => console.log(response))
       );
   }
 

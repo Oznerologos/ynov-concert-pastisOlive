@@ -22,6 +22,19 @@ class InVoiceRepository extends ServiceEntityRepository
     // /**
     //  * @return InVoice[] Returns an array of InVoice objects
     //  */
+    public function findById($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('cr.name = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return InVoice[] Returns an array of InVoice objects
+    //  */
     /*
     public function findByExampleField($value)
     {

@@ -53,7 +53,7 @@ security:
         # - { path: ^/user, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/reservation/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/reservation/admin, roles: ROLE_ADMIN }
-        - { path: ^/reservation, roles: IS_AUTHENTICATED_FULLY}
+        # - { path: ^/reservation, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/privatization/admin, roles: ROLE_ADMIN }
         - { path: ^/privatization, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/newsletter/admin, roles: ROLE_ADMIN }
