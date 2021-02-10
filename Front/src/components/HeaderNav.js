@@ -7,6 +7,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png';
 import SeatsBookingContext from './SeatsBookingContext';
+import { HashLink as Link } from 'react-router-hash-link';
+import Menu from './ConnectDeconnect';
 
 class HeaderNav extends React.Component {
 
@@ -129,8 +131,10 @@ render() {
       <Button variant="outline-blue"><i className="fas fa-search"></i></Button>
     </Form> 
             </div>
+         
             </div>
-            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE</NavLink>
+            <Menu/>
+         
            {linkCart}
             </Navbar>
 

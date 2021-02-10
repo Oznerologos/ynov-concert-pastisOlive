@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch,withRouter, HashRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
@@ -25,12 +25,15 @@ import MentionsLegales from './pages/MentionsLegales';
 import ConcertContext from './components/ConcertContext';
 import UserContext from './components/UserContext';
 import ScrollToTop from './components/ScrollToTop';
+import Menu from './components/HeaderNav'
+import PrivateRoute from './components/PrivateRoute';
 
 
 AuthApi.init();
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(AuthApi.isAuth());
+  const NavbarRouter = withRouter(Menu);
 
   const [seats, setSeats] = useState([]);
   const [prices, setPrices] = useState(0);
@@ -63,6 +66,31 @@ const App = () => {
   return (
     <AuthContext.Provider value={contextValue}>
       <ConcertContext.Provider value={contextConcert}>
+        <SeatsBookingContext.Provider value={contextVal}>
+          <BrowserRouter>
+          <ScrollToTop>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/Contact" component={Contact} />
+              <Route path="/FAQ" component={FAQ} />
+              <Route path="/MentionsLegales" component={MentionsLegales} />
+              <Route path="/RestaurationPresentation" component={RestaurationPresentation} />
+              <Route path="/RestaurationReservation" component={RestaurationReservation} />
+              <Route path="/ConcertReservation" component={ConcertReservation} />
+              <Route path="/Programmation" component={Programmation} />
+              <Route path="/PrivatisationPresentation" component={PrivatisationPresentation} />
+              <Route path="/From_re" component={From_re} />
+              <Route path="/Concert" component={Concert} />
+              <Route path="/CGU" component={CGU} />
+              <Route path="/Login" component={Login} />
+              <Route path="/FakePage" component={FakePage} />
+              <Route path="/Inscription" component={Inscription} />
+              <PrivateRoute path="/AjoutConcerts" component={AjoutConcerts} />
+              <Route component={NotFound} />
+            </Switch>
+            </ScrollToTop>
+          </BrowserRouter>
+        </SeatsBookingContext.Provider>
         <UserContext.Provider value={contextUser}>
           <SeatsBookingContext.Provider value={contextVal}>
             <BrowserRouter>
