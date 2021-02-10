@@ -40,7 +40,7 @@ setValue(event.target.value);
   const context = useContext(SeatsBookingContext);
   const contextUser = useContext(UserContext);
 
-  const [refreshKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const decrypt = async () => {
     const token = window.localStorage.getItem('authToken');
@@ -59,22 +59,26 @@ setValue(event.target.value);
 
   React.useEffect(() => {
     decrypt().then(res => {
-      setPersonnalData({
-        mail: res.data[0].mail,
-        gender: res.data[0].gender,
-        name: res.data[0].name,
-        firstname: res.data[0].firstname,
-        street: res.data[0].street,
-        building: res.data[0].building,
-        addressComplement: res.data[0].addressComplement,
-        postalCode: res.data[0].postalCode,
-        city: res.data[0].city,
-        country: res.data[0].country,
-        phone: res.data[0].phone,
-        birthday: res.data[0].birthday,
-      })
+      if (window.localStorage.getItem('authToken')) {
+        setPersonnalData({
+          mail: res.data[0].mail,
+          gender: res.data[0].gender,
+          name: res.data[0].name,
+          firstname: res.data[0].firstname,
+          street: res.data[0].street,
+          building: res.data[0].building,
+          addressComplement: res.data[0].addressComplement,
+          postalCode: res.data[0].postalCode,
+          city: res.data[0].city,
+          country: res.data[0].country,
+          phone: res.data[0].phone,
+          birthday: res.data[0].birthday,
+        })
+      }
     })
-  }, [refreshKey]);
+  }, [refreshKey]
+  );
+
 
   const [personnalData, setPersonnalData] = useState({
     mail: '',
@@ -163,6 +167,7 @@ setValue(event.target.value);
       await AuthApi.auth(credentials);
       setError("");
       setIsAuth(true);
+      setRefreshKey(1);
     } catch (errorRequest) {
       setError('error de login');
       console.log(errorRequest);

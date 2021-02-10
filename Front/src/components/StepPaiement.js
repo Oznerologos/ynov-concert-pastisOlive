@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAlert } from "react-alert";
 
-const StepPaiement = ({method}) => {
+const StepPaiement = ({ method }) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -30,17 +30,16 @@ const StepPaiement = ({method}) => {
   let paramId = "";
   paramId = query.get("id");
 
-  let in_voice = { user: contextUser.user[0], date: in_voiceDate };
+  let in_voice = { user: contextUser.user[0].id, date: in_voiceDate };
   let reservation = "";
   let res = "";
 
-  const newReservation = () => {
-    let result = "";
-    result = axios
+  const newReservation = async () => {
+    await axios
       .post("https://localhost:8000/invoice/new", in_voice).then(res =>
         console.log(res),
-        reservation = { concert_id: paramId, in_voice: res.id, reference: reference, total_price: context.prices, ticket_type: context.deliveryMode, seats: context.seats },
-        axios.post("https://localhost:8000/reservation/new").then(response => console.log(response))
+        reservation = { concert: paramId, invoice: "8", reference: reference, totalPrice: context.prices, ticketType: context.deliveryMode, seats: JSON.stringify(context.seats) },
+        axios.post("https://localhost:8000/reservation/new", reservation).then(response => console.log(response))
       );
   }
 
@@ -160,17 +159,17 @@ const StepPaiement = ({method}) => {
         <div id="stepperButtonsCont">
 
           <Button onClick={() => {
-          alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
-            title: "ATTENTION",
-            closeCopy: "NON",
-            actions: [
-              {
-                copy: "OUI",
-                onClick: () => {context.setActiveStep(1)}
-              },
-            ]
-          });
-        }} className="cancelStep">ANNULER</Button>
+            alert.show("Êtes-vous sur(e) de vouloir annuler ?", {
+              title: "ATTENTION",
+              closeCopy: "NON",
+              actions: [
+                {
+                  copy: "OUI",
+                  onClick: () => { context.setActiveStep(1) }
+                },
+              ]
+            });
+          }} className="cancelStep">ANNULER</Button>
           <Button onClick={() => load()} className="nextStep">VALIDER ET PAYER</Button>
         </div>
       </div>

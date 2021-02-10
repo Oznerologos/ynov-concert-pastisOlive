@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
@@ -32,23 +33,29 @@ class InVoiceController extends AbstractController
     /**
      * @Route("/new", name="in_voice_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, InVoiceRepository $inVoiceRepository): Response
     {
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-  
+        $response = new Response();
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
 
         $inVoice = new InVoice();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(InVoiceType::class, $inVoice);
 
-        $userDeserialized = $serializer->deserialize($request->getContent(), User::class, 'json', [AbstractNormalizer::OBJECT_TO_POPULATE => $user]);
+        $data = json_decode($request->getContent(), true);
+        $form->submit($data);
+
         $entityManager = $this->getDoctrine()->getManager();
-        $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-        $entityManager->persist($user);
+        $entityManager->persist($inVoice);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user_index');
+        $json = $serializer->serialize($data, 'json', ['groups' => ['invoice']]);
+
+        $response->setContent($json);
+
+        return $response;
     }
 
     /**

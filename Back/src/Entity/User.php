@@ -114,16 +114,19 @@ class User implements UserInterface
     private $shared;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
     /**
+     * @Groups("user")
      * @ORM\Column(type="string", length=255)
      */
     private $city;

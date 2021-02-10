@@ -114,7 +114,7 @@ const Home = () => {
                                                 <div style={{ backgroundImage: `URL(/affiches/${element.artistImg})` }}></div>
                                             </div>
                                             <div className="programmationDetail">
-                                                <p>{element.artist}</p>
+                                                <p className="bold">{element.artist}</p>
                                                 <p>{dateConvert(element.time)} </p>
                                                 <p>{element.concertRoom.name}</p>
                                                 <p>{element.musicType}</p>
