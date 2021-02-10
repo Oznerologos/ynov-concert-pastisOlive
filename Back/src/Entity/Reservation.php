@@ -58,7 +58,7 @@ class Reservation
     private $cancel;
 
     /**
-     * @Groups("reservation")
+     * @Groups("seats")
      * @ORM\Column(type="string", length=255)
      */
     private $seats;

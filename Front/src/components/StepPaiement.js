@@ -19,6 +19,8 @@ const StepPaiement = ({ method }) => {
   const contextConcert = useContext(ConcertContext);
   const contextUser = useContext(UserContext);
 
+  const [refreshKey] = useState(0);
+
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -30,25 +32,42 @@ const StepPaiement = ({ method }) => {
   let paramId = "";
   paramId = query.get("id");
 
+  const [dataInVoice, setDataInVoice] = React.useState([])
+  const [dataReservation, setDataReservation] = React.useState([])
+
+  contextUser.setReservation(dataReservation);
+
   let in_voice = { user: contextUser.user[0].id, date: in_voiceDate };
   let reservation = "";
-  let res = "";
+    console.log(contextUser)
+  const newInVoice = async () => {
+    let result = await axios
+      .post("https://localhost:8000/invoice/new", in_voice
+      );
+    // return the result
+    return result;
+  };
 
   const newReservation = async () => {
-    await axios
-      .post("https://localhost:8000/invoice/new", in_voice).then(res =>
-        console.log(res),
-        reservation = { concert: paramId, invoice: "8", reference: reference, totalPrice: context.prices, ticketType: context.deliveryMode, seats: JSON.stringify(context.seats) },
-        axios.post("https://localhost:8000/reservation/new", reservation).then(response => console.log(response))
-      );
+    reservation = { concert: paramId, invoice: JSON.stringify(dataInVoice), reference: reference, totalPrice: (parseInt(context.prices) + parseFloat(context.deliveryPrice)), ticketType: context.deliveryMode, seats: JSON.stringify(context.seats) };
+    let result2 = await axios.post("https://localhost:8000/reservation/new", reservation);
+    return result2;
   }
+
+  React.useEffect(() => {
+    newInVoice().then(res => {
+      setDataInVoice(res.data)
+    });
+  }, [refreshKey]);
 
   const alert = useAlert();
 
   const [loader, setLoader] = useState(false);
 
   const load = () => {
-    newReservation();
+    newReservation().then(res => {
+      setDataReservation(res.data)
+    });
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
@@ -65,7 +84,7 @@ const StepPaiement = ({ method }) => {
     <section id="sectionStepPanier">
 
       <div id="panierRecap">
-        <h2>BONJOUR {contextUser.user.name}</h2>
+        <h2>BONJOUR {contextUser.user[0].name}</h2>
         <h3>Récapitulatif de votre panier</h3>
         <div id="tableContainer">
           <table>

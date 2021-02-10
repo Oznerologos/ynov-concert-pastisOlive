@@ -25,7 +25,7 @@ class InVoiceRepository extends ServiceEntityRepository
     public function findById($value)
     {
         return $this->createQueryBuilder('c')
-            ->where('cr.name = :val')
+            ->where('c.id = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult()

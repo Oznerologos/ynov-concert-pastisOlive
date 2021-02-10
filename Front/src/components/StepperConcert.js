@@ -33,37 +33,37 @@ function getSteps() {
 }
 
 function dateConvert(date) {
-  if((date !== null) && (date !== undefined)){
-  let dateIntermediaire = date;
-  dateIntermediaire = dateIntermediaire.toString();
-  dateIntermediaire = dateIntermediaire.split('T');
-  dateIntermediaire = dateIntermediaire[0].split('-');
+  if ((date !== null) && (date !== undefined)) {
+    let dateIntermediaire = date;
+    dateIntermediaire = dateIntermediaire.toString();
+    dateIntermediaire = dateIntermediaire.split('T');
+    dateIntermediaire = dateIntermediaire[0].split('-');
 
-  for (let i = 0; i < dateIntermediaire.length; i++) {
+    for (let i = 0; i < dateIntermediaire.length; i++) {
       dateIntermediaire[i] = parseInt(dateIntermediaire[i]);
+    }
+
+    let sub = date.substring(11, 16);
+    sub = sub.split(':');
+    date = "Le " + dateIntermediaire[2] + "/" + dateIntermediaire[1] + "/" + dateIntermediaire[0] + " à " + sub[0] + "H" + sub[1];
+
+    return date;
   }
-
-  let sub = date.substring(11, 16);
-  sub = sub.split(':');
-  date = "Le " + dateIntermediaire[2] + "/" + dateIntermediaire[1] + "/" + dateIntermediaire[0] + " à " + sub[0] + "H" + sub[1];
-
-  return date;
-}
 }
 
 function getStepContent(step) {
 
   switch (step) {
     case 0:
-      return <StepReservation method={dateConvert}/>;
+      return <StepReservation method={dateConvert} />;
     case 1:
-      return <StepPanier method={dateConvert}/>;
+      return <StepPanier method={dateConvert} />;
     case 2:
-      return <StepCoordonnees/>;
+      return <StepCoordonnees />;
     case 3:
-      return <StepPaiement method={dateConvert}/>;
+      return <StepPaiement method={dateConvert} />;
     case 4:
-      return <StepConfirmation method={dateConvert}/>;
+      return <StepConfirmation method={dateConvert} />;
     default:
       return 'Unknown step';
   }
@@ -75,48 +75,48 @@ export default function HorizontalLinearStepper() {
   //const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
   const context = useContext(SeatsBookingContext);
-/*
-  const isStepOptional = (step) => {
-    return false; //step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };*/
-/*
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(context.activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(context.activeStep);
-    }
-
-    context.setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    context.setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(context.activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    context.setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(context.activeStep);
-      return newSkipped;
-    });
-  };*/
-/*
-  const handleReset = () => {
-    context.setActiveStep(0);
-  };*/
+  /*
+    const isStepOptional = (step) => {
+      return false; //step === 1;
+    };
+  
+    const isStepSkipped = (step) => {
+      return skipped.has(step);
+    };*/
+  /*
+    const handleNext = () => {
+      let newSkipped = skipped;
+      if (isStepSkipped(context.activeStep)) {
+        newSkipped = new Set(newSkipped.values());
+        newSkipped.delete(context.activeStep);
+      }
+  
+      context.setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
+    };
+  
+    const handleBack = () => {
+      context.setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+  
+    const handleSkip = () => {
+      if (!isStepOptional(context.activeStep)) {
+        // You probably want to guard against something like this,
+        // it should never occur unless someone's actively trying to break something.
+        throw new Error("You can't skip a step that isn't optional.");
+      }
+  
+      context.setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped((prevSkipped) => {
+        const newSkipped = new Set(prevSkipped.values());
+        newSkipped.add(context.activeStep);
+        return newSkipped;
+      });
+    };*/
+  /*
+    const handleReset = () => {
+      context.setActiveStep(0);
+    };*/
 
   const [refreshKey] = useState(0);
 
@@ -139,7 +139,6 @@ export default function HorizontalLinearStepper() {
   const [data, setData] = React.useState([])
 
   React.useEffect(() => {
-
     getSalle().then(res => {
       setData(res.data)
     })
@@ -149,33 +148,33 @@ export default function HorizontalLinearStepper() {
 
   contextConcert.setConcert(data);
 
-    // Alert step Paiement
-    const options = {
-      position: positions.MIDDLE
-    };
+  // Alert step Paiement
+  const options = {
+    position: positions.MIDDLE
+  };
 
   return (
     <Provider template={AlertMUITemplate} {...options}>
-    <div className={classes.root}>
-      <Stepper activeStep={context.activeStep} className="titleCont">
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          /*
-          if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }*/
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      {/*  <div>
+      <div className={classes.root}>
+        <Stepper activeStep={context.activeStep} className="titleCont">
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            /*
+            if (isStepOptional(index)) {
+              labelProps.optional = <Typography variant="caption">Optional</Typography>;
+            }
+            if (isStepSkipped(index)) {
+              stepProps.completed = false;
+            }*/
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+        {/*  <div>
         
         {context.activeStep === steps.length ? (
           <div className="stepBody">
@@ -187,9 +186,9 @@ export default function HorizontalLinearStepper() {
             </Button>
           </div>
         ) : (*/}
-      <div className="stepBody">
-        <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
-        {/* <div>
+        <div className="stepBody">
+          <div className={classes.instructions}>{getStepContent(context.activeStep)}</div>
+          {/* <div>
           <NavLink exact to={"/Concert?artist=" + data.artist} onClick={handleBack} className="cancelStep">
             ANNULER
           </NavLink>
@@ -213,9 +212,9 @@ export default function HorizontalLinearStepper() {
             {context.activeStep === steps.length - 1 ? 'Terminer' : 'Suivant'}
           </Button>
         </div> */}
+        </div>
       </div>
-    </div>
     </Provider>
   );
-  
+
 }

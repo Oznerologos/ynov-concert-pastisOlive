@@ -7,6 +7,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png';
 import SeatsBookingContext from './SeatsBookingContext';
+import { HashLink as Link } from 'react-router-hash-link';
+import Menu from './ConnectDeconnect';
 
 class HeaderNav extends React.Component {
 
@@ -33,7 +35,7 @@ class HeaderNav extends React.Component {
         this.context.setDateFinFilter(new Date(today.getTime() + 86400000 * 60));  
       }
 
-render() {
+render(history) {
 
     let cart;
     let linkCart;
@@ -133,8 +135,10 @@ render() {
       <Button variant="outline-blue"><i className="fas fa-search"></i></Button>
     </Form> 
             </div>
+         
             </div>
-            <NavLink exact to="/fakePage" className="accountLink">MON COMPTE</NavLink>
+            <Menu history={history}/>
+         
            {linkCart}
             </Navbar>
 

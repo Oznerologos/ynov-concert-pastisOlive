@@ -51,7 +51,10 @@ class InVoiceController extends AbstractController
         $entityManager->persist($inVoice);
         $entityManager->flush();
 
-        $json = $serializer->serialize($data, 'json', ['groups' => ['invoice']]);
+        $id = $inVoice->getId();
+
+        $json = $serializer->serialize($id, 'json', ['groups' => ['invoice']]
+    );
 
         $response->setContent($json);
 

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import ConcertContext from './ConcertContext';
 import UserContext from './UserContext';
 
-const StepConfirmation = ({method}) => {
+const StepConfirmation = ({ method }) => {
 
   const context = useContext(SeatsBookingContext);
   const contextConcert = useContext(ConcertContext);
@@ -22,8 +22,8 @@ const StepConfirmation = ({method}) => {
     <section id="sectionConfirmation">
 
       <div id="panierRecap">
-        <h2>MERCI {contextUser.user.name} POUR VOTRE ACHAT !</h2>
-        <p>La référence de cette réservation est le 3008241.</p>
+        <h2>MERCI {contextUser.user[0].name.toUpperCase()} POUR VOTRE ACHAT !</h2>
+        <p>La référence de cette réservation est le {contextUser.reservation.reference}.</p>
         <p>Vous allez recevoir un e-mail de confirmation.</p>
         {/*<p>Si vous avez choisi pour l'obtention des billets le mode "E-Ticket" vous pouvez le télécharger et
         l'imprimer depuis votre compte (ou sur cette page en cliquant sur VOIR).</p>*/}
