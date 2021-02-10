@@ -55,12 +55,13 @@ const App = () => {
 
   const [concert, setConcert] = useState([]);
   const [user, setUser] = useState([]);
+  const [reservation, setReservation] = useState([]);
 
   const contextConcert = { concert, setConcert };
-  const contextUser = { user, setUser };
+  const contextUser = { user, setUser, reservation, setReservation };
 
   return (
-    <AuthContext.Provider value={contextValue}>     
+    <AuthContext.Provider value={contextValue}>
       <ConcertContext.Provider value={contextConcert}>
         <UserContext.Provider value={contextUser}>
           <SeatsBookingContext.Provider value={contextVal}>
