@@ -3,8 +3,15 @@ import Seat from './Seat';
 import GreySeat from '../media/img/seatgrey.png';
 import RedSeat from '../media/img/seat.png';
 import GreenSeat from '../media/img/seatGreen.png';
+import axios from 'axios';
 
 const PlanSalle = ({nbplaces,maxprice,selectedPlaces,viewonly}) => {
+
+    const getResa = async () => {
+        let result = await axios(
+            
+        )
+    }
 
     let planArray = [];
     const nbPlacePerLigne = 12;
