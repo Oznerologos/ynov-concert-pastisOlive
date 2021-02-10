@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch,withRouter, HashRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
@@ -24,11 +24,13 @@ import SeatsBookingContext from './components/SeatsBookingContext';
 import MentionsLegales from './pages/MentionsLegales';
 import ConcertContext from './components/ConcertContext';
 import ScrollToTop from './components/ScrollToTop';
-
+import Menu from './components/HeaderNav'
+import PrivateRoute from './components/PrivateRoute';
 AuthApi.init();
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(AuthApi.isAuth());
+  const NavbarRouter = withRouter(Menu);
 
   const [seats, setSeats] = useState([]);
   const [prices, setPrices] = useState(0);
@@ -77,7 +79,7 @@ const App = () => {
               <Route path="/Login" component={Login} />
               <Route path="/FakePage" component={FakePage} />
               <Route path="/Inscription" component={Inscription} />
-              <Route path="/AjoutConcerts" component={AjoutConcerts} />
+              <PrivateRoute path="/AjoutConcerts" component={AjoutConcerts} />
               <Route component={NotFound} />
             </Switch>
             </ScrollToTop>
