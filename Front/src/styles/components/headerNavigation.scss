@@ -202,6 +202,8 @@ nav.navbar-expand-lg {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .accountLink:hover {
@@ -222,4 +224,12 @@ nav.navbar-expand-lg {
 .searchLine {
     margin: 1rem 0px;
     @include verticalCenter;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+        height: 40px;
+        margin-top: 0.5rem;
+    }
 }

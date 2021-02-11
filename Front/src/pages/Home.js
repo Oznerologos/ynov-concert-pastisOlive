@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import FooterNav from '../components/FooterNav';
 import HeaderNav from '../components/HeaderNav';
 import CarouselActu from '../components/CarouselActu';
 import { NavLink } from 'react-router-dom';
 import salleConcert from '../media/img/salle-concert.jpg';
 import axios from 'axios';
+import SeatsBookingContext from '../components/SeatsBookingContext';
 
 const Home = () => {
+
+    const context = useContext(SeatsBookingContext);
 
     const [refreshKey] = useState(0);
 
@@ -54,48 +57,14 @@ const Home = () => {
 
         return date;
     }
-/*
-    const findMinPrice = (maxPrice, nbPlaces) => {
-        const nbLigne = ((nbPlaces - (nbPlaces % 12)) / 12) + 1;
-        const minPrice = Math.round(maxPrice - (maxPrice * (5 * nbLigne) / 100));
-        return minPrice;
-    }
 
-    const concerts = () => {
-        let resultConcerts = [];
-
-        if (data[0] != undefined) {
-            for (let i = 0; i < data.length; i++) {
-                let dateTest = dateConvert(data[i]["time"]);
-
-                let sub = data[i]["time"].substring(11, 16);
-                sub = sub.split(':');
-                data[i]["time"] = "Le " + dateTest[2] + "/" + dateTest[1] + "/" + dateTest[0] + " à " + sub[0] + "H" + sub[1];
-                //resultCards.push(data[i]);
-
-                let subDate = data[i]["date"].substring(11, 16);
-                subDate = subDate.split(':');
-                data[i]["date"] = date[2] + "/" + date[1] + "/" + date[0];
-
-                let subTime = data[i]["time"].substring(11, 16);
-                subTime = subTime.split(':');
-                data[i]["time"] = subTime[0] + "H" + subTime[1];
-
-                let subOpen = data[i]["timeOpen"].substring(11, 16);
-                subOpen = subOpen.split(':');
-                data[i]["timeOpen"] = subOpen[0] + "H" + subOpen[1];
-                resultConcerts.push(data[i]);
-
-                let minPrice = findMinPrice(data[i].maxPrice, data[i].concertRoom.placeNumber)
-
-                data[i]["maxPrice"] = "De " + minPrice + "€ à " + data[i].maxPrice + "€";
-                resultConcerts.push(data[i]);
-            }
-            return resultConcerts;
-        }
-    }*/
-
-   // const info = concerts();
+    const setCityFilt = (i) => {
+        const today = new Date();
+        context.setCityFilter(i); // Persistance filtre ville  
+        context.setCategorie('Toutes');  
+        context.setDateDebutFilter(today);
+        context.setDateFinFilter(new Date(today.getTime() + 86400000 * 60));  
+      }
 
     return (
         <div id="topAnchor">
@@ -124,7 +93,7 @@ const Home = () => {
                                     })) : (<p>Chargement</p>)
                             }
                         </div>
-                        <NavLink exact to="/Programmation" className="sectionBtn">VOIR TOUTE LA PROGRAMMATION</NavLink>
+                        <NavLink exact to="/Programmation" className="sectionBtn" onClick={() => setCityFilt(1)}>VOIR TOUTE LA PROGRAMMATION</NavLink>
 
                         <h3>ACTUALITÉS</h3>
                         <div id="actualiteContainer">

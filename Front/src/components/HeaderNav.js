@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../media/img/logo-2.png';
 import SeatsBookingContext from './SeatsBookingContext';
-import { HashLink as Link } from 'react-router-hash-link';
 import Menu from './ConnectDeconnect';
 
 class HeaderNav extends React.Component {

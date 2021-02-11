@@ -166,7 +166,7 @@
 
 .carouselItemCont {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: stretch;
     width: 100%;
     background-color: #eeeded;
@@ -178,6 +178,11 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     width: 24%;
     min-height: 100%;
+    margin-right: calc(4% / 3);
+}
+
+.ConcertSliderCont:nth-child(4) {
+    margin-right: 0;
 }
 
 .ConcertSliderCont p {

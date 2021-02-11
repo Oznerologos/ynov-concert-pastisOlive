@@ -34,13 +34,6 @@ const ProgrammationMain = () => {
         })
     }, [refreshKey]);
 
-    //console.log(JSON.stringify(data, null, 2));
-    //console.log(data[0]);
-    /*
-        const handleChange = (event) => {
-            setCategories({ ...categories, [event.target.name]: event.target.checked });
-        };*/
-
     const [cityButton, setCityButton] = useState([
         {
             id: 1,
@@ -75,13 +68,13 @@ const ProgrammationMain = () => {
     ]);
 
     const cityPersistance = JSON.parse(localStorage.getItem("cityFilter"));
-    console.log("cityPersistance: ",cityPersistance);
-    console.log("context.cityFilter: ",context.cityFilter);
+    //console.log("cityPersistance: ",cityPersistance);
+    //console.log("context.cityFilter: ",context.cityFilter);
     const stylePersistance = JSON.parse(localStorage.getItem("styleFilter"));
     const dateDebutPersistance = JSON.parse(localStorage.getItem("dateDebutFilter"));
     const dateFinPersistance = JSON.parse(localStorage.getItem("dateFinFilter"));
     const [activeButton, setActiveButton] = useState(cityPersistance ? cityPersistance : context.cityFilter);
-    console.log(activeButton);
+    //console.log(activeButton);
     
     //const [activeRadio, setActiveRadio] = useState(parseInt(stylePersistance));
 
@@ -129,13 +122,16 @@ const ProgrammationMain = () => {
 
     const activeBtn = (event) => {
         setCities(event.currentTarget.name);
-        console.log(cities);
+        //console.log(cities);
         setActiveButton(event.currentTarget.id.substring(6));
         localStorage.setItem("cityFilter", JSON.stringify(event.currentTarget.id.substring(6))); // Persistance filtre ville
         context.setCityFilter(event.currentTarget.id.substring(6));
         setRefreshKey(oldKey => oldKey + 1)
         createCards();
+    }
 
+    if(context.categorie === null) {
+        context.setCategorie('Toutes');
     }
 
     function dateConvert(date) {
